@@ -66,9 +66,15 @@ function installStartCurtain(deck) {
   document.body.appendChild(curtain);
 
   let started = false;
+  // The presenter console needs to know whether the show has actually begun:
+  // until the curtain lifts, this window is still a title card and its notes
+  // are not the notes of anything being presented.
+  window.__deckStarted = false;
   async function start() {
     if (started) return;
     started = true;
+    window.__deckStarted = true;
+    window.dispatchEvent(new Event("deck:started"));
     curtain.remove();
     if (WANT_FULLSCREEN) {
       try {
@@ -102,6 +108,8 @@ function installStartCurtain(deck) {
   window.__deckRaiseCurtain = () => {
     if (started) return;
     started = true;
+    window.__deckStarted = true;
+    window.dispatchEvent(new Event("deck:started"));
     curtain.remove();
     deck.focus?.();
   };
@@ -789,6 +797,24 @@ async function build() {
   // BroadcastChannel rather than window.opener, so the console survives the
   // popup being closed and reopened, and so either page can be refreshed
   // without losing the link.
+  // A single-slide render (?only=) can follow the presented deck beat for beat,
+  // by listening on the same channel the console does. Without this the mirror
+  // shows every slide at its final beat, which is worse than no mirror: it
+  // disagrees with the projector for every press but the last.
+  if (ONLY_ID && params.has("follow") && "BroadcastChannel" in window) {
+    const follow = new BroadcastChannel("deck-present");
+    follow.onmessage = (ev) => {
+      const m = ev.data || {};
+      if (m.type !== "state" || m.id !== ONLY_ID) return;
+      const rec = records[0];
+      if (!rec?.driver) return;
+      // Beats can be a per-talk subset, so clamp rather than assume the index
+      // means the same thing in both decks.
+      rec.driver.goTo(Math.min(m.beat ?? 0, rec.driver.length - 1), { animate: false });
+    };
+    follow.postMessage({ type: "hello" });
+  }
+
   if (params.has("present") && "BroadcastChannel" in window) {
     const channel = new BroadcastChannel("deck-present");
 
@@ -798,6 +824,7 @@ async function build() {
       channel.postMessage({
         type: "state",
         talk: TALK_ID,
+        started: window.__deckStarted !== false,
         slide: h,
         slides: records.length,
         beat: rec?.driver?.index ?? 0,
@@ -821,6 +848,7 @@ async function build() {
 
     ["ready", "slidechanged", "fragmentshown", "fragmenthidden"].forEach((e) =>
       deck.on(e, () => setTimeout(send, 0)));
+    window.addEventListener("deck:started", () => setTimeout(send, 0));
     window.addEventListener("pagehide", () =>
       channel.postMessage({ type: "gone", talk: TALK_ID }));
   }

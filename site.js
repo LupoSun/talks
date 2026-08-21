@@ -11,6 +11,9 @@ const $ = (sel) => document.querySelector(sel);
 let deckWindow = null;
 let startedAt = null;
 let ticker = null;
+let currentTalk = null;
+let mirrored = null;          // the slide id the mirror is currently showing
+let mirrorOn = localStorage.getItem("mirror") !== "off";
 
 // ---- talk list -------------------------------------------------------------
 
@@ -69,10 +72,40 @@ function present(talk) {
     return;
   }
   deckWindow.focus();
+  currentTalk = talk;
+  document.body.classList.add("presenting");
+  document.body.classList.toggle("no-mirror", !mirrorOn);
+  $("#c-mirror").setAttribute("aria-pressed", String(mirrorOn));
   $("#console").hidden = false;
-  $("#c-notes").innerHTML = `<p class="muted">Waiting for the deck…</p>`;
+  waiting("Click the deck window once to begin — that is also what sends it full screen.");
   startTimer();
   channel?.postMessage({ type: "hello" });
+}
+
+function waiting(msg) {
+  $("#c-notes").innerHTML = `<p class="waiting">${escapeHtml(msg)}</p>`;
+  $("#c-id").textContent = "—";
+  $("#c-name").textContent = "";
+  $("#c-pos").textContent = "";
+}
+
+/**
+ * The mirror is a second, single-slide render — `?only=` is the same cheap
+ * path Backstage uses for its thumbnails, not another whole deck. It is
+ * reloaded per slide rather than per beat, because `only=` always shows a
+ * slide at its final beat anyway.
+ */
+function updateMirror(state) {
+  if (!mirrorOn || !state.id) return;
+  $("#c-mirror-cap").textContent =
+    state.beats > 1 ? `${state.id} · beat ${state.beat + 1} of ${state.beats}` : state.id;
+  // Reload only when the SLIDE changes. Within a slide the mirror follows beats
+  // over the channel (&follow), so pressing does not remount a deck each time.
+  if (state.id === mirrored) return;
+  mirrored = state.id;
+  $("#c-frame").src =
+    `deck/index.html?talk=${encodeURIComponent(state.talk)}` +
+    `&only=${encodeURIComponent(state.id)}&follow=1`;
 }
 
 function startTimer() {
@@ -112,11 +145,19 @@ function renderNotes(text) {
 channel?.addEventListener("message", (ev) => {
   const m = ev.data || {};
   if (m.type === "gone") {
-    $("#c-notes").innerHTML = `<p class="muted">The deck window closed.</p>`;
+    waiting("The deck window closed.");
+    $("#c-frame").removeAttribute("src");
+    mirrored = null;
     return;
   }
   if (m.type !== "state") return;
   $("#console").hidden = false;
+  // Until the curtain lifts the deck is still a title card; showing slide one's
+  // notes then reads as though the talk had already started.
+  if (m.started === false) {
+    waiting("Click the deck window once to begin — that is also what sends it full screen.");
+    return;
+  }
   $("#c-id").textContent = m.id || "—";
   $("#c-name").textContent = m.name || "";
   $("#c-pos").textContent =
@@ -124,6 +165,16 @@ channel?.addEventListener("message", (ev) => {
   $("#c-budget").textContent = m.minutes ? `this slide ${m.minutes} min` : "";
   $("#c-notes").innerHTML = renderNotes(m.notes || "");
   $("#c-notes").scrollTop = 0;
+  updateMirror(m);
+});
+
+$("#c-mirror").addEventListener("click", () => {
+  mirrorOn = !mirrorOn;
+  localStorage.setItem("mirror", mirrorOn ? "on" : "off");
+  document.body.classList.toggle("no-mirror", !mirrorOn);
+  $("#c-mirror").setAttribute("aria-pressed", String(mirrorOn));
+  if (!mirrorOn) { $("#c-frame").removeAttribute("src"); mirrored = null; }
+  else channel?.postMessage({ type: "hello" });
 });
 
 $("#c-next").addEventListener("click", () => nav("next"));
@@ -133,6 +184,9 @@ $("#c-stop").addEventListener("click", () => {
   try { deckWindow?.close(); } catch { /* already gone */ }
   clearInterval(ticker);
   $("#console").hidden = true;
+  document.body.classList.remove("presenting");
+  $("#c-frame").removeAttribute("src");
+  mirrored = null;
 });
 
 // Arrow keys drive the deck from here, so the presenter can look at the notes.

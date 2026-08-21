@@ -32,29 +32,65 @@ body { margin: 0; background: var(--bg); color: var(--ink); }
 }
 .muted { color: var(--muted); }
 
-/* Presenter console — only while a deck window is open. */
+/* Presenter console.
+   Once presenting, it takes the whole viewport — the notes are the thing being
+   read from a lectern, and a 46vh strip under a list of talks was not readable.
+   The index stays in the DOM so closing the console returns to it. */
 .console {
-  position: sticky; bottom: 0; margin-top: 24px;
-  background: #0b1220; color: #e2e8f0; border-top: 1px solid #1e293b;
+  position: fixed; inset: 0; z-index: 50;
+  display: flex; flex-direction: column;
+  background: #0b1220; color: #e2e8f0;
 }
+/* `display:flex` above out-specifies the UA's `[hidden] { display: none }`, so
+   without this the console stays laid out over the whole page while "hidden"
+   and silently eats every click on the talk list. */
+.console[hidden] { display: none; }
+body.presenting { overflow: hidden; }
 .console__bar {
   display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
-  justify-content: space-between; padding: 12px 24px; border-bottom: 1px solid #1e293b;
+  justify-content: space-between; padding: 12px 20px;
+  border-bottom: 1px solid #1e293b; flex: 0 0 auto;
 }
-.console__where { display: flex; gap: 10px; align-items: baseline; }
+.console__where { display: flex; gap: 10px; align-items: baseline; min-width: 0; }
+.console__where strong { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .console .muted { color: #94a3b8; }
-.console__timer { font-variant-numeric: tabular-nums; font-size: 18px; display: flex; gap: 10px; align-items: baseline; }
+.console__timer { font-variant-numeric: tabular-nums; font-size: 20px; display: flex; gap: 10px; align-items: baseline; }
 .console__nav { display: flex; gap: 6px; }
 .console .btn { background: #1e293b; border-color: #334155; color: #e2e8f0; }
 .console .btn:hover { background: #273449; }
-.notes {
-  max-width: 940px; margin: 0 auto; padding: 18px 24px 28px;
-  font-size: 17px; line-height: 1.6; max-height: 46vh; overflow: auto;
+.console .btn[aria-pressed="false"] { opacity: 0.55; }
+
+/* Notes take the room; the mirror is a reference, not the subject. */
+.console__body {
+  flex: 1 1 auto; min-height: 0;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 30%);
+  gap: 20px; padding: 20px 24px 24px;
 }
-.notes ul { margin: 0 0 12px; padding-left: 20px; }
-.notes li { margin: 4px 0; }
-.notes p { margin: 0 0 10px; }
+body.no-mirror .console__body { grid-template-columns: minmax(0, 1fr); }
+body.no-mirror .mirror { display: none; }
+
+.notes {
+  min-height: 0; overflow: auto;
+  font-size: clamp(17px, 1.5vw, 23px); line-height: 1.6;
+}
+.notes ul { margin: 0 0 14px; padding-left: 22px; }
+.notes li { margin: 6px 0; }
+.notes p { margin: 0 0 12px; }
 .notes em { color: #fbbf24; font-style: normal; }
 .notes .say { color: #a5b4fc; }
+.notes .waiting { color: #94a3b8; font-size: 18px; }
+
+.mirror { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.mirror iframe {
+  width: 100%; aspect-ratio: 16 / 9; border: 1px solid #1e293b;
+  border-radius: 10px; background: #0f172a; display: block;
+}
+.mirror__cap { margin: 0; font-size: 13px; color: #94a3b8; }
+
+@media (max-width: 900px) {
+  .console__body { grid-template-columns: minmax(0, 1fr); }
+  .mirror { display: none; }
+}
+
 .foot { max-width: 940px; margin: 0 auto; padding: 8px 24px 48px; color: var(--muted); font-size: 13px; }
 @media (max-width: 640px) { .head { padding-top: 28px; } }

@@ -34,10 +34,17 @@
       <button class="btn" id="c-prev" title="Previous (←)">←</button>
       <button class="btn" id="c-next" title="Next (→)">→</button>
       <button class="btn" id="c-reset" title="Reset the timer">Reset</button>
+      <button class="btn" id="c-mirror" aria-pressed="true" title="Show or hide the slide mirror">Mirror</button>
       <button class="btn" id="c-stop">Close</button>
     </div>
   </div>
-  <article class="notes" id="c-notes"></article>
+  <div class="console__body">
+    <article class="notes" id="c-notes"></article>
+    <aside class="mirror" id="c-mirror-pane">
+      <iframe id="c-frame" title="Current slide" loading="lazy"></iframe>
+      <p class="mirror__cap" id="c-mirror-cap"></p>
+    </aside>
+  </div>
 </section>
 
 <footer class="foot">
