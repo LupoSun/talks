@@ -5,7 +5,9 @@
 // two talk over a BroadcastChannel rather than window.opener, so either can be
 // refreshed, and closing the deck does not orphan the console.
 
-const channel = "BroadcastChannel" in window ? new BroadcastChannel("deck-present") : null;
+import { MSG, WINDOW, deckUrl, presenterChannel } from "./deck/runtime/present-protocol.js";
+
+const channel = presenterChannel();
 const $ = (sel) => document.querySelector(sel);
 
 let deckWindow = null;
@@ -42,7 +44,7 @@ async function loadTalks() {
         t.slides ? `${t.slides} slides` : ""}${t.minutes ? ` · ${t.minutes} min` : ""}</p>
       <div class="row">
         <button class="btn btn--primary" data-present="${escapeHtml(t.id)}">Present</button>
-        <a class="btn" href="deck/index.html?talk=${encodeURIComponent(t.id)}" target="_blank"
+        <a class="btn" href="${deckUrl("deck/index.html", t.id)}" target="_blank"
            rel="noopener">Open deck</a>
         ${files.join("")}
       </div>`;
@@ -60,12 +62,12 @@ function escapeHtml(s) {
 // ---- presenting ------------------------------------------------------------
 
 function present(talk) {
-  const url = `deck/index.html?talk=${encodeURIComponent(talk)}&present=1`;
+  const url = deckUrl("deck/index.html", talk, { present: true });
   // Sized to the screen rather than maximised: a popup that already fills the
   // display gives no hint that it is the thing to make full screen.
   const w = Math.round(screen.availWidth * 0.72);
   const h = Math.round((w * 9) / 16);
-  deckWindow = window.open(url, "deck-present",
+  deckWindow = window.open(url, WINDOW,
     `popup=yes,width=${w},height=${h},left=${Math.round((screen.availWidth - w) / 2)},top=80`);
   if (!deckWindow) {
     alert("The deck window was blocked. Allow pop-ups for this site and press Present again.");
@@ -79,7 +81,7 @@ function present(talk) {
   $("#console").hidden = false;
   waiting("Click the deck window once to begin — that is also what sends it full screen.");
   startTimer();
-  channel?.postMessage({ type: "hello" });
+  channel?.postMessage({ type: MSG.hello });
 }
 
 function waiting(msg) {
@@ -91,9 +93,9 @@ function waiting(msg) {
 
 /**
  * The mirror is a second, single-slide render — `?only=` is the same cheap
- * path Backstage uses for its thumbnails, not another whole deck. It is
- * reloaded per slide rather than per beat, because `only=` always shows a
- * slide at its final beat anyway.
+ * path Backstage uses for its thumbnails, not another whole deck. `&follow`
+ * makes it track the presented deck's beat over the channel, so it agrees with
+ * the projector rather than sitting at the slide's final beat.
  */
 function updateMirror(state) {
   if (!mirrorOn || !state.id) return;
@@ -104,8 +106,7 @@ function updateMirror(state) {
   if (state.id === mirrored) return;
   mirrored = state.id;
   $("#c-frame").src =
-    `deck/index.html?talk=${encodeURIComponent(state.talk)}` +
-    `&only=${encodeURIComponent(state.id)}&follow=1`;
+    deckUrl("deck/index.html", state.talk, { only: state.id, follow: true });
 }
 
 function startTimer() {
@@ -118,7 +119,7 @@ function startTimer() {
 }
 
 function nav(dir) {
-  channel?.postMessage({ type: "nav", dir });
+  channel?.postMessage({ type: MSG.nav, dir });
   deckWindow?.focus?.();
 }
 
@@ -144,13 +145,13 @@ function renderNotes(text) {
 
 channel?.addEventListener("message", (ev) => {
   const m = ev.data || {};
-  if (m.type === "gone") {
+  if (m.type === MSG.gone) {
     waiting("The deck window closed.");
     $("#c-frame").removeAttribute("src");
     mirrored = null;
     return;
   }
-  if (m.type !== "state") return;
+  if (m.type !== MSG.state) return;
   $("#console").hidden = false;
   // Until the curtain lifts the deck is still a title card; showing slide one's
   // notes then reads as though the talk had already started.
@@ -174,7 +175,7 @@ $("#c-mirror").addEventListener("click", () => {
   document.body.classList.toggle("no-mirror", !mirrorOn);
   $("#c-mirror").setAttribute("aria-pressed", String(mirrorOn));
   if (!mirrorOn) { $("#c-frame").removeAttribute("src"); mirrored = null; }
-  else channel?.postMessage({ type: "hello" });
+  else channel?.postMessage({ type: MSG.hello });
 });
 
 $("#c-next").addEventListener("click", () => nav("next"));

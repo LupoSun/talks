@@ -16,6 +16,7 @@
 //   export async function mount(root, props) -> { render(p), refresh?() }
 
 import { createBeatDriver } from "./beat-driver.js";
+import { CHANNEL, MSG, PARAM } from "./present-protocol.js";
 import { renderProps } from "./markdown.js";
 
 const params = new URLSearchParams(location.search);
@@ -801,28 +802,28 @@ async function build() {
   // by listening on the same channel the console does. Without this the mirror
   // shows every slide at its final beat, which is worse than no mirror: it
   // disagrees with the projector for every press but the last.
-  if (ONLY_ID && params.has("follow") && "BroadcastChannel" in window) {
-    const follow = new BroadcastChannel("deck-present");
+  if (ONLY_ID && params.has(PARAM.follow) && "BroadcastChannel" in window) {
+    const follow = new BroadcastChannel(CHANNEL);
     follow.onmessage = (ev) => {
       const m = ev.data || {};
-      if (m.type !== "state" || m.id !== ONLY_ID) return;
+      if (m.type !== MSG.state || m.id !== ONLY_ID) return;
       const rec = records[0];
       if (!rec?.driver) return;
       // Beats can be a per-talk subset, so clamp rather than assume the index
       // means the same thing in both decks.
       rec.driver.goTo(Math.min(m.beat ?? 0, rec.driver.length - 1), { animate: false });
     };
-    follow.postMessage({ type: "hello" });
+    follow.postMessage({ type: MSG.hello });
   }
 
-  if (params.has("present") && "BroadcastChannel" in window) {
-    const channel = new BroadcastChannel("deck-present");
+  if (params.has(PARAM.present) && "BroadcastChannel" in window) {
+    const channel = new BroadcastChannel(CHANNEL);
 
     const send = () => {
       const h = deck.getIndices().h ?? 0;
       const rec = recordFor(h);
       channel.postMessage({
-        type: "state",
+        type: MSG.state,
         talk: TALK_ID,
         started: window.__deckStarted !== false,
         slide: h,
@@ -838,8 +839,8 @@ async function build() {
 
     channel.onmessage = (ev) => {
       const msg = ev.data || {};
-      if (msg.type === "hello") return send();
-      if (msg.type !== "nav") return;
+      if (msg.type === MSG.hello) return send();
+      if (msg.type !== MSG.nav) return;
       window.__deckRaiseCurtain?.();
       if (msg.dir === "next") deck.next();
       else if (msg.dir === "prev") deck.prev();
@@ -850,7 +851,7 @@ async function build() {
       deck.on(e, () => setTimeout(send, 0)));
     window.addEventListener("deck:started", () => setTimeout(send, 0));
     window.addEventListener("pagehide", () =>
-      channel.postMessage({ type: "gone", talk: TALK_ID }));
+      channel.postMessage({ type: MSG.gone, talk: TALK_ID }));
   }
 
   deck.on("fragmentshown", stepBeat);
