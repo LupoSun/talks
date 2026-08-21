@@ -673,7 +673,7 @@ async function build() {
        * training slide, say — so each appearance can become its own slide in a
        * format that cannot animate.
        */
-      plan({ maxSubsteps = 24 } = {}) {
+      plan({ maxSubsteps = 24, beatFrames = 1 } = {}) {
         return records.map((rec, i) => {
           const declared = rec.mod.captureStops || {};
           const held = rec.mod.captureHold || {};
@@ -690,6 +690,18 @@ async function build() {
               return;
             }
             let sub = declared[beat.name];
+            // `beatFrames` densifies every beat for flipbook playback: PowerPoint
+            // cannot tween two pictures, so smoothness there comes from sampling
+            // the tween finely and letting the slides advance themselves. Merged
+            // with any declared stops rather than replacing them, so the moments
+            // a skeleton called out are still landed on exactly.
+            if (beatFrames > 1) {
+                const from = bi ? rec.beats[bi - 1].p : beat.p;
+                const dense = Array.from({ length: beatFrames }, (_, k) =>
+                  from + ((beat.p - from) * (k + 1)) / beatFrames);
+                const declaredPs = Array.isArray(sub) ? sub : [];
+                sub = [...new Set([...declaredPs, ...dense])].sort((a, b) => a - b);
+            }
             if (typeof sub === "number") {
               // A count: spread that many stops across the beat's own span.
               const from = bi ? rec.beats[bi - 1].p : rec.beats[0].p;
