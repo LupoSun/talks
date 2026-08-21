@@ -94,6 +94,17 @@ function installStartCurtain(deck) {
 
   curtain.addEventListener("click", start);
   window.addEventListener("keydown", start, { once: true });
+  // The presenter console drives this window over a channel, not by clicking
+  // it, so it needs a way to raise the curtain too. Fullscreen is deliberately
+  // NOT attempted there: it requires a gesture in this window, which is the
+  // whole reason the curtain exists — clicking the deck once is what makes it
+  // full screen on the projector.
+  window.__deckRaiseCurtain = () => {
+    if (started) return;
+    started = true;
+    curtain.remove();
+    deck.focus?.();
+  };
 }
 
 /** Resolve a manifest's optional beat subset against the slide's own beats. */
@@ -802,6 +813,7 @@ async function build() {
       const msg = ev.data || {};
       if (msg.type === "hello") return send();
       if (msg.type !== "nav") return;
+      window.__deckRaiseCurtain?.();
       if (msg.dir === "next") deck.next();
       else if (msg.dir === "prev") deck.prev();
       else if (msg.dir === "slide") deck.slide(msg.slide ?? 0, msg.beat ?? 0);
