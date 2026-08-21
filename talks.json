@@ -1,0 +1,31 @@
+{
+  "talks": [
+    {
+      "id": "iass2026",
+      "title": "Capturing Structural Intuition \u2014 IASS 2026",
+      "venue": "IASS-IWSS 2026, Turin",
+      "slides": 11,
+      "minutes": 16.0,
+      "pptx": "files/iass2026.pptx",
+      "pdf": "files/iass2026.pdf"
+    },
+    {
+      "id": "acadia2026",
+      "title": "From Teaching to Teaming \u2014 ACADIA 2026",
+      "venue": "ACADIA 2026",
+      "slides": 11,
+      "minutes": 15.0,
+      "pptx": "files/acadia2026.pptx",
+      "pdf": "files/acadia2026.pdf"
+    },
+    {
+      "id": "tsinghua2026",
+      "title": "\u8d4b\u673a\u5668\u4ee5\u76f4\u89c9\uff0c\u5316\u793a\u4f8b\u4e3a\u8f85\u52a9 \u2014 \u6e05\u534e\u5927\u5b66",
+      "venue": "\u5de5\u7a0b\u667a\u80fd\u8bbe\u8ba1\u9752\u5e74\u5b66\u8005\u7814\u8ba8\u4f1a",
+      "slides": 11,
+      "minutes": 12.0,
+      "pptx": "files/tsinghua2026.pptx",
+      "pdf": "files/tsinghua2026.pdf"
+    }
+  ]
+}

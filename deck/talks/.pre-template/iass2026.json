@@ -1,0 +1,282 @@
+{
+  "id": "iass2026",
+  "title": "Capturing Structural Intuition — IASS 2026",
+  "slides": [
+    {
+      "id": "S17",
+      "use": "title",
+      "name": "Capturing structural intuition",
+      "minutes": 0.5,
+      "tags": [
+        "intro"
+      ],
+      "props": {
+        "venue": "IASS-IWSS 2026",
+        "paperTitle": "Capturing structural intuition",
+        "subtitle": "Human-gated imitation learning for structural design with flow matching",
+        "authors": [
+          {
+            "name": "Tao Sun",
+            "marks": [
+              1
+            ]
+          },
+          {
+            "name": "Shaoyi Wang",
+            "marks": [
+              1
+            ]
+          },
+          {
+            "name": "Simon Schleicher",
+            "marks": [
+              1
+            ]
+          },
+          {
+            "name": "Ramon E. Weber",
+            "marks": [
+              1
+            ]
+          }
+        ],
+        "affiliations": [
+          "College of Environmental Design, Department of Architecture, UC Berkeley"
+        ],
+        "venueLong": "Annual Symposium of the IASS — R-Evolution of Shapes",
+        "location": "Turin, Italy",
+        "date": "September 14–18, 2026",
+        "links": [
+          {
+            "label": "Code",
+            "value": "github.com/LupoSun/GooGym2D"
+          }
+        ],
+        "wash": "hero",
+        "align": "left",
+        "field": true
+      },
+      "notes": "15 min + 5 Q&A. This room is structural engineers — lead with load paths and judgment, not with machine learning.",
+      "chrome": false
+    },
+    {
+      "id": "S18",
+      "use": "problem",
+      "name": "Structural design runs on expertise",
+      "minutes": 1.5,
+      "tags": [
+        "intro",
+        "motivation"
+      ],
+      "props": {
+        "eyebrow": "The problem",
+        "headline": "Structural design runs on expertise.",
+        "body": "Engineers draw on intuition about load paths, familiarity with structural motifs, and tacit knowledge of how forces move. Much of it is never written down."
+      },
+      "notes": "Open with a judgment call an engineer makes without calculating. Ask the room to recall making one this week — it lands better than a definition of tacit knowledge."
+    },
+    {
+      "id": "S19",
+      "use": "gap",
+      "name": "Optimization needs the space defined first",
+      "minutes": 1.5,
+      "props": {
+        "eyebrow": "Where computation stops",
+        "headline": "Optimization needs the space defined first.",
+        "body": "Optimization and form-finding refine solutions inside a parameterization someone already chose. Reinforcement learning removes that constraint but demands a handcrafted reward — and structural judgment is exactly what resists being written as a reward."
+      },
+      "notes": "Name the RL precedents (Ororbia & Warn; Hong; Mirra) so the room knows we have read them. The point is not that RL fails, it is that the reward is the bottleneck."
+    },
+    {
+      "id": "S20",
+      "use": "approach",
+      "name": "Learn from demonstrations, not rulesets",
+      "minutes": 1,
+      "props": {
+        "eyebrow": "The proposal",
+        "headline": "Learn from demonstrations, not rulesets.",
+        "body": "Imitation learning takes examples instead of an objective function. Three contributions: GooGym2D, an open-source sequential truss environment with FEA validation; a flow-based imitation pipeline with human-gated DAgger correction; and an empirical study of both."
+      },
+      "notes": "State the three contributions plainly — reviewers of this paper responded to the environment as much as to the method."
+    },
+    {
+      "id": "S21",
+      "use": "environment",
+      "name": "Truss design as graph construction",
+      "minutes": 2,
+      "tags": [
+        "method"
+      ],
+      "props": {
+        "eyebrow": "Environment",
+        "headline": "Truss design as graph construction.",
+        "body": "From an empty gap, each step places one bar. A terminal finite element analysis checks connectivity, mechanisms, yielding and buckling, and assigns the episode one outcome."
+      },
+      "notes": "Show the failure taxonomy explicitly — this audience will want to know a mechanism is distinguished from a yield failure. E = 210 GPa, Fy = 355 MPa, A = 1.8e-3 m^2, 5 kN/m."
+    },
+    {
+      "id": "S22",
+      "use": "action",
+      "name": "Anchor, heading, length",
+      "minutes": 1.5,
+      "props": {
+        "eyebrow": "Action",
+        "headline": "Anchor, heading, length.",
+        "body": "Each action is four continuous numbers: an anchor near an existing node, a direction, and a length. Hindsight nodal adjustment preserves the geometry the designer intended. The policy emits chunks of consecutive actions, not one bar at a time."
+      },
+      "notes": "Action chunking is the part engineers grasp fastest — it is short-term design intent, not one reflex per bar."
+    },
+    {
+      "id": "S23",
+      "use": "multimodality",
+      "name": "There is never one right answer",
+      "minutes": 1,
+      "props": {
+        "eyebrow": "Why not regression",
+        "headline": "There is never one right answer.",
+        "body": "Given the same partial truss, several next moves are all defensible. A policy trained to regress the mean collapses them into one averaged compromise that is often not a valid structure at all."
+      },
+      "notes": "This is the conceptual crux of the paper. Do not rush it. The averaged-bar illustration is worth ten seconds of silence."
+    },
+    {
+      "id": "S24",
+      "use": "flowmatching",
+      "name": "Flow matching turns noise into actions",
+      "minutes": 1.5,
+      "props": {
+        "eyebrow": "Method",
+        "headline": "Flow matching turns noise into actions.",
+        "body": "The model learns a vector field transporting noise toward the demonstration distribution. Each query starts from a different random draw, so the same partial state yields different plausible continuations."
+      },
+      "notes": "Keep the math to the conditional flow-matching loss and the Euler integration at inference. If asked about diffusion policy, cite Chi et al. and note flow matching is fewer integration steps."
+    },
+    {
+      "id": "S25",
+      "use": "collection",
+      "name": "One engineer, one hundred bridges",
+      "minutes": 1.5,
+      "tags": [
+        "method",
+        "data"
+      ],
+      "beats": [
+        "gui",
+        "build",
+        "mosaic",
+        "stats"
+      ],
+      "beatDuration": 1,
+      "props": {
+        "eyebrow": "Demonstrations",
+        "headline": "One engineer, one hundred bridges.",
+        "body": "A single author with architectural and structural design experience curated 100 demonstrations at a fixed 10 m span, grouped by bar count so the dataset spans shallow and deep solutions alike.",
+        "statsLabel": "Curated demonstrations",
+        "statsTotal": 100,
+        "statsBreakdown": [
+          {
+            "num": 20,
+            "cap": "11 bars"
+          },
+          {
+            "num": 20,
+            "cap": "13 bars"
+          },
+          {
+            "num": 20,
+            "cap": "15 bars"
+          },
+          {
+            "num": 20,
+            "cap": "17 bars"
+          },
+          {
+            "num": 20,
+            "cap": "19 bars"
+          }
+        ],
+        "widthFilter": 10
+      },
+      "notes": "IASS framing: deliberately ONE expert and ONE span. That is the controlled condition — we are asking whether intuition transfers at all, not whether it scales across contributors. The ACADIA paper is the scaled version; mention it only if asked."
+    },
+    {
+      "id": "S26",
+      "use": "correction",
+      "name": "The human chooses which failures are worth fi…",
+      "minutes": 2,
+      "tags": [
+        "method",
+        "learning"
+      ],
+      "props": {
+        "eyebrow": "Correction",
+        "headline": "The human chooses which failures are worth fixing.",
+        "body": "After each round the policy is rolled out and the trajectories reviewed. The designer finds the last good state, takes over from there, and that correction becomes training data aimed at the model's blind spot."
+      },
+      "notes": "The distinction from standard DAgger is the whole contribution of this section: DAgger queries the expert at every visited state; we gate on the human's judgment of which failures matter. Cite Ross et al. and HG-DAgger (Kelly et al.).",
+      "footnote": "Human-gated DAgger, after Ross et al. (2011) and Kelly et al. (2019)"
+    },
+    {
+      "id": "S27",
+      "use": "results",
+      "name": "14% to 44% over six rounds",
+      "minutes": 2,
+      "tags": [
+        "results"
+      ],
+      "props": {
+        "eyebrow": "Results",
+        "headline": "14% to 44% over six rounds.",
+        "body": "Before correction, the policy trained on 100 demonstrations succeeds 14% of the time. Round 1 alone more than doubles that. By Round 6 the policy reaches 44%, with disconnected episodes falling from 82% to 40% and invalid actions per episode from 7.4 to 3.9."
+      },
+      "notes": "Be honest about Round 6: it is the largest round (150 episodes) and does NOT beat Round 5 on success rate. The secondary metrics still improve. Say this before someone finds it in the table."
+    },
+    {
+      "id": "S28",
+      "use": "formation",
+      "name": "Bottom chords, diagonals, deeper supports",
+      "minutes": 1.5,
+      "props": {
+        "eyebrow": "What it learned",
+        "headline": "Bottom chords, diagonals, deeper supports.",
+        "body": "Successful designs reproduce patterns consistent with basic truss principles: chords spanning the gap, diagonals transferring shear, and multiple members gathering at the support regions."
+      },
+      "notes": "This is the payoff slide for this audience — the policy was never told any of these principles. Let them read the geometry themselves before you narrate it."
+    },
+    {
+      "id": "S29",
+      "use": "conclusion",
+      "name": "Intuition transfers — within limits",
+      "minutes": 1,
+      "props": {
+        "eyebrow": "Conclusion",
+        "headline": "Intuition transfers — within limits.",
+        "body": "A flow-based policy trained on 100 demonstrations and six rounds of human-gated correction generates structurally plausible, diverse designs. The environment is 2D, pin-jointed, single load case, single span. GooGym2D is open source.",
+        "tagline": "github.com/LupoSun/GooGym2D"
+      },
+      "notes": "Close on the limitations honestly, then the repo link. Likely questions: 3D? other typologies? how many demonstrations are actually needed? The last one is genuinely open — say so."
+    }
+  ],
+  "theme": "iass",
+  "targetMinutes": 15,
+  "venue": "IASS-IWSS 2026, Turin",
+  "note": "Follows the paper: Introduction -> Methods -> Experimental Setup -> Results -> Discussion. Method paper: one expert, one span, six correction rounds. The argument is that a flow policy can absorb structural intuition at all.",
+  "chrome": {
+    "logos": [
+      {
+        "src": "assets-static/logos/iass2026.png",
+        "alt": "IASS-IWSS 2026"
+      },
+      {
+        "text": "UC Berkeley"
+      }
+    ],
+    "topRight": "Flexible Structures Lab · Spatial Systems Lab",
+    "left": "Capturing structural intuition",
+    "right": "{slide} / {total}",
+    "logoHeight": 40
+  },
+  "typography": {
+    "scale": 1.25,
+    "family": "dmsans"
+  }
+}

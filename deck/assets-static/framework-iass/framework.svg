@@ -1,0 +1,580 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 453.543 255.254" preserveAspectRatio="xMidYMid meet">
+  <defs><clipPath id="flow-clip"><rect x="201.901" y="170.743" width="23.295" height="45.615" rx="3.591" /></clipPath><radialGradient id="flow-tl" gradientUnits="userSpaceOnUse" cx="201.901" cy="170.743" r="28.170"><stop offset="0" stop-color="#d0bfff" stop-opacity="1" /><stop offset="1" stop-color="#d0bfff" stop-opacity="0" /></radialGradient><radialGradient id="flow-tr" gradientUnits="userSpaceOnUse" cx="225.196" cy="170.743" r="28.170"><stop offset="0" stop-color="#faa2c1" stop-opacity="1" /><stop offset="1" stop-color="#faa2c1" stop-opacity="0" /></radialGradient><radialGradient id="flow-bl" gradientUnits="userSpaceOnUse" cx="201.901" cy="216.358" r="28.170"><stop offset="0" stop-color="#74c0fc" stop-opacity="1" /><stop offset="1" stop-color="#74c0fc" stop-opacity="0" /></radialGradient><radialGradient id="flow-br" gradientUnits="userSpaceOnUse" cx="225.196" cy="216.358" r="28.170"><stop offset="0" stop-color="#8ce99a" stop-opacity="1" /><stop offset="1" stop-color="#8ce99a" stop-opacity="0" /></radialGradient></defs><defs><linearGradient id="cycle-grad-0" gradientUnits="userSpaceOnUse" x1="266.408" y1="124.131" x2="283.907" y2="118.078"><stop offset="0" stop-color="#f784aa" /><stop offset="1" stop-color="#f88c95" /></linearGradient><linearGradient id="cycle-grad-1" gradientUnits="userSpaceOnUse" x1="283.907" y1="118.078" x2="302.207" y2="120.894"><stop offset="0" stop-color="#f88c95" /><stop offset="1" stop-color="#fa967b" /></linearGradient><linearGradient id="cycle-grad-2" gradientUnits="userSpaceOnUse" x1="302.207" y1="120.894" x2="317.076" y2="131.930"><stop offset="0" stop-color="#fa967b" /><stop offset="1" stop-color="#fc9c63" /></linearGradient><linearGradient id="cycle-grad-3" gradientUnits="userSpaceOnUse" x1="317.076" y1="131.930" x2="325.072" y2="148.631"><stop offset="0" stop-color="#fc9c63" /><stop offset="1" stop-color="#fca957" /></linearGradient><linearGradient id="cycle-grad-4" gradientUnits="userSpaceOnUse" x1="325.072" y1="148.631" x2="324.345" y2="167.133"><stop offset="0" stop-color="#fca957" /><stop offset="1" stop-color="#e4b5b0" /></linearGradient><linearGradient id="cycle-grad-5" gradientUnits="userSpaceOnUse" x1="324.345" y1="167.133" x2="315.063" y2="183.155"><stop offset="0" stop-color="#e4b5b0" /><stop offset="1" stop-color="#d5bce9" /></linearGradient><linearGradient id="cycle-grad-6" gradientUnits="userSpaceOnUse" x1="315.063" y1="183.155" x2="299.375" y2="192.990"><stop offset="0" stop-color="#d5bce9" /><stop offset="1" stop-color="#cfbffe" /></linearGradient><linearGradient id="cycle-grad-7" gradientUnits="userSpaceOnUse" x1="299.375" y1="192.990" x2="280.909" y2="194.362"><stop offset="0" stop-color="#cfbffe" /><stop offset="1" stop-color="#aecbeb" /></linearGradient><linearGradient id="cycle-grad-8" gradientUnits="userSpaceOnUse" x1="280.909" y1="194.362" x2="263.939" y2="186.954"><stop offset="0" stop-color="#aecbeb" /><stop offset="1" stop-color="#8dd6d7" /></linearGradient><linearGradient id="cycle-grad-9" gradientUnits="userSpaceOnUse" x1="263.939" y1="186.954" x2="252.392" y2="172.480"><stop offset="0" stop-color="#8dd6d7" /><stop offset="1" stop-color="#71e1c6" /></linearGradient><linearGradient id="cycle-grad-10" gradientUnits="userSpaceOnUse" x1="252.392" y1="172.480" x2="248.938" y2="154.289"><stop offset="0" stop-color="#71e1c6" /><stop offset="1" stop-color="#63e6be" /></linearGradient><linearGradient id="cycle-grad-11" gradientUnits="userSpaceOnUse" x1="248.938" y1="154.289" x2="254.377" y2="136.589"><stop offset="0" stop-color="#63e6be" /><stop offset="1" stop-color="#63e6be" /></linearGradient></defs><defs>
+    <clipPath id="clippath">
+      <path d="M268.933,124.535l-.276.158-.052.03c-.48.273-1.09.106-1.363-.374s-.107-1.09.373-1.363l.291-.166,1.028,1.715Z" fill="none" />
+    </clipPath>
+    <clipPath id="clippath-1">
+      <path d="M253.69,137.53l.153-.298c.252-.491.854-.685,1.345-.434.491.252.685.854.434,1.345l-.037.073-.145.284-1.749-.97Z" fill="none" />
+    </clipPath>
+    <filter id="drop-shadow-1" x="-4.127" y="-3.085" width="164" height="264" filterUnits="userSpaceOnUse">
+      <feOffset dx="2.835" dy="2.835" />
+      <feGaussianBlur result="blur" stdDeviation="5" />
+      <feFlood flood-color="#68c9e5" flood-opacity="0.38" />
+      <feComposite in2="blur" operator="in" />
+      <feComposite in="SourceGraphic" />
+    </filter>
+    <clipPath id="clippath-2">
+      <rect x="15.162" y="175.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <clipPath id="clippath-3">
+      <rect x="17.162" y="177.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <clipPath id="clippath-4">
+      <rect x="19.162" y="179.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <clipPath id="clippath-5">
+      <rect x="52.088" y="175.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <clipPath id="clippath-6">
+      <rect x="54.088" y="177.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <clipPath id="clippath-7">
+      <rect x="56.088" y="179.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <clipPath id="clippath-8">
+      <rect x="97.851" y="175.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <clipPath id="clippath-9">
+      <rect x="99.851" y="177.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <clipPath id="clippath-10">
+      <rect x="101.851" y="179.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <filter id="drop-shadow-2" x="144.873" y="139.915" width="143" height="107" filterUnits="userSpaceOnUse">
+      <feOffset dx="2.835" dy="2.835" />
+      <feGaussianBlur result="blur-2" stdDeviation="5" />
+      <feFlood flood-color="#087f5b" flood-opacity="0.38" />
+      <feComposite in2="blur-2" operator="in" />
+      <feComposite in="SourceGraphic" />
+    </filter>
+    <filter id="drop-shadow-3" x="144.873" y="-3.085" width="158" height="150" filterUnits="userSpaceOnUse">
+      <feOffset dx="2.835" dy="2.835" />
+      <feGaussianBlur result="blur-3" stdDeviation="5" />
+      <feFlood flood-color="#ef658e" flood-opacity="0.38" />
+      <feComposite in2="blur-3" operator="in" />
+      <feComposite in="SourceGraphic" />
+    </filter>
+    <clipPath id="clippath-12">
+      <rect x="172.944" y="30.715" width="32" height="32" rx="7.5" ry="7.5" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <clipPath id="clippath-13">
+      <rect x="184.339" y="58.11" width="9.211" height="9.211" rx="4.605" ry="4.605" fill="#fff" />
+    </clipPath>
+    <clipPath id="clippath-14">
+      <rect x="235.849" y="30.715" width="32" height="32" rx="7.5" ry="7.5" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <clipPath id="clippath-15">
+      <rect x="247.244" y="58.11" width="9.211" height="9.211" rx="4.605" ry="4.605" fill="#fff" />
+    </clipPath>
+    <clipPath id="clippath-16">
+      <rect x="173.404" y="75.78" width="32" height="32" rx="7.5" ry="7.5" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <clipPath id="clippath-17">
+      <rect x="184.339" y="103.175" width="9.211" height="9.211" rx="4.605" ry="4.605" fill="#fff" />
+    </clipPath>
+    <clipPath id="clippath-18">
+      <rect x="236.303" y="75.78" width="32" height="32" rx="7.5" ry="7.5" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <clipPath id="clippath-19">
+      <rect x="247.244" y="103.175" width="9.211" height="9.211" rx="4.605" ry="4.605" fill="#fff" />
+    </clipPath>
+    <filter id="drop-shadow-4" x="295.873" y="-3.085" width="163" height="185" filterUnits="userSpaceOnUse">
+      <feOffset dx="2.835" dy="2.835" />
+      <feGaussianBlur result="blur-4" stdDeviation="5" />
+      <feFlood flood-color="#fc7524" flood-opacity="0.38" />
+      <feComposite in2="blur-4" operator="in" />
+      <feComposite in="SourceGraphic" />
+    </filter>
+    <filter id="drop-shadow-5" x="280.873" y="174.915" width="178" height="86" filterUnits="userSpaceOnUse">
+      <feOffset dx="2.835" dy="2.835" />
+      <feGaussianBlur result="blur-5" stdDeviation="5" />
+      <feFlood flood-color="#9775fa" flood-opacity="0.38" />
+      <feComposite in2="blur-5" operator="in" />
+      <feComposite in="SourceGraphic" />
+    </filter>
+    <clipPath id="clippath-20">
+      <rect x="350.176" y="201.754" width="32" height="32" rx="7.5" ry="7.5" fill="none" stroke="#ffe8cc" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <clipPath id="clippath-21">
+      <rect x="351.176" y="202.754" width="32" height="32" rx="7.5" ry="7.5" fill="none" stroke="#ffe8cc" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <clipPath id="clippath-22">
+      <rect x="352.176" y="203.754" width="32" height="32" rx="7.5" ry="7.5" fill="none" stroke="#ffe8cc" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="430.324" y1="231.645" x2="402.54" y2="203.862" gradientUnits="userSpaceOnUse">
+      <stop offset=".193" stop-color="#ffc078" />
+      <stop offset=".788" stop-color="#c5f6fa" />
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="431.324" y1="232.645" x2="403.54" y2="204.862" xlink:href="#linear-gradient" />
+    <linearGradient id="linear-gradient-3" x1="432.324" y1="233.645" x2="404.54" y2="205.862" xlink:href="#linear-gradient" />
+    <clipPath id="clippath-23">
+      <rect x="299.921" y="201.754" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#c5f6fa" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <clipPath id="clippath-24">
+      <rect x="300.921" y="202.754" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#c5f6fa" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <clipPath id="clippath-25">
+      <rect x="301.921" y="203.754" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#c5f6fa" stroke-miterlimit="10" stroke-width=".25" />
+    </clipPath>
+    <image id="image" width="811" height="811" xlink:href="img/fig_00.png" />
+    <image id="image-2" width="811" height="811" xlink:href="img/fig_01.png" />
+    <image id="image-3" width="811" height="811" xlink:href="img/fig_02.png" />
+  </defs>
+  <g id="_6" data-name="6" class="fw-cycle">
+    <g id="_6.1" data-name="6.1">
+      <g>
+        <g>
+          <g clip-path="url(#clippath)">
+            </g>
+          <g id="cycle"><path id="cycle-seg-0" class="cycle-seg" d="M266.408,124.131A38.494,38.494 0 0 1 284.279,118.046" fill="none" stroke="url(#cycle-grad-0)" stroke-width="2.812" stroke-linecap="butt" /><path id="cycle-seg-1" class="cycle-seg" d="M283.907,118.078A38.494,38.494 0 0 1 302.552,121.040" fill="none" stroke="url(#cycle-grad-1)" stroke-width="2.812" stroke-linecap="butt" /><path id="cycle-seg-2" class="cycle-seg" d="M302.207,120.894A38.494,38.494 0 0 1 317.312,132.220" fill="none" stroke="url(#cycle-grad-2)" stroke-width="2.812" stroke-linecap="butt" /><path id="cycle-seg-3" class="cycle-seg" d="M317.076,131.930A38.494,38.494 0 0 1 325.145,148.997" fill="none" stroke="url(#cycle-grad-3)" stroke-width="2.812" stroke-linecap="butt" /><path id="cycle-seg-4" class="cycle-seg" d="M325.072,148.631A38.494,38.494 0 0 1 324.239,167.492" fill="none" stroke="url(#cycle-grad-4)" stroke-width="2.812" stroke-linecap="butt" /><path id="cycle-seg-5" class="cycle-seg" d="M324.345,167.133A38.494,38.494 0 0 1 314.802,183.423" fill="none" stroke="url(#cycle-grad-5)" stroke-width="2.812" stroke-linecap="butt" /><path id="cycle-seg-6" class="cycle-seg" d="M315.063,183.155A38.494,38.494 0 0 1 299.019,193.105" fill="none" stroke="url(#cycle-grad-6)" stroke-width="2.812" stroke-linecap="butt" /><path id="cycle-seg-7" class="cycle-seg" d="M299.375,192.990A38.494,38.494 0 0 1 280.541,194.298" fill="none" stroke="url(#cycle-grad-7)" stroke-width="2.812" stroke-linecap="butt" /><path id="cycle-seg-8" class="cycle-seg" d="M280.909,194.362A38.494,38.494 0 0 1 263.644,186.725" fill="none" stroke="url(#cycle-grad-8)" stroke-width="2.812" stroke-linecap="butt" /><path id="cycle-seg-9" class="cycle-seg" d="M263.939,186.954A38.494,38.494 0 0 1 252.237,172.139" fill="none" stroke="url(#cycle-grad-9)" stroke-width="2.812" stroke-linecap="butt" /><path id="cycle-seg-10" class="cycle-seg" d="M252.392,172.480A38.494,38.494 0 0 1 248.960,153.915" fill="none" stroke="url(#cycle-grad-10)" stroke-width="2.812" stroke-linecap="butt" /><path id="cycle-seg-11" class="cycle-seg" d="M248.938,154.289A38.494,38.494 0 0 1 254.571,136.270" fill="none" stroke="url(#cycle-grad-11)" stroke-width="2.812" stroke-linecap="butt" /></g><g clip-path="url(#clippath-1)">
+            </g>
+        </g>
+        <polygon points="258.065 141.693 258.719 131.943 249.947 136.25 258.065 141.693" fill="#63e6be" />
+      </g>
+    </g>
+    <g id="_6.2" data-name="6.2" opacity=".39">
+      <circle cx="288.291" cy="151.949" r="3.777" fill="none" stroke="#868e96" stroke-miterlimit="10" />
+      <path d="M296.084,163.347h-15.586c.112-4.206,3.56-7.578,7.795-7.578s7.678,3.373,7.791,7.578Z" fill="none" stroke="#868e96" stroke-miterlimit="10" />
+    </g>
+  </g>
+  <g id="_1" data-name="1" class="fw-stage">
+    <g>
+      <g filter="url(#drop-shadow-1)">
+        <rect x="8.596" y="9.414" width="132.219" height="232.852" rx="5.669" ry="5.669" fill="#e3fafc" stroke="#68c9e5" stroke-miterlimit="10" stroke-width=".5" />
+      </g>
+      <g>
+        <rect x="12.765" y="13.472" width="9.238" height="9.238" rx="4.619" ry="4.619" fill="#68c9e5" />
+        <text transform="translate(16.166 20.51)" fill="#fff" font-family="'CMU Serif', serif" font-size="7" font-variation-settings="'opsz' 14, 'wght' 600" font-weight="600" letter-spacing=".107em"><tspan x="0" y="0">1</tspan></text>
+      </g>
+      <g id="L38HsY">
+        <image id="L38HsY-2" data-name="L38HsY" width="1049" height="1101" transform="translate(16.162 27.947) scale(.112)" xlink:href="img/fig_03.png" />
+      </g>
+      <g>
+        <g id="CVERUt.tif">
+          <path d="M86.631,101.18l.066.018,4.275,1.59c.068.025.115.082.134.147.003.009.006.014.011.017v.073s-.005.002-.006.009c-.017.061-.054.131-.122.157l-1.839.694-.697,1.776c-.031.079-.088.128-.174.149-.104.018-.213-.041-.252-.142l-1.629-4.21c-.037-.095.046-.261.206-.278h.027Z" fill="#343a40" />
+        </g>
+        <line x1="88.165" y1="102.876" x2="91.32" y2="106.03" fill="#343a40" stroke="#343a40" stroke-linecap="round" stroke-miterlimit="10" />
+      </g>
+      <text transform="translate(23.615 19.965)" fill="#3bc9db" font-family="'CMU Serif', serif" font-size="6" font-weight="700"><tspan x="0" y="0">DEMONSTRATIONS</tspan></text>
+      <g>
+        <text transform="translate(27.494 219.93)" font-family="'CMU Serif', serif" font-size="4" font-weight="700"><tspan x="0" y="0">11 Bars</tspan></text>
+        <text transform="translate(64.42 219.93)" font-family="'CMU Serif', serif" font-size="4" font-weight="700"><tspan x="0" y="0">13 Bars</tspan></text>
+        <text transform="translate(110.183 219.93)" font-family="'CMU Serif', serif" font-size="4" font-weight="700"><tspan x="0" y="0">19 Bars</tspan></text>
+        <g>
+          <g>
+            <circle cx="90.757" cy="195.395" r=".622" fill="#adb5bd" />
+            <circle cx="92.97" cy="195.395" r=".622" fill="#adb5bd" />
+            <circle cx="95.183" cy="195.395" r=".622" fill="#adb5bd" />
+          </g>
+          <g>
+            <g>
+              <g clip-path="url(#clippath-2)">
+                <g id="hF3eh9">
+                  <use id="hF3eh9-2" data-name="hF3eh9" transform="translate(15.162 175.916) scale(.039)" xlink:href="#image-2" />
+                </g>
+              </g>
+              <rect x="15.162" y="175.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+            </g>
+            <g>
+              <g clip-path="url(#clippath-3)">
+                <g id="hF3eh9-3" data-name="hF3eh9">
+                  <use id="hF3eh9-4" data-name="hF3eh9" transform="translate(17.162 177.916) scale(.039)" xlink:href="#image-2" />
+                </g>
+              </g>
+              <rect x="17.162" y="177.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+            </g>
+            <g>
+              <g clip-path="url(#clippath-4)">
+                <g id="hF3eh9-5" data-name="hF3eh9">
+                  <use id="hF3eh9-6" data-name="hF3eh9" transform="translate(19.162 179.916) scale(.039)" xlink:href="#image-2" />
+                </g>
+              </g>
+              <rect x="19.162" y="179.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+            </g>
+          </g>
+          <g>
+            <g>
+              <g clip-path="url(#clippath-5)">
+                <g id="ILBh0N">
+                  <use id="ILBh0N-2" data-name="ILBh0N" transform="translate(52.088 175.916) scale(.039)" xlink:href="#image-3" />
+                </g>
+              </g>
+              <rect x="52.088" y="175.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+            </g>
+            <g>
+              <g clip-path="url(#clippath-6)">
+                <g id="ILBh0N-3" data-name="ILBh0N">
+                  <use id="ILBh0N-4" data-name="ILBh0N" transform="translate(54.088 177.916) scale(.039)" xlink:href="#image-3" />
+                </g>
+              </g>
+              <rect x="54.088" y="177.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+            </g>
+            <g>
+              <g clip-path="url(#clippath-7)">
+                <g id="ILBh0N-5" data-name="ILBh0N">
+                  <use id="ILBh0N-6" data-name="ILBh0N" transform="translate(56.088 179.916) scale(.039)" xlink:href="#image-3" />
+                </g>
+              </g>
+              <rect x="56.088" y="179.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+            </g>
+          </g>
+          <g>
+            <g>
+              <g clip-path="url(#clippath-8)">
+                <g id="thUAUA">
+                  <use id="thUAUA-2" data-name="thUAUA" transform="translate(97.851 175.916) scale(.039)" xlink:href="#image" />
+                </g>
+              </g>
+              <rect x="97.851" y="175.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+            </g>
+            <g>
+              <g clip-path="url(#clippath-9)">
+                <g id="thUAUA-3" data-name="thUAUA">
+                  <use id="thUAUA-4" data-name="thUAUA" transform="translate(99.851 177.916) scale(.039)" xlink:href="#image" />
+                </g>
+              </g>
+              <rect x="99.851" y="177.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+            </g>
+            <g>
+              <g clip-path="url(#clippath-10)">
+                <g id="thUAUA-5" data-name="thUAUA">
+                  <image id="thUAUA-6" data-name="thUAUA" width="811" height="811" transform="translate(101.851 179.916) scale(.039)" xlink:href="img/fig_04.png" />
+                </g>
+              </g>
+              <rect x="101.851" y="179.916" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+            </g>
+          </g>
+        </g>
+      </g>
+      <text transform="translate(50.771 232.754)" fill="#99e9f2" font-family="'CMU Serif', serif" font-size="5" font-weight="700"><tspan x="0" y="0">GOLDEN DEMOS</tspan></text>
+      <g>
+        <line x1="74.779" y1="153.901" x2="74.779" y2="165.313" fill="none" stroke="#99e9f2" stroke-miterlimit="10" />
+        <polygon points="72.186 164.555 74.779 169.045 77.371 164.555 72.186 164.555" fill="#99e9f2" />
+      </g>
+    </g>
+  </g>
+  <g id="_2" data-name="2" class="fw-stage">
+    <g id="_2.1" data-name="2.1" opacity=".51">
+      <g>
+        <line x1="149.275" y1="190.901" x2="142.157" y2="190.901" fill="none" stroke="#868e96" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" />
+        <polygon points="148.341 187.71 153.867 190.901 148.341 194.092 148.341 187.71" fill="#868e96" />
+      </g>
+    </g>
+    <g id="_2.2" data-name="2.2">
+      <g filter="url(#drop-shadow-2)">
+        <rect x="157.342" y="152.529" width="112.214" height="75.801" rx="5.669" ry="5.669" fill="#e6fcf5" stroke="#087f5b" stroke-miterlimit="10" stroke-width=".5" />
+      </g>
+      <rect x="165.438" y="170.743" width="23.295" height="45.615" rx="3.591" ry="3.591" fill="#fff" stroke="#ced4da" stroke-miterlimit="10" stroke-width=".25" />
+      <rect x="238.364" y="170.743" width="23.295" height="45.615" rx="3.591" ry="3.591" fill="#fff" stroke="#ced4da" stroke-miterlimit="10" stroke-width=".25" />
+      <g>
+        <line x1="242.139" y1="178.458" x2="242.139" y2="210.814" fill="none" stroke="#1c40c7" stroke-miterlimit="10" stroke-width=".516" />
+        <line x1="259.027" y1="199.63" x2="242.139" y2="210.814" fill="none" stroke="#3c6ad2" stroke-miterlimit="10" stroke-width=".516" />
+        <line x1="242.139" y1="178.458" x2="259.027" y2="199.63" fill="none" stroke="#0420bf" stroke-miterlimit="10" stroke-width=".516" />
+        <circle cx="242.139" cy="178.458" r="1.14" fill="#d2f25e" stroke="#000" stroke-miterlimit="10" stroke-width=".387" />
+        <g>
+          <rect x="239.855" y="192.359" width="4.569" height="4.569" rx=".917" ry=".917" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width=".258" />
+          <text transform="translate(240.797 196.222)" font-family="'CMU Serif', serif" font-size="4.877" font-weight="400"><tspan x="0" y="0">1</tspan></text>
+        </g>
+        <g>
+          <rect x="248.299" y="202.937" width="4.569" height="4.569" rx=".917" ry=".917" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width=".258" />
+          <text transform="translate(249.332 206.881)" font-family="'CMU Serif', serif" font-size="4.877" font-weight="400"><tspan x="0" y="0">2</tspan></text>
+        </g>
+        <g>
+          <rect x="249.291" y="187.79" width="4.569" height="4.569" rx=".917" ry=".917" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width=".258" />
+          <text transform="translate(250.323 191.732)" font-family="'CMU Serif', serif" font-size="4.877" font-weight="400"><tspan x="0" y="0">3</tspan></text>
+        </g>
+        <circle cx="242.139" cy="210.814" r="1.14" fill="#d2f25e" stroke="#000" stroke-miterlimit="10" stroke-width=".387" />
+        <circle cx="259.027" cy="199.63" r="1.14" fill="#d2f25e" stroke="#000" stroke-miterlimit="10" stroke-width=".387" />
+      </g>
+      <g>
+        <rect x="177.074" y="191.913" width="3.274" height="3.274" fill="#b2b2b2" />
+        <rect x="177.074" y="195.188" width="3.274" height="3.274" fill="#f5f6f7" />
+        <rect x="177.074" y="198.462" width="3.274" height="3.274" fill="#c4cace" />
+        <rect x="177.074" y="201.737" width="3.274" height="3.274" fill="#868e96" />
+        <rect x="177.074" y="205.011" width="3.274" height="3.274" fill="#c4c4c4" />
+        <rect x="177.074" y="208.286" width="3.274" height="3.274" fill="#b2b2b2" />
+        <rect x="173.776" y="191.913" width="3.274" height="3.274" fill="#c4c4c4" />
+        <rect x="173.776" y="195.188" width="3.274" height="3.274" fill="#868e96" />
+        <rect x="173.776" y="198.462" width="3.274" height="3.274" fill="#c4c4c4" />
+        <rect x="173.776" y="201.737" width="3.274" height="3.274" fill="#b2b2b2" />
+        <rect x="173.776" y="205.011" width="3.274" height="3.274" fill="#868e96" />
+        <rect x="173.776" y="208.286" width="3.274" height="3.274" fill="#c4c4c4" />
+        <rect x="170.548" y="191.913" width="3.274" height="3.274" fill="#f5f6f7" />
+        <rect x="170.548" y="195.188" width="3.274" height="3.274" fill="#b2b2b2" />
+        <rect x="170.548" y="198.462" width="3.274" height="3.274" fill="#868e96" />
+        <rect x="170.548" y="201.737" width="3.274" height="3.274" fill="#c4c4c4" />
+        <rect x="170.548" y="205.011" width="3.274" height="3.274" fill="#c4cace" />
+        <rect x="170.548" y="208.286" width="3.274" height="3.274" fill="#f5f6f7" />
+        <rect x="170.525" y="188.639" width="3.274" height="3.274" transform="translate(344.324 380.553) rotate(-180)" fill="#f5f6f7" />
+        <rect x="170.525" y="185.365" width="3.274" height="3.274" transform="translate(344.324 374.004) rotate(-180)" fill="#c4cace" />
+        <rect x="170.525" y="182.09" width="3.274" height="3.274" transform="translate(344.324 367.455) rotate(-180)" fill="#c4c4c4" />
+        <rect x="170.525" y="178.816" width="3.274" height="3.274" transform="translate(344.324 360.906) rotate(-180)" fill="#868e96" />
+        <rect x="170.525" y="175.541" width="3.274" height="3.274" transform="translate(344.324 354.357) rotate(-180)" fill="#b2b2b2" />
+        <rect x="173.799" y="188.639" width="3.274" height="3.274" transform="translate(350.873 380.553) rotate(-180)" fill="#868e96" />
+        <rect x="173.799" y="185.365" width="3.274" height="3.274" transform="translate(350.873 374.004) rotate(-180)" fill="#c4c4c4" />
+        <rect x="173.799" y="182.09" width="3.274" height="3.274" transform="translate(350.873 367.455) rotate(-180)" fill="#b2b2b2" />
+        <rect x="173.799" y="178.816" width="3.274" height="3.274" transform="translate(350.873 360.906) rotate(-180)" fill="#c0c8ce" />
+        <rect x="177.097" y="175.541" width="3.274" height="3.274" transform="translate(357.468 354.357) rotate(-180)" fill="#b2b2b2" />
+        <rect x="177.074" y="188.639" width="3.274" height="3.274" transform="translate(357.422 380.553) rotate(-180)" fill="#c4c4c4" />
+        <rect x="177.097" y="185.365" width="3.274" height="3.274" transform="translate(357.468 374.004) rotate(-180)" fill="#868e96" />
+        <rect x="177.097" y="182.09" width="3.274" height="3.274" transform="translate(357.468 367.455) rotate(-180)" fill="#c4c4c4" />
+        <rect x="177.097" y="178.816" width="3.274" height="3.274" transform="translate(357.468 360.906) rotate(-180)" fill="#c4cace" />
+        <rect x="173.799" y="175.541" width="3.274" height="3.274" transform="translate(350.873 354.357) rotate(-180)" fill="#f5f6f7" />
+        <rect x="180.371" y="188.639" width="3.274" height="3.274" transform="translate(364.017 380.553) rotate(-180)" fill="#868e96" />
+        <rect x="180.371" y="185.365" width="3.274" height="3.274" transform="translate(364.017 374.004) rotate(-180)" fill="#c4c4c4" />
+        <rect x="180.371" y="182.09" width="3.274" height="3.274" transform="translate(364.017 367.455) rotate(-180)" fill="#b2b2b2" />
+        <rect x="180.371" y="178.816" width="3.274" height="3.274" transform="translate(364.017 360.906) rotate(-180)" fill="#868e96" />
+        <rect x="180.371" y="175.541" width="3.274" height="3.274" transform="translate(364.017 354.357) rotate(-180)" fill="#c4c4c4" />
+        <rect x="180.348" y="191.913" width="3.274" height="3.274" fill="#c4c4c4" />
+        <rect x="180.348" y="195.188" width="3.274" height="3.274" fill="#868e96" />
+        <rect x="180.348" y="198.462" width="3.274" height="3.274" fill="#c4c4c4" />
+        <rect x="180.348" y="201.737" width="3.274" height="3.274" fill="#b2b2b2" />
+        <rect x="180.348" y="205.011" width="3.274" height="3.274" fill="#c0c8ce" />
+        <rect x="180.348" y="208.286" width="3.274" height="3.274" fill="#f5f6f7" />
+      </g>
+      <g>
+        <g id="flow-panel" clip-path="url(#flow-clip)"><rect x="201.901" y="170.743" width="23.295" height="45.615" fill="#eef0f4" /><rect x="201.901" y="170.743" width="23.295" height="45.615" fill="url(#flow-tl)" /><rect x="201.901" y="170.743" width="23.295" height="45.615" fill="url(#flow-tr)" /><rect x="201.901" y="170.743" width="23.295" height="45.615" fill="url(#flow-bl)" /><rect x="201.901" y="170.743" width="23.295" height="45.615" fill="url(#flow-br)" /></g><path d="M201.028,186.007c1.547,3.031,3.899,6.221,7.582,8.135,2.653,1.379,4.38,1.255,7.905,2.505,2.155.764,4.765,1.964,7.592,3.947" fill="none" stroke="#099268" stroke-linecap="round" stroke-miterlimit="10" stroke-width=".387" />
+        <polygon points="222.486 201.82 226.318 202.277 224.798 198.73 222.486 201.82" fill="#099268" />
+      </g>
+      <g>
+        <rect x="161.397" y="156.362" width="9.238" height="9.238" rx="4.619" ry="4.619" fill="#087f5b" />
+        <text transform="translate(163.997 163.336)" fill="#fff" font-family="'CMU Serif', serif" font-size="7" font-variation-settings="'opsz' 14, 'wght' 600" font-weight="600" letter-spacing=".107em"><tspan x="0" y="0">2</tspan></text>
+      </g>
+      <text transform="translate(174.464 163.337)" fill="#087f5b" font-family="'CMU Serif', serif" font-size="6" font-weight="700"><tspan x="0" y="0">TRAIN POLICY</tspan></text>
+      <g>
+        <line x1="195.715" y1="186.052" x2="191.804" y2="186.052" fill="none" stroke="#adb5bd" stroke-linecap="round" stroke-miterlimit="10" stroke-width=".75" />
+        <polygon points="195.31 184.668 197.706 186.052 195.31 187.435 195.31 184.668" fill="#adb5bd" />
+      </g>
+      <g>
+        <line x1="233.3" y1="202.052" x2="229.39" y2="202.052" fill="none" stroke="#adb5bd" stroke-linecap="round" stroke-miterlimit="10" stroke-width=".75" />
+        <polygon points="232.895 200.668 235.292 202.052 232.895 203.435 232.895 200.668" fill="#adb5bd" />
+      </g>
+      <text transform="translate(170.683 223.227)" font-family="'CMU Serif', serif" font-size="4" font-weight="700"><tspan x="0" y="0">Noise</tspan></text>
+      <text transform="translate(199.978 223.227)" font-family="'CMU Serif', serif" font-size="4" font-weight="700"><tspan x="0" y="0">Learned Flow</tspan></text>
+      <text transform="translate(232.558 223.227)" font-family="'CMU Serif', serif" font-size="4" font-weight="700"><tspan x="0" y="0">Assembly Action</tspan></text>
+    </g>
+  </g>
+  <g id="_3" data-name="3" class="fw-stage">
+    <g>
+      <g filter="url(#drop-shadow-3)">
+        <rect x="157.342" y="9.414" width="126.562" height="118.706" rx="5.669" ry="5.669" fill="#fff0f6" stroke="#ef658e" stroke-miterlimit="10" stroke-width=".5" />
+      </g>
+      <g>
+        <rect x="161.397" y="13.472" width="9.238" height="9.238" rx="4.619" ry="4.619" fill="#ef658e" />
+        <text transform="translate(163.92 20.446)" fill="#fff" font-family="'CMU Serif', serif" font-size="7" font-variation-settings="'opsz' 14, 'wght' 600" font-weight="600" letter-spacing=".107em"><tspan x="0" y="0">3</tspan></text>
+      </g>
+      <text transform="translate(174.464 19.965)" fill="#ef658e" font-family="'CMU Serif', serif" font-size="6" font-weight="700"><tspan x="0" y="0" letter-spacing="-.032em">ROLLOUT &amp; EVALUATE</tspan></text>
+      <g>
+        <g>
+          <g clip-path="url(#clippath-12)">
+            <g id="CuLWbR">
+              <image id="CuLWbR-2" data-name="CuLWbR" width="811" height="811" transform="translate(172.944 30.715) scale(.039)" xlink:href="img/fig_05.png" />
+            </g>
+          </g>
+          <rect x="172.944" y="30.715" width="32" height="32" rx="7.5" ry="7.5" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+        </g>
+        <g>
+          <rect x="184.339" y="58.11" width="9.211" height="9.211" rx="4.605" ry="4.605" fill="#fff" />
+          <g clip-path="url(#clippath-13)">
+            <g id="UX7cl2">
+              <image id="UX7cl2-2" data-name="UX7cl2" width="512" height="512" transform="translate(184.165 49.437) scale(.042)" xlink:href="img/fig_06.png" />
+            </g>
+          </g>
+        </g>
+      </g>
+      <g>
+        <g>
+          <g clip-path="url(#clippath-14)">
+            <g id="UKTncg">
+              <image id="UKTncg-2" data-name="UKTncg" width="811" height="811" transform="translate(235.849 30.715) scale(.039)" xlink:href="img/fig_07.png" />
+            </g>
+          </g>
+          <rect x="235.849" y="30.715" width="32" height="32" rx="7.5" ry="7.5" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+        </g>
+        <g>
+          <rect x="247.244" y="58.11" width="9.211" height="9.211" rx="4.605" ry="4.605" fill="#fff" />
+          <g clip-path="url(#clippath-15)">
+            <g id="UX7cl2-3" data-name="UX7cl2">
+              <image id="UX7cl2-4" data-name="UX7cl2" width="512" height="512" transform="translate(234.826 49.437) scale(.042)" xlink:href="img/fig_08.png" />
+            </g>
+          </g>
+        </g>
+      </g>
+      <g>
+        <g>
+          <g clip-path="url(#clippath-16)">
+            <g id="qoqHVN">
+              <image id="qoqHVN-2" data-name="qoqHVN" width="811" height="811" transform="translate(173.404 75.78) scale(.039)" xlink:href="img/fig_09.png" />
+            </g>
+          </g>
+          <rect x="173.404" y="75.78" width="32" height="32" rx="7.5" ry="7.5" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+        </g>
+        <g>
+          <rect x="184.339" y="103.175" width="9.211" height="9.211" rx="4.605" ry="4.605" fill="#fff" />
+          <g clip-path="url(#clippath-17)">
+            <g id="UX7cl2-5" data-name="UX7cl2">
+              <image id="UX7cl2-6" data-name="UX7cl2" width="512" height="512" transform="translate(184.165 94.502) scale(.042)" xlink:href="img/fig_10.png" />
+            </g>
+          </g>
+        </g>
+      </g>
+      <g>
+        <g>
+          <g clip-path="url(#clippath-18)">
+            <g id="wdY3Zb">
+              <image id="wdY3Zb-2" data-name="wdY3Zb" width="811" height="811" transform="translate(236.303 75.78) scale(.039)" xlink:href="img/fig_11.png" />
+            </g>
+          </g>
+          <rect x="236.303" y="75.78" width="32" height="32" rx="7.5" ry="7.5" fill="none" stroke="#adb5bd" stroke-miterlimit="10" stroke-width=".25" />
+        </g>
+        <g>
+          <rect x="247.244" y="103.175" width="9.211" height="9.211" rx="4.605" ry="4.605" fill="#fff" />
+          <g clip-path="url(#clippath-19)">
+            <g id="UX7cl2-7" data-name="UX7cl2">
+              <image id="UX7cl2-8" data-name="UX7cl2" width="512" height="512" transform="translate(234.826 94.502) scale(.042)" xlink:href="img/fig_12.png" />
+            </g>
+          </g>
+        </g>
+      </g>
+      <line x1="220.397" y1="25.357" x2="220.397" y2="121.877" fill="none" stroke="#ef658e" stroke-dasharray="5" stroke-linecap="round" stroke-miterlimit="10" stroke-width=".5" />
+      <g>
+        <circle cx="186.731" cy="118.926" r=".622" fill="#adb5bd" />
+        <circle cx="188.944" cy="118.926" r=".622" fill="#adb5bd" />
+        <circle cx="191.157" cy="118.926" r=".622" fill="#adb5bd" />
+      </g>
+      <g>
+        <circle cx="249.636" cy="118.926" r=".622" fill="#adb5bd" />
+        <circle cx="251.849" cy="118.926" r=".622" fill="#adb5bd" />
+        <circle cx="254.062" cy="118.926" r=".622" fill="#adb5bd" />
+      </g>
+    </g>
+  </g>
+  <g id="_4" data-name="4" class="fw-stage">
+    <g>
+      <g filter="url(#drop-shadow-4)">
+        <rect x="308.433" y="9.414" width="132.007" height="154.111" rx="5.669" ry="5.669" fill="#fff4e6" stroke="#fc7524" stroke-miterlimit="10" stroke-width=".5" />
+      </g>
+      <g>
+        <rect x="313.097" y="13.472" width="9.238" height="9.238" rx="4.619" ry="4.619" fill="#fc7524" />
+        <text transform="translate(315.484 20.446)" fill="#fff" font-family="'CMU Serif', serif" font-size="7" font-variation-settings="'opsz' 14, 'wght' 600" font-weight="600" letter-spacing=".107em"><tspan x="0" y="0">4</tspan></text>
+      </g>
+      <g>
+        <text transform="translate(348.823 63.934)" font-family="'CMU Serif', serif" font-size="6" font-variation-settings="'opsz' 14, 'wght' 500" font-weight="500"><tspan x="0" y="0" letter-spacing=".003em">Inspector</tspan></text>
+        <text transform="translate(348.498 71.679)" font-family="'CMU Serif', serif" font-size="5" font-variation-settings="'opsz' 14, 'wght' 400" font-weight="400"><tspan x="0" y="0" letter-spacing="-.042em">validate &amp; correct</tspan></text>
+      </g>
+      <g id="a4cCUz">
+        <image id="a4cCUz-2" data-name="a4cCUz" width="1049" height="1101" transform="translate(315.82 27.947) scale(.112)" xlink:href="img/fig_13.png" />
+      </g>
+      <text transform="translate(326.185 19.965)" fill="#fc7524" font-family="'CMU Serif', serif" font-size="6" font-weight="700"><tspan x="0" y="0">REVIEW &amp; CORRECTION</tspan></text>
+      <g>
+        <g>
+          <text transform="translate(336.398 158.045)" font-family="'CMU Serif', serif" font-size="4" font-weight="700"><tspan x="0" y="0" letter-spacing="-.049em">Policy Rollout</tspan></text>
+          <g>
+            <line x1="328.986" y1="156.652" x2="333.987" y2="156.652" fill="none" stroke="#868e96" stroke-miterlimit="10" stroke-width=".516" />
+            <path d="M328.986,157.272c-.343,0-.621-.278-.621-.621s.278-.621.621-.621.621.278.621.621-.278.621-.621.621Z" fill="#868e96" />
+            <path d="M333.987,157.272c.343,0,.621-.278.621-.621s-.278-.621-.621-.621-.621.278-.621.621.278.621.621.621Z" fill="#868e96" />
+          </g>
+        </g>
+        <g>
+          <text transform="translate(388.428 158.045)" font-family="'CMU Serif', serif" font-size="4" font-weight="700" letter-spacing="-.017em"><tspan x="0" y="0">Human Correction</tspan></text>
+          <g>
+            <line x1="381.016" y1="156.652" x2="386.017" y2="156.652" fill="none" stroke="#fc7524" stroke-miterlimit="10" stroke-width=".516" />
+            <path d="M381.016,157.272c-.343,0-.621-.278-.621-.621s.278-.621.621-.621.621.278.621.621-.278.621-.621.621Z" fill="#fc7524" />
+            <path d="M386.017,157.272c.343,0,.621-.278.621-.621s-.278-.621-.621-.621-.621.278-.621.621.278.621.621.621Z" fill="#fc7524" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g id="_5" data-name="5" class="fw-stage">
+    <g id="_5.2" data-name="5.2">
+      <g filter="url(#drop-shadow-5)">
+        <rect x="293.913" y="187.882" width="146.527" height="54.384" rx="5.669" ry="5.669" fill="#f3f0ff" stroke="#9775fa" stroke-miterlimit="10" stroke-width=".5" />
+      </g>
+      <g>
+        <rect x="296.762" y="190.901" width="9.238" height="9.238" rx="4.619" ry="4.619" fill="#9775fa" />
+        <text transform="translate(299.218 197.875)" fill="#fff" font-family="'CMU Serif', serif" font-size="7" font-variation-settings="'opsz' 14, 'wght' 600" font-weight="600" letter-spacing=".107em"><tspan x="0" y="0">5</tspan></text>
+      </g>
+      <text transform="translate(308.432 197.58)" fill="#9775fa" font-family="'CMU Serif', serif" font-size="6" font-weight="700"><tspan x="0" y="0" letter-spacing="-.032em">DATASET AGGREGATION</tspan></text>
+      <g>
+        <g>
+          <g>
+            <g clip-path="url(#clippath-20)">
+              <g id="uvXcPt">
+                <image id="uvXcPt-2" data-name="uvXcPt" width="811" height="811" transform="translate(350.176 201.754) scale(.039)" xlink:href="img/fig_14.png" />
+              </g>
+            </g>
+            <rect x="350.176" y="201.754" width="32" height="32" rx="7.5" ry="7.5" fill="none" stroke="#ffe8cc" stroke-miterlimit="10" stroke-width=".25" />
+          </g>
+          <g>
+            <g clip-path="url(#clippath-21)">
+              <g id="uvXcPt-3" data-name="uvXcPt">
+                <image id="uvXcPt-4" data-name="uvXcPt" width="811" height="811" transform="translate(351.176 202.754) scale(.039)" xlink:href="img/fig_15.png" />
+              </g>
+            </g>
+            <rect x="351.176" y="202.754" width="32" height="32" rx="7.5" ry="7.5" fill="none" stroke="#ffe8cc" stroke-miterlimit="10" stroke-width=".25" />
+          </g>
+          <g>
+            <g clip-path="url(#clippath-22)">
+              <g id="uvXcPt-5" data-name="uvXcPt">
+                <image id="uvXcPt-6" data-name="uvXcPt" width="811" height="811" transform="translate(352.176 203.754) scale(.039)" xlink:href="img/fig_16.png" />
+              </g>
+            </g>
+            <rect x="352.176" y="203.754" width="32" height="32" rx="7.5" ry="7.5" fill="none" stroke="#ffe8cc" stroke-miterlimit="10" stroke-width=".25" />
+          </g>
+        </g>
+        <text transform="translate(356.541 239.897)" font-family="'CMU Serif', serif" font-size="4" font-weight="700"><tspan x="0" y="0">Corrections</tspan></text>
+        <g>
+          <rect x="400.432" y="201.754" width="32" height="32" rx="7.5" ry="7.5" fill="#fff" stroke="url(#linear-gradient)" stroke-miterlimit="10" stroke-width=".25" />
+          <rect x="401.432" y="202.754" width="32" height="32" rx="7.5" ry="7.5" fill="#fff" stroke="url(#linear-gradient-2)" stroke-miterlimit="10" stroke-width=".25" />
+          <rect x="402.432" y="203.754" width="32" height="32" rx="7.5" ry="7.5" fill="#fff" stroke="url(#linear-gradient-3)" stroke-miterlimit="10" stroke-width=".25" />
+          <text transform="translate(406.444 218.403)" font-family="'CMU Serif', serif" font-size="4" font-weight="700"><tspan x="0" y="0">Re-Training</tspan><tspan x="2.302" y="4.8">Data Mix</tspan></text>
+        </g>
+        <text transform="translate(303.171 239.897)" font-family="'CMU Serif', serif" font-size="4" font-weight="700"><tspan x="0" y="0">Golden Demos</tspan></text>
+        <g>
+          <g>
+            <g clip-path="url(#clippath-23)">
+              <g id="ILBh0N-7" data-name="ILBh0N">
+                <image id="ILBh0N-8" data-name="ILBh0N" width="811" height="811" transform="translate(299.921 201.754) scale(.039)" xlink:href="img/fig_17.png" />
+              </g>
+            </g>
+            <rect x="299.921" y="201.754" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#c5f6fa" stroke-miterlimit="10" stroke-width=".25" />
+          </g>
+          <g>
+            <g clip-path="url(#clippath-24)">
+              <g id="ILBh0N-9" data-name="ILBh0N">
+                <image id="ILBh0N-10" data-name="ILBh0N" width="811" height="811" transform="translate(300.921 202.754) scale(.039)" xlink:href="img/fig_18.png" />
+              </g>
+            </g>
+            <rect x="300.921" y="202.754" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#c5f6fa" stroke-miterlimit="10" stroke-width=".25" />
+          </g>
+          <g>
+            <g clip-path="url(#clippath-25)">
+              <g id="ILBh0N-11" data-name="ILBh0N">
+                <image id="ILBh0N-12" data-name="ILBh0N" width="811" height="811" transform="translate(301.921 203.754) scale(.039)" xlink:href="img/fig_19.png" />
+              </g>
+            </g>
+            <rect x="301.921" y="203.754" width="32" height="32" rx="7.494" ry="7.494" fill="none" stroke="#c5f6fa" stroke-miterlimit="10" stroke-width=".25" />
+          </g>
+        </g>
+        <g>
+          <line x1="339.098" y1="218.754" x2="345" y2="218.754" fill="none" stroke="#adb5bd" stroke-linecap="round" stroke-miterlimit="10" stroke-width=".75" />
+          <line x1="342.049" y1="221.705" x2="342.049" y2="215.803" fill="none" stroke="#adb5bd" stroke-linecap="round" stroke-miterlimit="10" stroke-width=".75" />
+        </g>
+        <g>
+          <line x1="389.353" y1="218.754" x2="393.264" y2="218.754" fill="none" stroke="#adb5bd" stroke-linecap="round" stroke-miterlimit="10" stroke-width=".75" />
+          <polygon points="392.859 220.137 395.255 218.754 392.859 217.37 392.859 220.137" fill="#adb5bd" />
+        </g>
+      </g>
+    </g>
+    <g id="_5.1" data-name="5.1">
+      <g opacity=".16">
+        <g>
+          <line x1="286.925" y1="235.945" x2="142.364" y2="235.945" fill="none" stroke="#868e96" stroke-dasharray="4 4" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" />
+          <polygon points="285.991 232.754 291.518 235.945 285.991 239.136 285.991 232.754" fill="#868e96" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

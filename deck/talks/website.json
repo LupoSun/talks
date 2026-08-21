@@ -1,0 +1,133 @@
+{
+  "id": "website",
+  "title": "GooGym2D — full project tour",
+  "slides": [
+    {
+      "id": "S30",
+      "use": "hero",
+      "name": "Hero",
+      "minutes": 1,
+      "tags": [
+        "intro"
+      ],
+      "props": {},
+      "chrome": false
+    },
+    {
+      "id": "S31",
+      "use": "problem",
+      "name": "The problem",
+      "minutes": 1.5,
+      "tags": [
+        "intro",
+        "motivation"
+      ],
+      "props": {}
+    },
+    {
+      "id": "S32",
+      "use": "environment",
+      "name": "Environment",
+      "minutes": 2.5,
+      "tags": [
+        "method"
+      ],
+      "props": {}
+    },
+    {
+      "id": "S33",
+      "use": "framework",
+      "name": "Framework",
+      "minutes": 2,
+      "tags": [
+        "method",
+        "overview"
+      ],
+      "props": {}
+    },
+    {
+      "id": "S34",
+      "use": "collection",
+      "name": "Demonstration",
+      "minutes": 2.5,
+      "tags": [
+        "method",
+        "data"
+      ],
+      "props": {}
+    },
+    {
+      "id": "S35",
+      "use": "curation",
+      "name": "Curation",
+      "minutes": 2,
+      "tags": [
+        "method",
+        "data"
+      ],
+      "props": {}
+    },
+    {
+      "id": "S36",
+      "use": "training",
+      "name": "Training",
+      "minutes": 2,
+      "tags": [
+        "method",
+        "learning"
+      ],
+      "props": {}
+    },
+    {
+      "id": "S37",
+      "use": "correction",
+      "name": "Correction",
+      "minutes": 2.5,
+      "tags": [
+        "method",
+        "learning"
+      ],
+      "props": {},
+      "footnote": "Human-gated DAgger, after Ross et al. (2011) and Kelly et al. (2019)"
+    },
+    {
+      "id": "S39",
+      "use": "results",
+      "name": "Results",
+      "minutes": 2.5,
+      "tags": [
+        "results"
+      ],
+      "props": {}
+    },
+    {
+      "id": "S38",
+      "use": "codesign",
+      "name": "Co-design",
+      "minutes": 2.5,
+      "tags": [
+        "teaming",
+        "results"
+      ],
+      "props": {}
+    },
+    {
+      "id": "S40",
+      "use": "project",
+      "name": "Papers & code",
+      "minutes": 1,
+      "tags": [
+        "closing"
+      ],
+      "props": {}
+    }
+  ],
+  "targetMinutes": 20,
+  "note": "Faithful 16:9 port of the project website, in website order. This is the reference deck: every slide keeps the site's markup, copy, styling and animation. Venue decks reorder and reframe these same slides via props.",
+  "chrome": {
+    "enabled": false
+  },
+  "typography": {
+    "scale": 1
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "iass2026",
+  "title": "Capturing Structural Intuition \u2014 IASS 2026",
+  "order": [
+    "S17",
+    "S18",
+    "S19",
+    "S20",
+    "S21",
+    "S22",
+    "S23",
+    "S24",
+    "S25",
+    "S26",
+    "S27",
+    "S28",
+    "S29"
+  ],
+  "theme": "iass",
+  "targetMinutes": 15,
+  "venue": "IASS-IWSS 2026, Turin",
+  "note": "Follows the paper: Introduction -> Methods -> Experimental Setup -> Results -> Discussion. Method paper: one expert, one span, six correction rounds. The argument is that a flow policy can absorb structural intuition at all."
+}

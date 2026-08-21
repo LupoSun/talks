@@ -1,0 +1,351 @@
+{
+  "rows": [
+    {
+      "label": "Pre-DAgger",
+      "rate": 0.14,
+      "successes": 1,
+      "total": 10,
+      "color": "#236E8C",
+      "cells": [
+        {
+          "file": "cells/r0_c00.png",
+          "success": true
+        },
+        {
+          "file": "cells/r0_c01.png",
+          "success": false
+        },
+        {
+          "file": "cells/r0_c02.png",
+          "success": false
+        },
+        {
+          "file": "cells/r0_c03.png",
+          "success": false
+        },
+        {
+          "file": "cells/r0_c04.png",
+          "success": false
+        },
+        {
+          "file": "cells/r0_c05.png",
+          "success": false
+        },
+        {
+          "file": "cells/r0_c06.png",
+          "success": false
+        },
+        {
+          "file": "cells/r0_c07.png",
+          "success": false
+        },
+        {
+          "file": "cells/r0_c08.png",
+          "success": false
+        },
+        {
+          "file": "cells/r0_c09.png",
+          "success": false
+        }
+      ]
+    },
+    {
+      "label": "Round 1",
+      "rate": 0.34,
+      "successes": 2,
+      "total": 10,
+      "color": "#3498A8",
+      "cells": [
+        {
+          "file": "cells/r1_c00.png",
+          "success": true
+        },
+        {
+          "file": "cells/r1_c01.png",
+          "success": true
+        },
+        {
+          "file": "cells/r1_c02.png",
+          "success": false
+        },
+        {
+          "file": "cells/r1_c03.png",
+          "success": false
+        },
+        {
+          "file": "cells/r1_c04.png",
+          "success": false
+        },
+        {
+          "file": "cells/r1_c05.png",
+          "success": false
+        },
+        {
+          "file": "cells/r1_c06.png",
+          "success": false
+        },
+        {
+          "file": "cells/r1_c07.png",
+          "success": false
+        },
+        {
+          "file": "cells/r1_c08.png",
+          "success": false
+        },
+        {
+          "file": "cells/r1_c09.png",
+          "success": false
+        }
+      ]
+    },
+    {
+      "label": "Round 2",
+      "rate": 0.36,
+      "successes": 2,
+      "total": 10,
+      "color": "#5F9965",
+      "cells": [
+        {
+          "file": "cells/r2_c00.png",
+          "success": true
+        },
+        {
+          "file": "cells/r2_c01.png",
+          "success": true
+        },
+        {
+          "file": "cells/r2_c02.png",
+          "success": false
+        },
+        {
+          "file": "cells/r2_c03.png",
+          "success": false
+        },
+        {
+          "file": "cells/r2_c04.png",
+          "success": false
+        },
+        {
+          "file": "cells/r2_c05.png",
+          "success": false
+        },
+        {
+          "file": "cells/r2_c06.png",
+          "success": false
+        },
+        {
+          "file": "cells/r2_c07.png",
+          "success": false
+        },
+        {
+          "file": "cells/r2_c08.png",
+          "success": false
+        },
+        {
+          "file": "cells/r2_c09.png",
+          "success": false
+        }
+      ]
+    },
+    {
+      "label": "Round 3",
+      "rate": 0.39,
+      "successes": 3,
+      "total": 10,
+      "color": "#88B54A",
+      "cells": [
+        {
+          "file": "cells/r3_c00.png",
+          "success": true
+        },
+        {
+          "file": "cells/r3_c01.png",
+          "success": true
+        },
+        {
+          "file": "cells/r3_c02.png",
+          "success": true
+        },
+        {
+          "file": "cells/r3_c03.png",
+          "success": false
+        },
+        {
+          "file": "cells/r3_c04.png",
+          "success": false
+        },
+        {
+          "file": "cells/r3_c05.png",
+          "success": false
+        },
+        {
+          "file": "cells/r3_c06.png",
+          "success": false
+        },
+        {
+          "file": "cells/r3_c07.png",
+          "success": false
+        },
+        {
+          "file": "cells/r3_c08.png",
+          "success": false
+        },
+        {
+          "file": "cells/r3_c09.png",
+          "success": false
+        }
+      ]
+    },
+    {
+      "label": "Round 4",
+      "rate": 0.4,
+      "successes": 3,
+      "total": 10,
+      "color": "#ECC252",
+      "cells": [
+        {
+          "file": "cells/r4_c00.png",
+          "success": true
+        },
+        {
+          "file": "cells/r4_c01.png",
+          "success": true
+        },
+        {
+          "file": "cells/r4_c02.png",
+          "success": true
+        },
+        {
+          "file": "cells/r4_c03.png",
+          "success": false
+        },
+        {
+          "file": "cells/r4_c04.png",
+          "success": false
+        },
+        {
+          "file": "cells/r4_c05.png",
+          "success": false
+        },
+        {
+          "file": "cells/r4_c06.png",
+          "success": false
+        },
+        {
+          "file": "cells/r4_c07.png",
+          "success": false
+        },
+        {
+          "file": "cells/r4_c08.png",
+          "success": false
+        },
+        {
+          "file": "cells/r4_c09.png",
+          "success": false
+        }
+      ]
+    },
+    {
+      "label": "Round 5",
+      "rate": 0.44,
+      "successes": 4,
+      "total": 10,
+      "color": "#E8943A",
+      "cells": [
+        {
+          "file": "cells/r5_c00.png",
+          "success": true
+        },
+        {
+          "file": "cells/r5_c01.png",
+          "success": true
+        },
+        {
+          "file": "cells/r5_c02.png",
+          "success": true
+        },
+        {
+          "file": "cells/r5_c03.png",
+          "success": true
+        },
+        {
+          "file": "cells/r5_c04.png",
+          "success": false
+        },
+        {
+          "file": "cells/r5_c05.png",
+          "success": false
+        },
+        {
+          "file": "cells/r5_c06.png",
+          "success": false
+        },
+        {
+          "file": "cells/r5_c07.png",
+          "success": false
+        },
+        {
+          "file": "cells/r5_c08.png",
+          "success": false
+        },
+        {
+          "file": "cells/r5_c09.png",
+          "success": false
+        }
+      ]
+    },
+    {
+      "label": "Round 6",
+      "rate": 0.44,
+      "successes": 4,
+      "total": 10,
+      "color": "#B54D3A",
+      "cells": [
+        {
+          "file": "cells/r6_c00.png",
+          "success": true
+        },
+        {
+          "file": "cells/r6_c01.png",
+          "success": true
+        },
+        {
+          "file": "cells/r6_c02.png",
+          "success": true
+        },
+        {
+          "file": "cells/r6_c03.png",
+          "success": true
+        },
+        {
+          "file": "cells/r6_c04.png",
+          "success": false
+        },
+        {
+          "file": "cells/r6_c05.png",
+          "success": false
+        },
+        {
+          "file": "cells/r6_c06.png",
+          "success": false
+        },
+        {
+          "file": "cells/r6_c07.png",
+          "success": false
+        },
+        {
+          "file": "cells/r6_c08.png",
+          "success": false
+        },
+        {
+          "file": "cells/r6_c09.png",
+          "success": false
+        }
+      ]
+    }
+  ],
+  "cols": 10,
+  "cellAspect": 0.9967,
+  "source": "IASS2026 Writing/output/dagger_rounds_formation.pdf",
+  "note": "cells sliced from the paper's Figure 5; grounds keyed out for the deck"
+}

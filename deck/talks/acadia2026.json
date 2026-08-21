@@ -1,0 +1,288 @@
+{
+  "id": "acadia2026",
+  "title": "From Teaching to Teaming — ACADIA 2026",
+  "slides": [
+    {
+      "id": "S01",
+      "use": "title",
+      "name": "Title",
+      "minutes": 0.5,
+      "tags": [
+        "intro"
+      ],
+      "props": {
+        "venue": "ACADIA 2026",
+        "paperTitle": "From teaching to teaming",
+        "subtitle": "A human-AI co-design environment for architectural and structural design",
+        "authors": [
+          {
+            "name": "Tao Sun",
+            "marks": [
+              1
+            ]
+          },
+          {
+            "name": "Shaoyi Wang",
+            "marks": [
+              1
+            ]
+          },
+          {
+            "name": "Simon Schleicher",
+            "marks": [
+              1
+            ]
+          },
+          {
+            "name": "Ramon E. Weber",
+            "marks": [
+              1
+            ]
+          }
+        ],
+        "affiliations": [
+          "College of Environmental Design, Department of Architecture, UC Berkeley"
+        ],
+        "venueLong": "Association for Computer Aided Design in Architecture — Humanism Recoded",
+        "location": "Detroit, Michigan",
+        "date": "October 22–24, 2026",
+        "links": [
+          {
+            "label": "Code",
+            "value": "github.com/LupoSun/GooGym2D"
+          }
+        ],
+        "wash": "teaming-codesign",
+        "align": "left",
+        "field": true,
+        "invert": true,
+        "subtitleWidth": "52ch"
+      },
+      "notes": "- Good afternoon. Tao Sun, UC Berkeley — with Shaoyi Wang, Simon Schleicher and Ramon Weber.\n- Frame it as an interaction, not a model architecture.\n- No presses on this slide.\n\n⚠ ACADIA audience: computational designers, not ML researchers. Lead with the interaction — the maths gets one slide and no more.\n\nSay it as:\nGood afternoon. I'm Tao Sun from UC Berkeley, with Shaoyi Wang, Simon Schleicher and Ramon Weber. This talk is about a design AI that learns from the way designers actually work, and then comes back into the same environment as a collaborator — not a generator you query at the end, but a partner you build alongside.",
+      "chrome": "top"
+    },
+    {
+      "id": "S02",
+      "use": "problem",
+      "name": "The problem",
+      "minutes": 1.5,
+      "tags": [
+        "intro",
+        "motivation"
+      ],
+      "props": {
+        "eyebrow": "The problem",
+        "headline": "Design weighs what cannot be fully written down.",
+        "lede": "- Design balances metrics against judgments that **resist explicit rules**\n- Generative tools ask designers to **formalise those judgments first**\n- As a parameterisation, an objective, or a prompt\n- Can a model instead **learn them from the work itself**?"
+      },
+      "notes": "- Open on the judgment, not on a definition.\n- Metrics can quantify deflection and material; expression, hierarchy and constructability cannot.\n- Every existing route asks you to formalise that judgment first — parameters, an objective, or a prompt.\n- The turn: what if the model learned it from the work itself?\n\n⚠ Say \"tacit knowledge\" once at most. Better to show it than to name it.\n\n⚠ Behind? Fold the middle two bullets into a single sentence.\n\nSay it as:\nArchitects and engineers weigh quantitative criteria against qualitative ones constantly. We can quantify deflection, or material use. We cannot easily write down architectural expression, structural hierarchy, or constructability — and those are often what decides whether a scheme is any good. Every computational route we have asks the designer to formalise that judgment up front: as a parameterisation for an optimiser, as an objective function, or as a prompt. The designer's input is concentrated at the very beginning, and then the machine runs. We wanted to ask a different question — could a model pick that judgment up from the work itself? From how a designer builds, and from what they fix when it goes wrong?"
+    },
+    {
+      "id": "S04",
+      "use": "frameworkacadia",
+      "name": "Framework (ACADIA)",
+      "minutes": 1.75,
+      "tags": [
+        "method",
+        "overview"
+      ],
+      "props": {
+        "eyebrow": "Framework",
+        "headline": "One loop, from teaching to teaming."
+      },
+      "notes": "- 5 presses, one per stage after the first.\n- On arrival: Demonstration — designers build in the browser.\n- ▸ Curation — the gallery keeps what is worth keeping.\n- ▸ Correction — the inspector fixes what failed, and the grey band is the raw data both feed.\n- ▸ Data mix — valid episodes and corrections, combined.\n- ▸ Model — a flow-based policy trains on the mix.\n- ▸ AI co-design — it returns to the same browser, as a partner.\n- The human icon arrives on its own once the ring closes. Do not wait for it.\n\n⚠ Say the one-environment point out loud: three surfaces, one server, one renderer, one coordinate frame.\n\n⚠ This slide is the map — every section after it is one of these boxes in detail.\n\nSay it as:\nThis is the whole framework on one slide, and it is the spine of the talk: teach, correct, team. Designers demonstrate in a browser. A gallery lets someone decide which of those demonstrations are worth keeping. The trained policy then builds on its own, and where it fails a designer replays the episode and takes over. Those corrections join the kept demonstrations as the next training mix, the policy retrains, and it comes back to the very same browser as a co-design partner. What matters as much as the loop itself is that this is one environment — three surfaces sharing one server, one renderer and one coordinate frame — so teaching, correcting and designing alongside it are not three separate tools."
+    },
+    {
+      "id": "S06",
+      "use": "environment",
+      "name": "The task",
+      "minutes": 1.25,
+      "tags": [
+        "method"
+      ],
+      "props": {
+        "eyebrow": "The task",
+        "headline": "A truss bridge across a variable span.",
+        "body": "- **GooGym2D** — an open-source 2D truss environment on the Gymnasium API\n- Each step places one bar from an existing node: *anchor, heading, length*\n- Hindsight nodal adjustment preserves the geometry the designer intended\n- Terminal FEA checks connectivity, mechanisms, yielding and buckling",
+        "bodyColumns": 2
+      },
+      "notes": "- No presses; the bar placement animates on arrival.\n- GooGym2D — name it once, say it is open source.\n- The action is the four numbers in the pill: anchor node, heading, length.\n- Land the framing: the interaction is the object of study, not the structure.\n\n⚠ If a structures person asks what the FEA checks: connectivity, mechanism, yield, buckling.\n\n⚠ Do not read the observation vector aloud. It is on the slide for the people who want it.\n\nSay it as:\nThe shared artefact is a truss bridge across a gap, and the width of that gap changes. We built GooGym2D, an open-source two-dimensional truss environment on the Gymnasium API. Each step adds one bar from a node that already exists — four continuous numbers: which node to anchor to, a heading through the full three hundred and sixty degrees, and a length. Because a designer's click is never exact, hindsight nodal adjustment snaps a new endpoint onto a nearby node where that was clearly the intent, so what we record is the geometry the designer meant. And when the episode ends, a finite element analysis decides whether the thing stands. The task is deliberately simple, because what we are studying here is the interaction, not the structure."
+    },
+    {
+      "id": "S09",
+      "use": "collectionacadia",
+      "name": "Teaching (ACADIA)",
+      "minutes": 1.75,
+      "tags": [
+        "method",
+        "data"
+      ],
+      "props": {
+        "eyebrow": "Teaching through demonstration",
+        "headline": "Fifty designers, one browser tab.",
+        "body": "- Contributors built bridges from **their own laptops**\n- Three spans: **8 m, 10 m, 12 m**\n- **323 supervised** episodes\n- **Decision sequences** are recorded",
+        "statsLabel": "Supervised episodes",
+        "statsTotal": 323,
+        "statsBreakdown": [
+          {
+            "num": 99,
+            "cap": "8 m"
+          },
+          {
+            "num": 123,
+            "cap": "10 m"
+          },
+          {
+            "num": 101,
+            "cap": "12 m"
+          }
+        ],
+        "widthFilter": null
+      },
+      "notes": "- 3 presses.\n- On arrival: the Bridge Designer, running in a browser tab.\n- ▸ One bridge going up, bar by bar.\n- ▸ The corpus as a mosaic — point at the variety.\n- ▸ The count: 323 supervised episodes.\n- Land this: what is recorded is the decision sequence, not the finished bridge.\n\n⚠ Breakdown is 99 at 8 m, 123 at 10 m, 101 at 12 m. The 10 m column is 23 browser episodes plus 100 prior curated ones — say it if asked, do not volunteer it.\n\n⚠ 5,256 action steps in total, if someone wants the step count.\n\nSay it as:\nThe teaching phase ran with around fifty contributors, each connected to the Bridge Designer from their own laptop — no install, one browser tab. They built bridges across three target spans: eight, ten and twelve metres. Combined with a prior curated set, the supervised seed comes to 323 episodes. Look at the variety in that mosaic. These are genuinely different structural idioms, and several of them are not what we would have written down had we specified the design space ourselves — which is rather the point. And what the system records is not the finished truss. It is the ordered sequence of decisions that produced it, which is the thing a policy can actually imitate."
+    },
+    {
+      "id": "S10",
+      "use": "curation",
+      "name": "Curation",
+      "minutes": 1,
+      "tags": [
+        "method",
+        "data"
+      ],
+      "props": {
+        "eyebrow": "Curation",
+        "headline": "A dataset is also a design decision.",
+        "body": "- The gallery **replays** successful submissions for comparison\n- Choosing what enters training is an **authored act**\n- The model learns from work someone **stood behind**",
+        "body2": ""
+      },
+      "notes": "- 3 presses.\n- On arrival: the Gallery.\n- ▸ One submission magnified.\n- ▸ The formation of a single episode, replayed.\n- ▸ The wall pans — this is a corpus somebody chose.\n- Give the argument, not the feature: choosing what enters training is an authored act.\n\n⚠ This is the slide that separates the project from a scrape. It is short — do not rush it.\n\nSay it as:\nCuration gets its own surface, and its own moment in the argument. The Gallery replays every successful submission step by step, so a designer can compare them and decide which ones are worth keeping. That decision is not data cleaning. It is a design decision. The model ends up learning from work that somebody was willing to stand behind — which means the dataset carries a point of view, and the model reflects a curated design culture rather than whatever happened to be scrapeable."
+    },
+    {
+      "id": "S12",
+      "use": "training",
+      "name": "The policy",
+      "minutes": 1.5,
+      "tags": [
+        "method",
+        "learning"
+      ],
+      "props": {
+        "eyebrow": "The policy",
+        "headline": "Several reasonable next moves, kept open.",
+        "body": "- There is not only one design solution.\n- Flow matching learns a vector field carrying **noise** to **data**\n- A regression to the mean averages valid solutions into one that often **invalid**\n- Each query predicts a **chunk** of consecutive bars",
+        "body2": "",
+        "body3": "",
+        "capNoise": "noise",
+        "capField": "vector field",
+        "capChunks": "action chunks"
+      },
+      "notes": "- 2 presses.\n- On arrival: noise — where every prediction starts.\n- ▸ The vector field — the learned transport from noise to the demonstrations.\n- ▸ Action chunks — the bars land one at a time; let the beat play out.\n- Lead with multimodality. The loss function is not the point here.\n\n⚠ Pause after \"more than one next move is defensible\". The assistive mode rests on that sentence.\n\n⚠ If pressed on the maths, point them at the IASS paper — same policy, more detail.\n\nSay it as:\nOne slide of method, and it is the intuition that matters. At any point in a design, more than one next move is defensible. Two engineers would place different bars and both would be right. Now, if you train a model to predict the single most likely action, what it learns is the average of the demonstrations — and the average of several valid structures is very often not a structure at all. Flow matching instead learns a vector field that carries pure noise onto the distribution of demonstrated actions. Because we model that whole distribution, the multiplicity survives training. And that is not an academic nicety: it is exactly what makes the assistive mode work later, because asking twice gives you genuinely different options rather than the same one again. Each query also returns a chunk of consecutive placements, so the policy commits to a short span of design intent rather than one reflex per bar."
+    },
+    {
+      "id": "S11",
+      "use": "correctionacadia",
+      "name": "Correcting (ACADIA)",
+      "minutes": 1.75,
+      "tags": [
+        "method",
+        "learning"
+      ],
+      "props": {
+        "eyebrow": "Correcting through intervention",
+        "headline": "Replay the rollout, fix what failed.",
+        "body": "- The policy acts first; the designer intervenes **only where it matters**\n- The inspector replays a failure; the designer takes over at the **last good state**\n- That correction becomes training data aimed at the policy's **blind spot**",
+        "body2": "",
+        "legPrefix": "Correct prefix",
+        "legError": "Policy error",
+        "legFix": "Human correction",
+        "datasetTitle": "Correction dataset",
+        "datasetFoot": "correction rounds · retraining"
+      },
+      "notes": "- 3 presses.\n- On arrival: replay — the failed rollout plays back.\n- ▸ Failure — blue is the correct prefix, grey is where it went wrong.\n- ▸ Correction — orange is what the human added from the last good state.\n- ▸ Dataset — four rounds, stratified by span.\n- Draw the contrast with standard DAgger explicitly. That contrast is the contribution.\n\n⚠ Numbers if wanted: 344 corrective episodes, 3,203 steps, four rounds — 109 at 8 m, 50 at 10 m, 185 at 12 m.\n\n⚠ The skew is the interesting part. More than half the effort went to 12 m because that is where the policy was weakest — diagnostic, not accidental.\n\nSay it as:\nHere is what a correction actually is. The Inspector replays a failed rollout step by step. In blue is the prefix the policy got right, and it usually gets a good deal right. In grey is the move where it went wrong. The designer scrubs back to the last state that still stood, takes over, and finishes the bridge by hand — those are the orange members. That episode then becomes training data. Standard DAgger asks an expert to label every state the policy visits, which is expensive and mostly spent on states that were perfectly fine. We invert it: the policy acts first, and the designer intervenes only where it matters. That is what we mean by human-gated. Four rounds in this study — and look at how they are stratified, with the effort weighted heavily toward the twelve-metre span, because that is where the policy was struggling. The shape of the correction set is itself a readout of the model's weaknesses."
+    },
+    {
+      "id": "S59",
+      "use": "results",
+      "name": "Results",
+      "minutes": 2,
+      "tags": [
+        "results"
+      ],
+      "props": {
+        "eyebrow": "Results · Training",
+        "headline": "Targeted correction makes the policy better.",
+        "body": "- **21.0%** before correction, **36.5%** at the deployed checkpoint\n- Width-balanced across the three trained spans\n- Each round corrects the states the policy **actually visits**\n- The gain is **where corrections land**, not how many there are",
+        "eyebrow2": "Results · Generalization",
+        "headline2": "Trained on three spans.",
+        "body2": "The policy learned from bridges at 8 m, 10 m and 12 m.",
+        "genHead1": "Trained on three spans.",
+        "genSub1": "The policy learned from bridges at 8 m, 10 m and 12 m.",
+        "genHead2": "Then asked to bridge the in-between.",
+        "genSub2": "We queried widths from 7 m to 13 m, including spans no designer had demonstrated.",
+        "genHead3": "It generalizes across spans.",
+        "genSub3": "The generated bridges adapt their depth, bracing and geometry to new widths.",
+        "bodyColumns": 1
+      },
+      "notes": "- 7 presses: five stops along the curve, then spans, unseen, wall.\n- On arrival: Initial — 21.0%, trained on the seed alone.\n- ▸ Round 1 — 29.2%.\n- ▸ Round 2 — 29.3%.\n- ▸ Round 3 — 36.5%, and this is the checkpoint we deploy.\n- ▸ Round 4 — no improvement on the balanced metric. Say it plainly.\n- ▸ spans ▸ unseen ▸ wall — the generalization ablation.\n- Pre-empt the reaction to 36.5% before the room forms it.\n\n⚠ Per-width at the selected policy: 35.0% at 8 m, 43.5% at 10 m, 31.0% at 12 m.\n\n⚠ Ablation: the Round 3 checkpoint queried from 7 m to 13 m at 0.25 m spacing, 200 episodes per span. Troughs near 9.0 m and 11.25 m; falls away past 12.5 m.\n\n⚠ Most likely slide to run long. If over, give the generalization in one line and move on.\n\nSay it as:\nThis is the checkpoint sweep, one correction round per press. Trained on the seed alone, the policy succeeds twenty-one per cent of the time. One round of targeted correction takes that to twenty-nine, the second round holds roughly there, and the third reaches thirty-six and a half per cent width-balanced — that is the checkpoint we deploy. Round four we collected as a stress test, and it did not improve the balanced metric; I would rather tell you that than quietly leave it out. Now, thirty-six per cent may sound modest, so let me put it in proportion: each bridge is up to twenty-five sequential placements in a continuous action space, and any single one of them can produce a mechanism. Then the ablation. We queried that same checkpoint at spans it was never taught, from seven to thirteen metres. It generalizes across most of that range — but it has troughs, and it falls away past twelve and a half metres, and those gaps sit exactly where the corpus is thinnest. Reporting where it breaks earns more here than the headline number does."
+    },
+    {
+      "id": "S13",
+      "use": "codesign",
+      "name": "Teaming",
+      "minutes": 1.5,
+      "tags": [
+        "teaming",
+        "results"
+      ],
+      "props": {
+        "eyebrow": "Assisting through co-design",
+        "headline": "Design together, turn by turn.",
+        "body": "- The trained policy returns behind an **AI Assistant**\n- Each successful placement triggers **suggestions**\n- accept, ignore, or keep drawing\n- **Control never leaves the designer**"
+      },
+      "notes": "- 4 presses; the episode alternates.\n- On arrival: the human places a bar.\n- ▸ The policy suggests.\n- ▸ The human places again.\n- ▸ The policy suggests again.\n- ▸ The finished bridge.\n- Narrate it as a conversation, not as a feature demo.\n\n⚠ This is the climax of the talk. Slow down.\n\n⚠ Say the limitation before anyone asks: we have not evaluated how designers experience these suggestions. Acceptance, speed, confidence, quality — all future work.\n\nSay it as:\nAnd here the loop closes. The trained policy returns to the very same Bridge Designer, behind an AI Assist toggle. Once it is on, every successful bar the human places triggers a request for candidate continuations, each sampled from an independent noise draw, and they appear as translucent ghost bars. The designer can cycle through them, accept one, reject them, or simply ignore the whole thing and carry on drawing. Watch the turn-taking: human, machine, human, machine. Because the policy is generative rather than deterministic, asking again gives you genuinely different options — which is what makes this feel like a suggestion rather than an autocomplete. And control never leaves the designer. I want to be straight about what we have not done: we have not yet studied how designers experience this. Whether it makes them faster, or more confident, or their designs better, is the next study, not this one."
+    },
+    {
+      "id": "S60",
+      "use": "project",
+      "name": "Papers & code",
+      "minutes": 0.5,
+      "tags": [
+        "closing"
+      ],
+      "props": {
+        "eyebrow": "Papers & code",
+        "headline": "Thank you. Let's keep in touch!",
+        "lede": " "
+      },
+      "notes": "- The screen is only the papers and the code — the conclusion is spoken, so deliver it deliberately.\n- Three moves: what it does, what it costs, what it cannot do. Then stop.\n- Do not trail off into future work.\n\n⚠ Tight at 0.5 min. If the results slide ran long, cut the \"local and plural\" line and keep the limits.\n\n⚠ Likely questions: 3D? other typologies? does the assistance actually help? The last is genuinely open — say so.\n\n⚠ Leave the repo URL on screen through Q&A.\n\nSay it as:\nTo close. Demonstration, curation, correction and assistance all live in one environment, and the whole thing runs on small, designer-verified data — 323 seed episodes and 344 corrections. That is the part I would ask you to take away: it is small enough that a single office could grow a model reflecting its own design culture, rather than renting a generic one trained on scraped work. Design AI could be local and plural — closer to apprenticeship than to deployment. The limits are real: two dimensions, pin-jointed, one load case, three spans, and no user study yet. Thank you."
+    }
+  ],
+  "theme": "acadia",
+  "venue": "ACADIA 2026",
+  "targetMinutes": 15,
+  "note": "Rebuilt on the Tsinghua template: eleven slides, built skeletons only. Systems paper — many contributors, three spans, assistive co-design.",
+  "typography": {
+    "scale": 1.25,
+    "family": "dmsans"
+  },
+  "chrome": {
+    "logos": [
+      {
+        "src": "assets-static/logos/ACADIA2026_logo.png",
+        "alt": "ACADIA 2026",
+        "height": 26,
+        "offsetY": 0
+      },
+      {
+        "src": "assets-static/logos/berkeley_logo.png",
+        "alt": "UC Berkeley",
+        "height": 26,
+        "offsetY": 2.5
+      }
+    ],
+    "left": "From teaching to teaming",
+    "right": "{slide} / {total}",
+    "logoHeight": 40
+  }
+}

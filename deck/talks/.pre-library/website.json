@@ -1,0 +1,19 @@
+{
+  "id": "website",
+  "title": "GooGym2D — full project tour",
+  "targetMinutes": 20,
+  "note": "Faithful 16:9 port of the project website, in website order. This is the reference deck: every slide keeps the site's markup, copy, styling and animation. Venue decks reorder and reframe these same slides via props.",
+  "slides": [
+    { "use": "hero", "minutes": 1.0 },
+    { "use": "problem", "minutes": 1.5 },
+    { "use": "environment", "minutes": 2.5 },
+    { "use": "framework", "minutes": 2.0 },
+    { "use": "collection", "minutes": 2.5 },
+    { "use": "curation", "minutes": 2.0 },
+    { "use": "training", "minutes": 2.0 },
+    { "use": "correction", "minutes": 2.5 },
+    { "use": "codesign", "minutes": 2.5 },
+    { "use": "results", "minutes": 2.5 },
+    { "use": "project", "minutes": 1.0 }
+  ]
+}

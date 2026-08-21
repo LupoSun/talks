@@ -1,0 +1,1276 @@
+/* Deck overrides — the ONLY layer that differs from the website.
+ *
+ * css/site.css is a verbatim copy of project_website/css/styles.css. Nothing in
+ * it is edited. This file does the minimum needed to host those styles inside
+ * Reveal.js as 16:9 slides.
+ *
+ * Key decision: Reveal runs UNSCALED (width/height 100% in runtime/deck.js), so
+ * a slide *is* the viewport. That means every `vw`/`vh`/`svh` unit and every
+ * `clamp()` in the website CSS resolves exactly as it does on the real site —
+ * including the `min-height: 100vh` stages, which become full-slide stages for
+ * free. No viewport-unit rewriting, no pixel-locking, no divergence.
+ */
+
+/* ---- Typography ------------------------------------------------------------
+ * tokens.css is a verbatim copy of the website's, where the type scale is sized
+ * for reading at desk distance (body copy is 14px). Unscaled slides mean those
+ * are literally 14px on a projector, which is too small for a lecture hall.
+ *
+ * Rather than edit tokens.css, redefine the same custom properties in terms of
+ * `--type-scale`. Everything in site.css derives from these, so one number
+ * rescales the whole deck coherently — including the clamp() ceilings, since
+ * those reference the tokens too. Tracking scales with it; leading is unitless
+ * and does not need to.
+ *
+ * Set per talk via `"typography": { "scale": 1.25 }`.
+ */
+:root {
+  /* One 1920-relative pixel.
+   *
+   * Reveal runs unscaled, so a slide IS the viewport — which means a token
+   * written in `px` is the same physical size no matter how big the display is.
+   * On a 3840px-wide screen that renders the whole deck at half size, marooned
+   * in white. `calc(100vw / 1920)` is a length divided by a number, which CSS
+   * allows: it is 1px at 1920 and grows with the viewport, so every token below
+   * is resolution-independent while staying byte-identical at 1920. */
+  --u: calc(100vw / 1920);
+
+  --type-scale: 1.25;
+
+  --text-body-lg: calc(14 * var(--u) * var(--type-scale));
+  --tracking-body-lg: calc(-0.14 * var(--u) * var(--type-scale));
+  --text-heading-sm: calc(18 * var(--u) * var(--type-scale));
+  --tracking-heading-sm: calc(-0.18 * var(--u) * var(--type-scale));
+  --text-heading: calc(20 * var(--u) * var(--type-scale));
+  --tracking-heading: calc(-0.4 * var(--u) * var(--type-scale));
+  --text-heading-lg: calc(24 * var(--u) * var(--type-scale));
+  --tracking-heading-lg: calc(-0.48 * var(--u) * var(--type-scale));
+  --text-display: calc(32 * var(--u) * var(--type-scale));
+  --tracking-display: calc(-0.64 * var(--u) * var(--type-scale));
+  --text-display-lg: calc(48 * var(--u) * var(--type-scale));
+  --tracking-display-lg: calc(-0.96 * var(--u) * var(--type-scale));
+  --text-display-xl: calc(72 * var(--u) * var(--type-scale));
+  --tracking-display-xl: calc(-1.44 * var(--u) * var(--type-scale));
+}
+
+/* Chinese falls through to DeckCJK — a Noto Sans CJK SC subset covering exactly
+   the characters used in talks/*.json (see tools/subset_cjk.py). The latin faces
+   are listed first so English is unaffected: a browser only reaches DeckCJK for
+   glyphs Inter/Montserrat/DM Sans do not have. Without it, Chinese would render
+   in whatever the presenting machine happens to install. */
+:root {
+  --font-geist: 'Inter', 'DeckCJK', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-aeonik: 'Montserrat', 'DeckCJK', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* DM Sans — matches the ACADIA paper. Opt in with
+   `"typography": { "family": "dmsans" }`; omit for the website's Inter/Montserrat. */
+body[data-fonts="dmsans"] {
+  --font-geist: 'DM Sans', 'DeckCJK', ui-sans-serif, system-ui, sans-serif;
+  --font-aeonik: 'DM Sans', 'DeckCJK', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* CMU Serif — matches the IASS paper. Inter sits behind it deliberately: the
+   vendored Computer Modern carries 148 glyphs and the deck uses a handful it
+   lacks (middot, en/em dash, superscript four, rightwards arrow). Those fall
+   through rather than tofu. Opt in with `"typography": { "family": "cmu" }`. */
+body[data-fonts="cmu"] {
+  --font-geist: 'CMU Serif', 'Inter', 'DeckCJK', ui-serif, Georgia, serif;
+  --font-aeonik: 'CMU Serif', 'Montserrat', 'DeckCJK', ui-serif, Georgia, serif;
+}
+
+/* Computer Modern splits its em box differently from DM Sans: the same
+   `padding: 6px 16px` leaves the capitals 4.6px high in a 29.5px eyebrow pill,
+   where DM Sans is off by 0.8px. Push the content box down by half the
+   imbalance (0.131em, so it tracks --type-scale) and lift the leading dot back,
+   since it was already centred and would otherwise ride down with the text. */
+body[data-fonts="cmu"] .eyebrow {
+  padding-top: calc(6px + 0.131em);
+  padding-bottom: calc(6px - 0.131em);
+}
+body[data-fonts="cmu"] .eyebrow::before {
+  position: relative;
+  top: -0.131em;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg, #fff);
+}
+
+.reveal {
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-geist);
+  color: var(--ink);
+}
+
+.reveal .slides {
+  width: 100%;
+  height: 100%;
+  text-align: left;
+}
+
+/* Each slide fills the viewport. Reveal positions slides absolutely and may set
+   an inline `top` for vertical centering; centering is off (center:false) but we
+   pin the origin anyway so the website's own layout owns the box. */
+/* Padding is deliberately NOT reset here: the website's
+   `.section { padding-block: clamp(...) }` is what gives full-bleed sections
+   their breathing room, and it should keep doing so. */
+.reveal .slides > section {
+  width: 100%;
+  height: 100%;
+  top: 0 !important;
+  left: 0 !important;
+  overflow: clip;
+}
+
+/* Slides are flex containers (Reveal's `display` config is set to "flex" in
+   runtime/deck.js). The website's `.section` supplies `align-items: center`;
+   stage-based sections have no `.section` class and default to `stretch`, which
+   is exactly what their full-height stages want. */
+.reveal .slides > section > .container {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Pinned stages carry their own full-height layout; they must not be squashed.
+ *
+ * `min-height: 0` matters: site.css gives each stage `min-height: 100vh`, which
+ * outranks `height: 100%` and makes the stage a full 1080px even inside a
+ * section whose content box is shorter because the chrome reserved padding —
+ * pushing the bottom of the composition off the slide. Zero it and the stage
+ * fills the padded box instead of the raw viewport. */
+.reveal .slides > section > .framework-stage,
+.reveal .slides > section > .collection-stage,
+.reveal .slides > section > .curation-stage,
+.reveal .slides > section > .training-stage,
+.reveal .slides > section > .correction-stage,
+.reveal .slides > section > .codesign-stage,
+.reveal .slides > section > .results-stage {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Beat markers: Reveal counts these to generate keypress steps. They must never
+   paint or occupy space. */
+.deck-beat {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Chrome */
+.reveal .progress {
+  color: var(--accent-hero, var(--color-electric-blue));
+  height: 4px;
+}
+
+.reveal .slide-number {
+  font-family: var(--font-geist);
+  font-size: 14px;
+  background: transparent;
+  color: var(--ink-faint);
+}
+
+.deck-error {
+  padding: 80px;
+  font-family: var(--font-geist);
+}
+.deck-error h1 {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+.deck-error code {
+  background: #f2f5f8;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+/* Start curtain — shown when Backstage launches the deck, so a single click can
+   grant the user gesture that fullscreen and the speaker window both require. */
+.deck-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: grid;
+  place-items: center;
+  background: var(--color-midnight-ink);
+  color: #fff;
+  cursor: pointer;
+  font-family: var(--font-geist);
+  text-align: center;
+}
+.deck-curtain__title {
+  font-family: var(--font-aeonik);
+  font-size: 40px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+.deck-curtain__sub { font-size: 18px; opacity: 0.8; margin: 0 0 28px; }
+.deck-curtain__keys { font-size: 13px; opacity: 0.45; letter-spacing: 0.4px; margin: 0; }
+
+/* ---- Master slide frame ---------------------------------------------------
+ * The website caps content at 1280px. That is right for a scroll page on a big
+ * monitor, but on a 16:9 slide it leaves the frame half empty — the results
+ * chart sat at 980px inside a 1280px column inside a 1920px slide.
+ *
+ * Slides get a wider frame that still scales with the projector. Body copy is
+ * unaffected: every section already caps its own text block (28-46rem), so the
+ * reading measure stays right while figures expand to fill the slide.
+ */
+/* Proportional, not a fixed ceiling — the frame keeps adapting on a 2560px
+   display instead of stranding the content at 1680px in the middle. The upper
+   bound only bites on unusually wide screens. */
+:root {
+  --content-max: min(90vw, calc(2400 * var(--u)));
+}
+
+/* Figures fill the frame. The website's fixed ceilings were tuned for a column
+   layout, not a projected slide — the canvases all resize from their own
+   bounding box, so widening the box is the whole fix. */
+.results-chart {
+  width: 100%;
+  max-width: none;
+}
+
+/* The generalization wall pans horizontally, and at the website's narrower
+   frame it always overflowed, so flex-start looked the same as centred. In the
+   wider slide frame the wall FITS, and flex-start visibly parks it to the left.
+   Centring is correct at both sizes; results.js offsets the pan by panRange/2
+   so a wall that does overflow still travels edge to edge. */
+.gen-formation {
+  justify-content: center;
+}
+
+/* A curve that climbs left-to-right ends under the top-right readout. Move the
+   readout to the top-left, where this chart is always near 0%, and give it a
+   soft scrim so it stays legible whatever the data does. */
+.results-chart--rising .results-readout {
+  right: auto;
+  left: 56px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* ---- Slide chrome ---------------------------------------------------------
+ * A logo strip at the top and a footnote/meta bar at the bottom, rendered once
+ * as fixed overlays and updated per slide. Doing it once (rather than per
+ * skeleton) is what makes them land in exactly the same place every time.
+ *
+ * Slides get padding reserved for whichever bars are on, so content never sits
+ * underneath them.
+ */
+
+.deck-chrome {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-24);
+  padding: 0 clamp(var(--spacing-24), 5vw, var(--spacing-64));
+  pointer-events: none;
+  font-family: var(--font-geist);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.deck-chrome.is-on { opacity: 1; }
+
+.deck-chrome--top { top: 0; height: var(--chrome-top, 0px); }
+.deck-chrome--bottom { bottom: 0; height: var(--chrome-bottom, 0px); }
+
+/* The canvas runs to the top edge.
+ *
+ * Only the bottom bar reserves space. The top bar floats over the slide, so a
+ * composition can bleed the full height instead of starting below a strip of
+ * reserved margin — which on a 16:9 slide is a real amount of room. Legibility
+ * moves to the plates below rather than to empty space. */
+.reveal .slides > section {
+  padding-top: 0;
+  padding-bottom: var(--chrome-bottom, 0px);
+}
+
+/* Each top group sits on its own frosted plate — the same treatment the
+   curation / training / correction copy uses to stay readable above a moving
+   layer (site.css: .curation-head::before). Without it the logos would sit
+   directly on whatever the slide puts underneath them. */
+.deck-chrome--top .deck-logos,
+.deck-chrome--top .deck-chrome__right {
+  padding: calc(7 * var(--u)) clamp(12px, 1vw, calc(18 * var(--u)));
+  border-radius: calc(24 * var(--u));
+  background: rgba(255, 255, 255, 0.62);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-subtle);
+}
+/* The plates carry the separation now; a rule drawn across the full width would
+   cut straight through whatever bleeds underneath it. */
+.deck-chrome--top .deck-chrome__rule { display: none; }
+/* Nothing to lay out against when the group is empty. */
+.deck-chrome--top .deck-chrome__right:empty { display: none; }
+
+/* Environment: the three panels are squares sized off the full frame width, so
+   at 1728px they come out 507px tall and the composition totals 1062px in a
+   1024px slide — it was overflowing at both ends before the top bar stopped
+   reserving space, which is why its eyebrow was clipped. Cap the row so the
+   squares shrink to fit instead. */
+#environment .environment-cards {
+  /* `width`, not `max-width`: this grid is shrink-to-fit in its column, so a
+     max-width never binds — the columns size to content and ignore it. */
+  width: min(100%, 120vh);
+  margin-inline: auto;
+}
+
+.deck-logos { display: flex; align-items: center; gap: var(--spacing-24); }
+.deck-logos img {
+  height: var(--chrome-logo-h, 34px);
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+.deck-logos__text {
+  font-family: var(--font-aeonik);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-body-lg);
+  letter-spacing: -0.2px;
+  color: var(--ink);
+}
+
+.deck-chrome__spacer { flex: 1; }
+
+.deck-chrome__right,
+.deck-chrome__left {
+  font-size: var(--text-body-lg);
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+/* The footnote is the one piece that changes per slide — citations, data
+   sources, caveats that belong on the slide but not in the headline. */
+.deck-footnote {
+  font-size: calc(var(--text-body-lg) * 0.85);
+  color: var(--ink-faint);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 62%;
+}
+.deck-footnote:empty { display: none; }
+.deck-footnote sup { color: var(--accent-hero); font-weight: 600; padding-right: 3px; }
+
+.deck-chrome__rule {
+  position: absolute;
+  left: clamp(var(--spacing-24), 5vw, var(--spacing-64));
+  right: clamp(var(--spacing-24), 5vw, var(--spacing-64));
+  height: 1px;
+  background: rgba(10, 13, 18, 0.09);
+}
+.deck-chrome--top .deck-chrome__rule { bottom: 0; }
+.deck-chrome--bottom .deck-chrome__rule { top: 0; }
+
+/* Thumbnails and print keep the chrome — a thumbnail should look like the
+   slide really looks — but the rehearsal badge and curtain never belong. */
+body.is-thumb .deck-rehearse { display: none !important; }
+
+/* ---- Title slide ----------------------------------------------------------
+ * Deck-only skeleton (the website has no equivalent section), built from the
+ * same tokens and type scale as the hero so it sits in the same design system.
+ */
+
+.section--title {
+  background: var(--title-wash, var(--gradient-whisper-fade-blue));
+  position: relative;
+  overflow: clip;
+}
+
+.title__inner { position: relative; z-index: 1; }
+.title--center { text-align: center; }
+.title--center .title-authors,
+.title--center .title-affils,
+.title--center .title-links { justify-content: center; }
+.title--center .headline,
+.title--center .lede { margin-inline: auto; }
+
+.title__headline { max-width: 20ch; margin-bottom: var(--spacing-24); }
+.title__subtitle { max-width: var(--title-subtitle-w, 46ch); color: var(--ink-muted); }
+
+.title-meta { margin-top: var(--spacing-48); }
+
+.title-authors {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 10px;
+  font-family: var(--font-aeonik);
+  font-size: var(--text-heading);
+  font-weight: var(--font-weight-semibold);
+  color: var(--ink);
+  margin: 0 0 var(--spacing-12);
+}
+.title-sep { color: var(--ink-faint); font-weight: 400; }
+.title-mark {
+  font-size: 0.62em;
+  color: var(--section-accent, var(--accent-hero));
+  font-weight: 600;
+  padding-left: 1px;
+}
+
+.title-affils {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  list-style: none;
+  margin: 0 0 var(--spacing-16);
+  padding: 0;
+  font-size: var(--text-body-lg);
+  color: var(--ink-muted);
+}
+
+.title-venue,
+.title-when {
+  font-size: var(--text-body-lg);
+  color: var(--ink-muted);
+  margin: 0 0 4px;
+}
+.title-venue { font-weight: var(--font-weight-medium); color: var(--ink); }
+
+.title-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: var(--spacing-32);
+}
+.title-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(10, 13, 18, 0.06);
+  border-radius: var(--radius-full);
+  padding: 6px 16px;
+  box-shadow: var(--shadow-subtle);
+}
+.title-link__label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--ink-faint);
+}
+.title-link__value { font-size: var(--text-body-lg); font-weight: var(--font-weight-medium); }
+
+/* Thumbnail mode (?only=S07): one slide, no chrome. Backstage renders these in
+   scaled-down iframes, so they are always the real thing, never a stale export. */
+body.is-thumb .reveal .progress,
+body.is-thumb .reveal .slide-number,
+body.is-thumb .deck-curtain { display: none !important; }
+
+/* Rehearsal recording badge. */
+.deck-rehearse {
+  position: fixed;
+  right: 14px;
+  bottom: 12px;
+  z-index: 998;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background: rgba(185, 28, 28, 0.92);
+  padding: 5px 10px;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+/* Placeholder for scenes not yet ported. */
+.slide--placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 0 clamp(var(--spacing-24), 5vw, var(--spacing-64));
+}
+.placeholder-tag {
+  margin-top: var(--spacing-32);
+  font-size: var(--text-body-lg);
+  color: var(--ink-muted);
+}
+.placeholder-tag code {
+  background: var(--color-sky-wash);
+  color: var(--color-electric-blue);
+  padding: 4px 12px;
+  border-radius: 8px;
+}
+
+/* ---------------------------------------------------------------------------
+   Correction (IASS) — six rows instead of the shared skeleton's four, at the
+   same thumbnail scale. Six rows at the site's 10px gaps would overflow a 16:9
+   slide by a hair, so only the gaps tighten; the cell size is inherited.
+   ------------------------------------------------------------------------- */
+#teaching-correction-iass .dataset-rows {
+  gap: 6px;
+}
+#teaching-correction-iass .dataset-row__track {
+  gap: 6px;
+}
+
+/* Defensive: a round with nothing left to borrow would hold an empty slot.
+   The exporter back-fills, so this should not appear in practice. */
+#teaching-correction-iass .dataset-cell--empty {
+  box-shadow: none;
+  background: transparent;
+  border: 1px dashed rgba(83, 88, 98, 0.22);
+}
+
+/* ---------------------------------------------------------------------------
+   Framework (IASS) — the paper's pipeline figure, inlined as SVG so the slide
+   can reveal it stage by stage. Layout is inherited wholesale from the shared
+   `framework` skeleton (site.css: .framework-stage__inner is the copy-left /
+   figure-right grid), so this only sizes the SVG and styles the beat caption.
+   ------------------------------------------------------------------------- */
+/* site.css caps .framework-copy at 34rem inside a 0.85fr column, which on a
+   1920 slide strands ~160px between the two. Give the copy exactly its measure
+   and hand every remaining pixel to the diagram — same two-column layout, but
+   the figure comes out ~25% larger, which matters for a dense figure. */
+#framework-iass .framework-stage__inner {
+  /* 34rem in `--u`, not `rem`. A rem is pinned to the 16px root, so on a 3840
+     display the type doubled while this column stayed 544px and every stage
+     line wrapped. 544 units tracks the viewport like everything else here. */
+  grid-template-columns: minmax(0, calc(544 * var(--u))) minmax(0, 1fr);
+}
+#framework-iass .framework-copy { max-width: calc(544 * var(--u)); }
+#framework-iass .framework-viewport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 100%;
+}
+#framework-iass .fwi-figure {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+#framework-iass .fwi-figure svg {
+  width: 100%;
+  height: auto;
+  max-height: 78vh;
+  overflow: visible;
+}
+/* The stage list: the left column's whole body, standing for the entire slide.
+   Every line is present from the first beat and dims until its card lands, so
+   the column never reflows and the audience can see the shape of the loop
+   before it has been walked through. */
+#framework-iass .fwi-stages {
+  counter-reset: fwi;
+  /* The chip colours are the figure's own. Each stage card in framework.svg
+     prints the same numbered badge, and these are those badge fills, read out
+     of the file — so the number beside a line and the number on its card are
+     the same mark. Re-read them if the figure is ever re-exported. */
+  --fwi-1: #68c9e5;
+  --fwi-2: #087f5b;
+  --fwi-3: #ef658e;
+  --fwi-4: #fc7524;
+  --fwi-5: #9775fa;
+  /* Both needed by the chip, which has to reason in the line's units from
+     inside its own smaller font-size. */
+  --fwi-line: 1.4;
+  --fwi-chip: 0.78;
+  margin-top: var(--spacing-24);
+  padding-top: var(--spacing-24);
+  border-top: 1px solid var(--rule, rgba(83, 88, 98, 0.16));
+  font-size: var(--text-heading-sm);
+  letter-spacing: var(--tracking-heading-sm);
+  line-height: 1.4;
+}
+#framework-iass .fwi-stages .pt {
+  /* Wider hanging indent than a plain bullet: the marker is a numbered chip,
+     not a 0.4em square, and a wrapped line has to clear it. The chip is
+     positioned rather than flowed, so padding alone does the indenting. */
+  position: relative;
+  padding-left: 2.35em;
+  text-indent: 0;
+  margin-top: 0.72em;
+  color: var(--ink);
+  opacity: 0.28;
+  transition: opacity 0.45s ease;
+}
+#framework-iass .fwi-stages .pt.is-lit { opacity: 1; }
+/* The number is what ties a line to its card — the diagram prints the same
+   1-5 on the stages themselves. */
+#framework-iass .fwi-stages .pt::before {
+  content: counter(fwi);
+  counter-increment: fwi;
+  /* Taken out of the text flow and made exactly as tall as the first line box,
+     so it is centred on its line by construction. It used to be an inline-block
+     nudged by a hand-tuned `vertical-align`, which is why the numbers sat low.
+     `em` inside here is the chip's own font-size, hence the division. */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(var(--fwi-line) / var(--fwi-chip) * 1em);
+  height: calc(var(--fwi-line) / var(--fwi-chip) * 1em);
+  line-height: calc(var(--fwi-line) / var(--fwi-chip) * 1em);
+  font-size: calc(var(--fwi-chip) * 1em);
+  text-align: center;
+  border-radius: 999px;
+  font-weight: var(--font-weight-semibold);
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+  opacity: 1;
+}
+#framework-iass .fwi-stages .pt:nth-child(1)::before { background: var(--fwi-1); }
+#framework-iass .fwi-stages .pt:nth-child(2)::before { background: var(--fwi-2); }
+#framework-iass .fwi-stages .pt:nth-child(3)::before { background: var(--fwi-3); }
+#framework-iass .fwi-stages .pt:nth-child(4)::before { background: var(--fwi-4); }
+#framework-iass .fwi-stages .pt:nth-child(5)::before { background: var(--fwi-5); }
+/* Held back until the ring closes: it is the one fact the loop's shape cannot
+   state on its own. */
+#framework-iass .fwi-foot {
+  margin: var(--spacing-24) 0 0;
+  font-size: var(--text-body-lg);
+  letter-spacing: var(--tracking-body-lg);
+  font-style: italic;
+  color: var(--ink-muted);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+#framework-iass .fwi-foot.is-lit { opacity: 1; transform: none; }
+
+/* Stages scale about their own centre, not the SVG origin, so the breathing on
+   the final beat swells each card in place. */
+#framework-iass .fw-stage {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+/* ---------------------------------------------------------------------------
+   Outcomes (IASS) — one horizontal bar per round, copy left and chart right so
+   the seven rows get the full height of the slide. Shares the results section's
+   theme; only the chart itself is new.
+   ------------------------------------------------------------------------- */
+#results-iass-outcomes .oc-split {
+  display: grid;
+  grid-template-columns: minmax(0, 27rem) minmax(0, 1fr);
+  gap: clamp(var(--spacing-24), 3vw, var(--spacing-48));
+  align-items: center;
+  width: 100%;
+}
+#results-iass-outcomes .oc-copy__sub {
+  max-width: 27rem;
+}
+#results-iass-outcomes .oc-legend {
+  display: flex;
+  gap: var(--spacing-24);
+  margin-top: var(--spacing-24);
+  padding-top: var(--spacing-16);
+  border-top: 1px solid rgba(83, 88, 98, 0.16);
+  font-size: var(--text-body-lg);
+  color: var(--ink-muted);
+}
+#results-iass-outcomes .oc-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+#results-iass-outcomes .oc-legend__chip {
+  width: 16px;
+  height: 16px;
+  border-radius: 5px;
+  border: 1px solid rgba(83, 88, 98, 0.22);
+}
+/* The chips repeat the hairline too, or at this size they read as two blanks. */
+#results-iass-outcomes .oc-legend__chip.is-fail {
+  background: var(--oc-fail, #fdf6f3);
+  border-color: rgba(224, 65, 31, 0.42);
+}
+#results-iass-outcomes .oc-legend__chip.is-ok {
+  background: var(--oc-ok, #fafdee);
+  border-color: rgba(9, 146, 104, 0.45);
+}
+
+#results-iass-outcomes .oc-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+#results-iass-outcomes .oc-chart {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1.1vh, 14px);
+  width: 100%;
+}
+/* Label, bar and number travel together as one centred trio. */
+#results-iass-outcomes .oc-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 0.9vw, 16px);
+  transition: opacity 0.35s ease;
+}
+#results-iass-outcomes .oc-row__label {
+  /* Wide enough for "Pre-DAgger": if the longest label overflows, its row's
+     track is pushed right and that row alone falls out of the column. */
+  flex: 0 0 6.4em;
+  text-align: right;
+  font-size: var(--text-heading-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--ink);
+  white-space: nowrap;
+}
+/* The track fills the column and the cells take their height from their width.
+   Sizing the cell from a calc() over the track's own width would be circular —
+   the track is what the columns are sizing — and collapses to zero. The vh cap
+   is the guard for a short, wide screen, where seven square rows would
+   otherwise run past the bottom. */
+#results-iass-outcomes .oc-row__track {
+  display: grid;
+  transform-origin: center;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  justify-content: center;
+  gap: 7px;
+  min-width: 0;
+  flex: 1 1 auto;
+  max-width: min(100%, 112vh);
+}
+/* The ground each rollout earned — stronger than the paper's print tints, which
+   would vanish against this section's pale green. */
+#results-iass-outcomes .oc-cell {
+  aspect-ratio: 1 / 1;
+  /* aspect-ratio yields to content: without these the cell measures 84.1px
+     before its image has painted and 82.7px after, so every beat reflowed the
+     whole chart by a pixel and a half per row. */
+  min-height: 0;
+  min-width: 0;
+  /* In --u so the corner keeps its proportion to the cell on a 4K display,
+     rather than reading as a sharper box at twice the size. */
+  border-radius: calc(13 * var(--u));
+  overflow: hidden;
+  transform-origin: center;
+}
+/* Each cell reads as a card rather than a swatch: a hairline in its own hue,
+   and a drop shadow tinted the same way so the pink and green rows lift off the
+   section's pale green differently instead of sharing one grey. */
+/* The paper's own grounds, exactly as sliced out of Figure 5.
+   
+   They are very close to each other — 3/7/5 apart in RGB — so at slide size the
+   fills alone barely separate the two outcomes. The hairline and the tinted
+   shadow carry that distinction instead, which is why they stay a touch
+   stronger than the fills would suggest. */
+#results-iass-outcomes .oc-chart {
+  --oc-fail: #fdf6f3;
+  --oc-ok: #fafdee;
+}
+#results-iass-outcomes .oc-cell.is-fail {
+  background: var(--oc-fail);
+  box-shadow:
+    inset 0 0 0 1px rgba(224, 65, 31, 0.26),
+    0 2px 5px rgba(150, 40, 20, 0.13),
+    0 6px 14px rgba(150, 40, 20, 0.10);
+}
+#results-iass-outcomes .oc-cell.is-ok {
+  background: var(--oc-ok);
+  box-shadow:
+    inset 0 0 0 1px rgba(9, 146, 104, 0.30),
+    0 2px 5px rgba(9, 110, 80, 0.14),
+    0 6px 14px rgba(9, 110, 80, 0.11);
+}
+#results-iass-outcomes .oc-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+#results-iass-outcomes .oc-row__pct {
+  /* Never shrink. As a shrinkable flex item this collapsed to its text width —
+     39.7px at "0%", 54.5px at "14%" — so every counting number stole width from
+     the track, narrowing the square cells and shortening the row beneath them.
+     That was the height compression on each beat. */
+  flex: 0 0 2.6em;
+  text-align: left;
+  /* Grows away from the bar when it swells, so the gap between them holds. */
+  transform-origin: left center;
+  font-size: var(--text-heading-lg);
+  font-weight: var(--font-weight-semibold);
+  font-variant-numeric: tabular-nums;
+}
+#results-iass-outcomes .oc-foot {
+  margin: var(--spacing-16) 0 0;
+  text-align: center;
+  font-size: var(--text-body-lg);
+  color: var(--ink-faint);
+}
+
+/* ---------------------------------------------------------------------------
+   Rollout & Evaluate (IASS) — the curation motion, re-pointed. Layout and
+   animation are inherited wholesale; the only new idea is that each cell wears
+   its FEA verdict, so the grid reads as an evaluation and not just a gallery.
+   ------------------------------------------------------------------------- */
+/* The legend rides just above the band. Its `bottom` is set by the scene from
+   the track's measured top edge rather than recomputed here from the cell
+   clamp — the clamp resolves differently than the arithmetic suggests, and a
+   4px overlap is exactly the kind of thing that only shows up on the projector. */
+#teaching-rollout-iass .rollout-legend {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-24);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  white-space: nowrap;
+  font-size: var(--text-body-lg);
+  color: var(--ink-muted);
+}
+/* The copy sits with the band rather than above it. */
+#teaching-rollout-iass .curation-head {
+  top: 50%;
+  transform: translateY(-50%);
+}
+#teaching-rollout-iass .rollout-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+#teaching-rollout-iass .rollout-legend__chip {
+  width: 16px;
+  height: 16px;
+  border-radius: 5px;
+}
+#teaching-rollout-iass .rollout-legend__chip.is-fell {
+  background: #fdf6f3;
+  box-shadow: inset 0 0 0 1px rgba(224, 65, 31, 0.42);
+}
+#teaching-rollout-iass .rollout-legend__chip.is-stood {
+  background: #fafdee;
+  box-shadow: inset 0 0 0 1px rgba(9, 146, 104, 0.45);
+}
+#teaching-rollout-iass .rollout-legend__chip.is-picked {
+  background: #fdf6f3;
+  box-shadow: inset 0 0 0 2px var(--accent-teaching-curation, #f06595);
+}
+
+/* The paper's own grounds, the same two the outcomes slide uses. The corner
+   radius is site.css's --radius-icons, inherited — not overridden. */
+#teaching-rollout-iass .formation__cell {
+  position: relative;
+}
+#teaching-rollout-iass .formation__cell.is-fell {
+  background: #fdf6f3;
+  box-shadow: inset 0 0 0 1px rgba(224, 65, 31, 0.24);
+}
+#teaching-rollout-iass .formation__cell.is-stood {
+  background: #fafdee;
+  box-shadow: inset 0 0 0 1px rgba(9, 146, 104, 0.28);
+}
+/* Lifted means "taken to the inspector". The ring goes on an ::after overlay
+   rather than the cell's own box-shadow: an inset shadow paints in the
+   background layer, underneath the cell's image, so over an opaque drawing it
+   disappears. The overlay is the last child, so it paints on top of everything. */
+#teaching-rollout-iass .formation__cell.is-lifted {
+  box-shadow: 0 14px 34px rgba(240, 101, 149, 0.42);
+}
+#teaching-rollout-iass .formation__cell.is-lifted::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 3px var(--accent-teaching-curation, #f06595);
+  pointer-events: none;
+}
+
+/* Copy blocks pinned over an animation carry a `rem` max-width in site.css
+   (28-42rem). rem is the root font size, which does not move with the viewport,
+   so at 4K the type doubles inside a column that does not — the text rewraps to
+   twice the lines and runs off the bottom. Restate the same measures in --u. */
+.reveal .collection-head { max-width: calc(28 * 16 * var(--u)); }
+.reveal .curation-head { max-width: calc(30 * 16 * var(--u)); }
+.reveal .training-head { max-width: calc(28 * 16 * var(--u)); }
+.reveal .correction-head { max-width: calc(28 * 16 * var(--u)); }
+.reveal .codesign-head { max-width: calc(42 * 16 * var(--u)); }
+
+/* ---------------------------------------------------------------------------
+   Talking points.
+   
+   Slide copy is a `<p class="body">`, so bullets have to be valid inside a
+   paragraph — `<span class="pt">` blocks rather than a `<ul>`, which a browser
+   would hoist straight out of the `<p>`. The marker is drawn, not typed: the
+   obvious characters for it (em dash, middot, arrow) are among the handful
+   Computer Modern does not carry, so a talk set in CMU would fall back to Inter
+   for its bullets alone.
+   ------------------------------------------------------------------------- */
+.reveal .pt {
+  display: block;
+  /* Always ragged-right, even inside a centred header: centred bullets put the
+     markers on a zigzag instead of a column. The paragraph itself stays
+     centred, so the list reads as a centred block of left-aligned lines. */
+  text-align: left;
+  padding-left: 1.5em;
+  text-indent: -1.5em;
+  margin-top: 0.55em;
+}
+/* Keep a single-column list from running the full width of a centred header.
+   Excluded when columned: fit-content would shrink the block back to one
+   column's worth and undo the layout. */
+.reveal .results-head__sub:has(.pt):not(.pt-cols),
+.reveal .environment-head__sub:has(.pt):not(.pt-cols),
+.reveal .collection-head__sub:has(.pt):not(.pt-cols) {
+  width: fit-content;
+  margin-inline: auto;
+}
+.reveal .pt:first-child { margin-top: 0; }
+.reveal .pt::before {
+  content: "";
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  margin-right: 0.65em;
+  vertical-align: 0.14em;
+  border-radius: 2px;
+  background: var(--section-accent, currentColor);
+  opacity: 0.55;
+}
+.reveal .pt strong { font-weight: var(--font-weight-semibold); color: var(--ink); }
+.reveal .pt em { font-style: italic; }
+
+/* A body paragraph left empty by a talk should not still occupy its margin. */
+.reveal .body:empty,
+.reveal .lede:empty { display: none; }
+
+/* Two-column talking points (opt in per talk with `"bodyColumns": 2`).
+   `break-inside: avoid` keeps a bullet whole — without it a point can split
+   across the column boundary with its marker stranded on the other side. */
+.reveal .pt-cols {
+  columns: 2;
+  column-gap: 2.6em;
+  /* site.css caps .body at a 52ch reading measure. Across two columns that cap
+     applies to the pair, leaving ~26ch each — narrower than the measure it was
+     meant to protect. Double it so each column gets a readable line. */
+  max-width: min(100%, 104ch);
+}
+.reveal .pt-cols .pt {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+}
+/* The head is sized for one column of prose; two columns need the width. */
+.reveal .environment-head.is-wide,
+.reveal .results-head.is-wide {
+  max-width: min(92%, calc(76 * 16 * var(--u)));
+}
+
+/* Observation / action equations on the environment slide.
+   
+   Sized by height, not width: they are one-line expressions with an 18:1 and a
+   13:1 aspect, so a width-based rule would set them at wildly different type
+   sizes. Height keeps the two matched to each other and to the body copy, and
+   keeps the strip slim — the point of the slide is the three panels below. */
+.reveal .env-eqs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: calc(14 * var(--u)) calc(44 * var(--u));
+  margin-top: var(--spacing-16);
+}
+.reveal .env-eq {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: calc(12 * var(--u));
+}
+.reveal .env-eq img {
+  height: calc(30 * var(--u));
+  width: auto;
+  max-width: 100%;
+  display: block;
+}
+.reveal .env-eq figcaption {
+  font-size: calc(var(--text-body-lg) * 0.78);
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+/* Flow-matching equations on the training slide.
+   
+   Across the bottom, side by side, below the region captions — not inside the
+   copy card. The objective is 17.5:1 with its full expectation subscript: a
+   448px card either squashed it to an illegible 26px or forced the card so wide
+   it stopped being a card. The full slide width holds both at a readable size
+   and leaves the copy alone. */
+.reveal .training-eqs {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2.4%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Three equations now: 7.5 + 9.8 + 17.5 = 34.8 aspect units wide in total,
+     so at 44u tall they need 1530px of a 1728px band. The gap has to stay
+     modest or the row stops fitting. */
+  gap: clamp(18px, 2.4vw, calc(52 * var(--u)));
+  pointer-events: none;
+}
+.reveal .training-eq {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(7 * var(--u));
+}
+.reveal .training-eq img {
+  display: block;
+  height: calc(44 * var(--u));
+  width: auto;
+  max-width: 100%;
+}
+/* Names the equation without competing with it — same treatment the
+   environment strip uses for "observation". */
+.reveal .training-eq figcaption {
+  font-size: calc(var(--text-body-lg) * 0.76);
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+/* Region captions sit under their drawing, not at a fixed slide percentage.
+   
+   site.css anchors them at `bottom: 12%`, tuned for the website where the
+   diagram fills a taller box. On a 16:9 slide the canvas ink ends at 31% from
+   the base, leaving the captions stranded ~190px below the graphics they name.
+   26% puts them just under the ink; the equation strip below is its own band. */
+.reveal .training-cap--noise,
+.reveal .training-cap--field,
+.reveal .training-cap--chunks {
+  bottom: 26%;
+}
+
+/* ---------------------------------------------------------------------------
+   Papers & code — the closing slide.
+
+   The website stacks its four cards two-over-two inside a 64rem column, which
+   is right for a scrolling page and wrong for a 16:9 slide: it left 896 of the
+   1920 pixels empty while the block still overran the top of the frame by 13px.
+   Here the four cards share one row — the two papers, which carry real text,
+   take two thirds, and the two short link cards stack in the last third.
+   ------------------------------------------------------------------------- */
+#project .project__inner {
+  /* The section caps itself at 64rem on top of `.container`. Hand the frame
+     back to the deck's own token so this slide is exactly as wide as every
+     other one — `none` would have let it bleed 96px wider on each side. */
+  max-width: var(--content-max);
+}
+#project .project-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-32);
+  align-items: stretch;
+}
+#project .project-papers {
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 0;
+}
+/* Stacked, and pushed to the two ends of the column: the link cards are short,
+   so left to themselves they bunch at the top and leave a hole under them. */
+#project .project-links {
+  grid-template-columns: 1fr;
+  align-content: space-between;
+}
+/* The paper cards are stretched to the link column's height, which leaves a
+   band of empty card under the note. `.paper-card` is already a flex column, so
+   this drops the publication line to the foot instead. */
+#project .paper-card__note { margin-top: auto; }
+
+/* ---------------------------------------------------------------------------
+   Framework (ACADIA) — the teaching-to-teaming figure, inlined as SVG so the
+   slide can build it stage by stage. Layout is the shared `framework`
+   skeleton's copy-left / figure-right grid; this sizes the SVG and styles the
+   stage list, which works like the IASS one except that these cards carry
+   titles rather than numbers, so the marker is a colour rather than a digit.
+   ------------------------------------------------------------------------- */
+#framework-acadia .framework-stage__inner {
+  /* In `--u`, not `rem`: a rem is pinned to the 16px root, so on a 3840 display
+     the type doubles while the column stays put and every line wraps. */
+  grid-template-columns: minmax(0, calc(520 * var(--u))) minmax(0, 1fr);
+}
+#framework-acadia .framework-copy { max-width: calc(520 * var(--u)); }
+#framework-acadia .framework-viewport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 100%;
+}
+#framework-acadia .fwa-figure {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+#framework-acadia .fwa-figure svg {
+  width: 100%;
+  height: auto;
+  max-height: 76vh;
+  overflow: visible;
+}
+
+/* The stage list: present from the first beat, each line dim until its own card
+   lands, so the column never reflows and the shape of the loop is legible
+   before it has been walked through. */
+#framework-acadia .fwa-stages {
+  /* Chip colours are set per line by the skeleton, from the same table that
+     decides which line lights when — see LISTED in slides/frameworkacadia.js.
+     They were `:nth-child` rules here, which meant removing one line from the
+     copy silently recoloured every line after it. */
+  --fwa-line: 1.4;
+  margin-top: var(--spacing-24);
+  padding-top: var(--spacing-24);
+  border-top: 1px solid var(--rule, rgba(83, 88, 98, 0.16));
+  font-size: var(--text-heading-sm);
+  letter-spacing: var(--tracking-heading-sm);
+  line-height: 1.4;
+}
+#framework-acadia .fwa-stages .pt {
+  position: relative;
+  padding-left: 1.9em;
+  text-indent: 0;
+  margin-top: 0.6em;
+  color: var(--ink);
+  opacity: 0.28;
+  transition: opacity 0.45s ease;
+}
+#framework-acadia .fwa-stages .pt.is-lit { opacity: 1; }
+/* Centred on the first line box by construction, rather than by a hand-tuned
+   vertical-align — the chip is exactly as tall as the line it marks. */
+#framework-acadia .fwa-stages .pt::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0.62em;
+  height: calc(var(--fwa-line) * 1em);
+  border-radius: 999px;
+  background: var(--fwa-c, currentColor);
+  opacity: 1;
+}
+/* Held back until the ring closes: it is the one claim the loop's shape cannot
+   make on its own. */
+#framework-acadia .fwa-foot {
+  margin: var(--spacing-24) 0 0;
+  font-size: var(--text-body-lg);
+  letter-spacing: var(--tracking-body-lg);
+  font-style: italic;
+  color: var(--ink-muted);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+#framework-acadia .fwa-foot.is-lit { opacity: 1; transform: none; }
+
+/* Stages scale about their own centre, not the SVG origin, so the breathing on
+   the final beat swells each card in place. */
+#framework-acadia .fw-stage { transform-box: fill-box; transform-origin: 50% 50%; }
+
+/* ---------------------------------------------------------------------------
+   Title — inverted mode (`"invert": true`).
+   
+   The flow-field palette moves into the background and everything on top goes
+   white. Rather than restating every rule in the title block, this redefines
+   the three ink tokens the block already reads, so headline, subtitle, authors,
+   affiliations, venue and date all follow from one place; only the two pill
+   treatments, which are painted rather than inked, need their own rules.
+   ------------------------------------------------------------------------- */
+.section--title.title--invert {
+  --ink: #fff;
+  --ink-muted: rgba(255, 255, 255, 0.82);
+  --ink-faint: rgba(255, 255, 255, 0.6);
+  color: #fff;
+}
+/* The eyebrow and the link pills are frosted plates on the mesh, not solid
+   cards — a white fill here would punch two opaque holes in the background. */
+.section--title.title--invert .eyebrow {
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: #fff;
+}
+.section--title.title--invert .title-link {
+  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow: none;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.section--title.title--invert .title-mark { color: rgba(255, 255, 255, 0.75); }
+.section--title.title--invert .title-sep { color: rgba(255, 255, 255, 0.45); }
+
+/* ---------------------------------------------------------------------------
+   Collection (ACADIA) — the replay plays inside a screenshot of the running
+   Bridge Designer rather than a generic OS window. The shell is an image; the
+   live canvas is positioned over the app's own drawing rect, whose fractions
+   the skeleton sets from the exporter's manifest.
+   ------------------------------------------------------------------------- */
+#teaching-collection-acadia .wp-window {
+  /* Sized so the drawing rect inside comes out close to the 458px the shared
+     skeleton gives its canvas — the app chrome is around the drawing, not
+     instead of it, so the window has to be correspondingly larger. `.os-window`
+     supplies the frame, radius and shadow; this only overrides the width. */
+  width: min(72vmin, calc(840 * var(--u)));
+  will-change: transform, opacity;
+}
+/* The canvas is placed against the body, which the shell image fills, so the
+   manifest's fractions stay fractions of the screenshot. */
+#teaching-collection-acadia .wp-window__body { position: relative; }
+#teaching-collection-acadia .wp-window__shell {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+#teaching-collection-acadia .wp-window__canvas {
+  position: absolute;
+  left: var(--wp-x, 33.125%);
+  top: var(--wp-y, 12.417%);
+  width: var(--wp-w, 55%);
+  height: var(--wp-h, 73.333%);
+  display: block;
+}
+
+/* ---------------------------------------------------------------------------
+   Correction (ACADIA) — the Rollout Inspector, shown as a still on the first
+   beat and gone by the replay. It occupies the same band as the replay layer,
+   so it is absolutely placed rather than added to the flow: nothing below it
+   should shift when it leaves.
+   ------------------------------------------------------------------------- */
+#teaching-correction-acadia .wp-still {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  transform-origin: 50% 50%;
+  /* Overrides `.os-window--wide`, which is a page-relative width; this one has
+     to sit inside the space the copy leaves. */
+  width: min(74vmin, calc(1000 * var(--u)));
+  z-index: 3;
+  will-change: transform, opacity;
+}
+#teaching-correction-acadia .wp-still .os-window__body img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+#teaching-correction-acadia .correction-stage__inner { position: relative; }

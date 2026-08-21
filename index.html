@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Talks — GooGym2D</title>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<header class="head">
+  <h1>Talks</h1>
+  <p class="sub">The real decks, not exports. <strong>Present</strong> opens the slides in
+    their own window — make that full screen on the projector — and keeps the speaker
+    notes on this page, with the arrow keys.</p>
+</header>
+
+<main id="talks" class="talks" aria-live="polite">
+  <p class="empty">Loading…</p>
+</main>
+
+<section class="console" id="console" hidden aria-label="Presenter console">
+  <div class="console__bar">
+    <div class="console__where">
+      <span class="pill" id="c-id">—</span>
+      <strong id="c-name">—</strong>
+      <span class="muted" id="c-pos"></span>
+    </div>
+    <div class="console__timer">
+      <span id="c-clock">0:00</span>
+      <span class="muted" id="c-budget"></span>
+    </div>
+    <div class="console__nav">
+      <button class="btn" id="c-prev" title="Previous (←)">←</button>
+      <button class="btn" id="c-next" title="Next (→)">→</button>
+      <button class="btn" id="c-reset" title="Reset the timer">Reset</button>
+      <button class="btn" id="c-stop">Close</button>
+    </div>
+  </div>
+  <article class="notes" id="c-notes"></article>
+</section>
+
+<footer class="foot">
+  <p>Built from the deck source; every slide is live, so nothing here can go stale.</p>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

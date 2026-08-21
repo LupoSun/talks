@@ -1,0 +1,26 @@
+{
+  "id": "acadia2026",
+  "title": "From Teaching to Teaming \u2014 ACADIA 2026",
+  "order": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16"
+  ],
+  "theme": "acadia",
+  "targetMinutes": 15,
+  "venue": "ACADIA 2026",
+  "note": "Follows the paper: Introduction -> Related Work -> Methodology -> Case Study (4.1-4.5) -> Discussion -> Conclusion. Systems/HCI paper: many contributors, three spans, browser infrastructure, and the loop closing back into assistive co-design."
+}

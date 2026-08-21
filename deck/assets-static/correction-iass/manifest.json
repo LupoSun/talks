@@ -1,0 +1,366 @@
+{
+  "replay": "replay.json",
+  "style": "inspection_formation",
+  "rows": [
+    {
+      "round": "Round 1",
+      "alpha": 1.0,
+      "cells": [
+        {
+          "file": "grid/round_001/b11_00.png",
+          "bars": 11,
+          "slot": 11
+        },
+        {
+          "file": "grid/round_001/b11_01.png",
+          "bars": 11,
+          "slot": 11
+        },
+        {
+          "file": "grid/round_001/b13_00.png",
+          "bars": 13,
+          "slot": 13
+        },
+        {
+          "file": "grid/round_001/b13_01.png",
+          "bars": 13,
+          "slot": 13
+        },
+        {
+          "file": "grid/round_001/b15_00.png",
+          "bars": 15,
+          "slot": 15
+        },
+        {
+          "file": "grid/round_001/b15_01.png",
+          "bars": 15,
+          "slot": 15
+        },
+        {
+          "file": "grid/round_001/b17_00.png",
+          "bars": 17,
+          "slot": 17
+        },
+        {
+          "file": "grid/round_001/b17_01.png",
+          "bars": 17,
+          "slot": 17
+        },
+        {
+          "file": "grid/round_001/b19_00.png",
+          "bars": 19,
+          "slot": 19
+        },
+        {
+          "file": "grid/round_001/b19_01.png",
+          "bars": 19,
+          "slot": 19
+        }
+      ]
+    },
+    {
+      "round": "Round 2",
+      "alpha": 0.86,
+      "cells": [
+        {
+          "file": "grid/round_002/b11_00.png",
+          "bars": 11,
+          "slot": 11
+        },
+        {
+          "file": "grid/round_002/b11_01.png",
+          "bars": 11,
+          "slot": 11
+        },
+        {
+          "file": "grid/round_002/b13_00.png",
+          "bars": 13,
+          "slot": 13
+        },
+        {
+          "file": "grid/round_002/b13_01.png",
+          "bars": 13,
+          "slot": 13
+        },
+        {
+          "file": "grid/round_002/b15_00.png",
+          "bars": 15,
+          "slot": 15
+        },
+        {
+          "file": "grid/round_002/b15_01.png",
+          "bars": 15,
+          "slot": 15
+        },
+        {
+          "file": "grid/round_002/b17_00.png",
+          "bars": 17,
+          "slot": 17
+        },
+        {
+          "file": "grid/round_002/b17_01.png",
+          "bars": 17,
+          "slot": 17
+        },
+        {
+          "file": "grid/round_002/b19_00.png",
+          "bars": 17,
+          "slot": 19,
+          "borrowed": true
+        },
+        {
+          "file": "grid/round_002/b19_01.png",
+          "bars": 15,
+          "slot": 19,
+          "borrowed": true
+        }
+      ]
+    },
+    {
+      "round": "Round 3",
+      "alpha": 0.72,
+      "cells": [
+        {
+          "file": "grid/round_003/b11_00.png",
+          "bars": 13,
+          "slot": 11,
+          "borrowed": true
+        },
+        {
+          "file": "grid/round_003/b11_01.png",
+          "bars": 13,
+          "slot": 11,
+          "borrowed": true
+        },
+        {
+          "file": "grid/round_003/b13_00.png",
+          "bars": 13,
+          "slot": 13
+        },
+        {
+          "file": "grid/round_003/b13_01.png",
+          "bars": 13,
+          "slot": 13
+        },
+        {
+          "file": "grid/round_003/b15_00.png",
+          "bars": 15,
+          "slot": 15
+        },
+        {
+          "file": "grid/round_003/b15_01.png",
+          "bars": 15,
+          "slot": 15
+        },
+        {
+          "file": "grid/round_003/b17_00.png",
+          "bars": 17,
+          "slot": 17
+        },
+        {
+          "file": "grid/round_003/b17_01.png",
+          "bars": 17,
+          "slot": 17
+        },
+        {
+          "file": "grid/round_003/b19_00.png",
+          "bars": 19,
+          "slot": 19
+        },
+        {
+          "file": "grid/round_003/b19_01.png",
+          "bars": 17,
+          "slot": 19,
+          "borrowed": true
+        }
+      ]
+    },
+    {
+      "round": "Round 4",
+      "alpha": 0.58,
+      "cells": [
+        {
+          "file": "grid/round_004/b11_00.png",
+          "bars": 11,
+          "slot": 11
+        },
+        {
+          "file": "grid/round_004/b11_01.png",
+          "bars": 11,
+          "slot": 11
+        },
+        {
+          "file": "grid/round_004/b13_00.png",
+          "bars": 13,
+          "slot": 13
+        },
+        {
+          "file": "grid/round_004/b13_01.png",
+          "bars": 13,
+          "slot": 13
+        },
+        {
+          "file": "grid/round_004/b15_00.png",
+          "bars": 15,
+          "slot": 15
+        },
+        {
+          "file": "grid/round_004/b15_01.png",
+          "bars": 15,
+          "slot": 15
+        },
+        {
+          "file": "grid/round_004/b17_00.png",
+          "bars": 17,
+          "slot": 17
+        },
+        {
+          "file": "grid/round_004/b17_01.png",
+          "bars": 17,
+          "slot": 17
+        },
+        {
+          "file": "grid/round_004/b19_00.png",
+          "bars": 19,
+          "slot": 19
+        },
+        {
+          "file": "grid/round_004/b19_01.png",
+          "bars": 17,
+          "slot": 19,
+          "borrowed": true
+        }
+      ]
+    },
+    {
+      "round": "Round 5",
+      "alpha": 0.44,
+      "cells": [
+        {
+          "file": "grid/round_005/b11_00.png",
+          "bars": 11,
+          "slot": 11
+        },
+        {
+          "file": "grid/round_005/b11_01.png",
+          "bars": 11,
+          "slot": 11
+        },
+        {
+          "file": "grid/round_005/b13_00.png",
+          "bars": 13,
+          "slot": 13
+        },
+        {
+          "file": "grid/round_005/b13_01.png",
+          "bars": 13,
+          "slot": 13
+        },
+        {
+          "file": "grid/round_005/b15_00.png",
+          "bars": 15,
+          "slot": 15
+        },
+        {
+          "file": "grid/round_005/b15_01.png",
+          "bars": 15,
+          "slot": 15
+        },
+        {
+          "file": "grid/round_005/b17_00.png",
+          "bars": 17,
+          "slot": 17
+        },
+        {
+          "file": "grid/round_005/b17_01.png",
+          "bars": 17,
+          "slot": 17
+        },
+        {
+          "file": "grid/round_005/b19_00.png",
+          "bars": 19,
+          "slot": 19
+        },
+        {
+          "file": "grid/round_005/b19_01.png",
+          "bars": 17,
+          "slot": 19,
+          "borrowed": true
+        }
+      ]
+    },
+    {
+      "round": "Round 6",
+      "alpha": 0.3,
+      "cells": [
+        {
+          "file": "grid/round_006/b11_00.png",
+          "bars": 11,
+          "slot": 11
+        },
+        {
+          "file": "grid/round_006/b11_01.png",
+          "bars": 11,
+          "slot": 11
+        },
+        {
+          "file": "grid/round_006/b13_00.png",
+          "bars": 13,
+          "slot": 13
+        },
+        {
+          "file": "grid/round_006/b13_01.png",
+          "bars": 13,
+          "slot": 13
+        },
+        {
+          "file": "grid/round_006/b15_00.png",
+          "bars": 15,
+          "slot": 15
+        },
+        {
+          "file": "grid/round_006/b15_01.png",
+          "bars": 15,
+          "slot": 15
+        },
+        {
+          "file": "grid/round_006/b17_00.png",
+          "bars": 17,
+          "slot": 17
+        },
+        {
+          "file": "grid/round_006/b17_01.png",
+          "bars": 17,
+          "slot": 17
+        },
+        {
+          "file": "grid/round_006/b19_00.png",
+          "bars": 19,
+          "slot": 19
+        },
+        {
+          "file": "grid/round_006/b19_01.png",
+          "bars": 19,
+          "slot": 19
+        }
+      ]
+    }
+  ],
+  "barcount_backgrounds": {
+    "11": "#e7f5ff",
+    "13": "#e3fafc",
+    "15": "#ebfbee",
+    "17": "#fff9db",
+    "19": "#fff0f6"
+  },
+  "bar_counts": [
+    11,
+    13,
+    15,
+    17,
+    19
+  ],
+  "cols_per_barcount": 2,
+  "chasm_width": 10.0,
+  "source_store": "experiments_vB/cache/COMBINED_11_13_15_17_19BARS"
+}

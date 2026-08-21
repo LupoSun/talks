@@ -1,0 +1,322 @@
+{
+  "id": "acadia2026",
+  "title": "From Teaching to Teaming — ACADIA 2026",
+  "slides": [
+    {
+      "id": "S01",
+      "use": "title",
+      "name": "From teaching to teaming",
+      "minutes": 0.5,
+      "tags": [
+        "intro"
+      ],
+      "props": {
+        "venue": "ACADIA 2026",
+        "paperTitle": "From teaching to teaming",
+        "subtitle": "A human-AI co-design environment for architectural and structural design",
+        "authors": [
+          {
+            "name": "Tao Sun",
+            "marks": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "Shaoyi Wang",
+            "marks": [
+              1
+            ]
+          },
+          {
+            "name": "Simon Schleicher",
+            "marks": [
+              1
+            ]
+          },
+          {
+            "name": "Ramon E. Weber",
+            "marks": [
+              2
+            ]
+          }
+        ],
+        "affiliations": [
+          "Flexible Structures Lab, Department of Architecture, UC Berkeley",
+          "Spatial Systems Lab, Department of Architecture, UC Berkeley"
+        ],
+        "venueLong": "Association for Computer Aided Design in Architecture",
+        "location": "",
+        "date": "",
+        "links": [
+          {
+            "label": "Code",
+            "value": "github.com/LupoSun/GooGym2D"
+          }
+        ],
+        "wash": "teaming-codesign",
+        "align": "left",
+        "field": true
+      },
+      "notes": "15 min + Q&A. Architecture and computational design audience — lead with the interaction and the loop, not with flow matching. Keep the math to one slide.",
+      "chrome": false
+    },
+    {
+      "id": "S02",
+      "use": "problem",
+      "name": "Design weighs what cannot be fully written down",
+      "minutes": 1.5,
+      "tags": [
+        "intro",
+        "motivation"
+      ],
+      "props": {
+        "eyebrow": "The problem",
+        "headline": "Design weighs what cannot be fully written down.",
+        "body": "Architectural design balances quantitative metrics against qualitative judgments that resist encoding as explicit rules. Existing generative tools ask designers to formalize those judgments up front."
+      },
+      "notes": "Same slide as the IASS deck, reframed: there the framing is engineering intuition, here it is qualitative judgment in architectural design. Do not say 'tacit knowledge' more than once."
+    },
+    {
+      "id": "S03",
+      "use": "question",
+      "name": "Can the AI learn from practice and come back…",
+      "minutes": 1,
+      "props": {
+        "eyebrow": "The question",
+        "headline": "Can the AI learn from practice and come back as a collaborator?",
+        "body": "Not a one-shot generator queried at the end, but a partner that learns from how designers actually work and returns to the same shared environment they work in."
+      },
+      "notes": "This is the paper's research question verbatim. Put it on screen and read it. Everything after is the answer."
+    },
+    {
+      "id": "S04",
+      "use": "framework",
+      "name": "One loop, three moves",
+      "minutes": 2,
+      "tags": [
+        "method",
+        "overview"
+      ],
+      "props": {
+        "eyebrow": "Framework",
+        "headline": "One loop, three moves.",
+        "body": "Designers teach a policy through demonstrations. They correct it where it fails. The improved policy returns to the same browser environment as a design partner. The loop runs continuously."
+      },
+      "notes": "Figure 1 from the paper. This is the spine of the talk — every later slide is one move in this loop. Point at where you are on this diagram when you get to each case-study section."
+    },
+    {
+      "id": "S05",
+      "use": "relatedwork",
+      "name": "Mixed-initiative, applied to structure",
+      "minutes": 1,
+      "props": {
+        "eyebrow": "Related work",
+        "headline": "Mixed-initiative, applied to structure.",
+        "body": "Co-creative systems establish two principles we build on: the AI contributes to a shared artifact, and the designer retains legible control. Prior architectural work covers prompting, performance feedback, and physical task sharing."
+      },
+      "notes": "Compress hard. Horvitz for mixed-initiative; Rezwana & Maher for COFI; Mitterberger for physical co-creation. One sentence each, then move."
+    },
+    {
+      "id": "S06",
+      "use": "environment",
+      "name": "A truss bridge across a variable span",
+      "minutes": 1.5,
+      "tags": [
+        "method"
+      ],
+      "props": {
+        "eyebrow": "The task",
+        "headline": "A truss bridge across a variable span.",
+        "body": "The policy places one bar at a time from an existing anchor: four continuous numbers for anchor, heading and length. Terminal finite element analysis decides whether the structure stands."
+      },
+      "notes": "Lighter than the IASS version of this slide — this room does not need the MDP formalism. If a structures person asks, the failure taxonomy is connectivity, mechanism, yield, buckling."
+    },
+    {
+      "id": "S07",
+      "use": "flowmatching",
+      "name": "Several reasonable next moves, kept open",
+      "minutes": 1,
+      "props": {
+        "eyebrow": "The policy",
+        "headline": "Several reasonable next moves, kept open.",
+        "body": "Flow matching learns a distribution over plausible design actions rather than a single averaged answer, so the same partial design can yield different valid continuations on different queries."
+      },
+      "notes": "One slide only. The multimodality intuition matters here; the loss function does not. If pressed, point them at the IASS paper."
+    },
+    {
+      "id": "S08",
+      "use": "webinfra",
+      "name": "Three interfaces, one browser tab",
+      "minutes": 1.5,
+      "props": {
+        "eyebrow": "Infrastructure",
+        "headline": "Three interfaces, one browser tab.",
+        "body": "A single FastAPI process serves the Bridge Designer for demonstration and assisted design, the Gallery for replay and curation, and the Inspector for reviewing rollouts and taking over."
+      },
+      "notes": "ACADIA-only slide — the deployment story is a genuine contribution for this venue. Fifty students on their own laptops, no install, instructor machine stores the data."
+    },
+    {
+      "id": "S09",
+      "use": "collection",
+      "name": "Fifty designers, one browser tab",
+      "minutes": 2,
+      "tags": [
+        "method",
+        "data"
+      ],
+      "beats": [
+        "gui",
+        "build",
+        "stats"
+      ],
+      "beatDuration": 1.4,
+      "props": {
+        "eyebrow": "Teaching through demonstration",
+        "headline": "Fifty designers, one browser tab.",
+        "body": "Contributors connected from their own laptops and built bridges across three spans. Combined with a prior curated set, the supervised seed reaches 323 episodes covering the structural idioms you would expect — and several you would not.",
+        "statsLabel": "Supervised episodes",
+        "statsTotal": 323,
+        "statsBreakdown": [
+          {
+            "num": 99,
+            "cap": "8 m"
+          },
+          {
+            "num": 123,
+            "cap": "10 m"
+          },
+          {
+            "num": 101,
+            "cap": "12 m"
+          }
+        ],
+        "widthFilter": null
+      },
+      "notes": "Same slide as the IASS deck, opposite framing: there it is one expert and one span as a controlled condition, here it is many contributors across three spans as a deployment result. The 10 m column is 23 browser episodes plus the 100 prior curated ones."
+    },
+    {
+      "id": "S10",
+      "use": "curation",
+      "name": "A dataset is also a design decision",
+      "minutes": 1,
+      "tags": [
+        "method",
+        "data"
+      ],
+      "props": {
+        "eyebrow": "Curation",
+        "headline": "A dataset is also a design decision.",
+        "body": "The Gallery replays successful submissions so a designer can decide which enter training. The model learns from work someone was willing to stand behind."
+      },
+      "notes": "Short beat. The point is that curation is an authored act, not preprocessing."
+    },
+    {
+      "id": "S11",
+      "use": "correction",
+      "name": "Replay the rollout, fix what failed",
+      "minutes": 1.5,
+      "tags": [
+        "method",
+        "learning"
+      ],
+      "props": {
+        "eyebrow": "Correcting through intervention",
+        "headline": "Replay the rollout, fix what failed.",
+        "body": "Four correction rounds through the Inspector: 344 episodes and 3,203 steps, stratified across spans as 109 at 8 m, 50 at 10 m and 185 at 12 m. The composition of each round records where the policy was actually struggling."
+      },
+      "notes": "Note the 12 m skew — 185 of 344 corrections. That asymmetry is diagnostic, not an accident: the longest span was hardest. IASS ran six rounds on one span; here it is four rounds across three.",
+      "footnote": "Human-gated DAgger, after Ross et al. (2011) and Kelly et al. (2019)"
+    },
+    {
+      "id": "S12",
+      "use": "training",
+      "name": "36.5% width-balanced success",
+      "minutes": 1,
+      "tags": [
+        "method",
+        "learning"
+      ],
+      "props": {
+        "eyebrow": "Training",
+        "headline": "36.5% width-balanced success.",
+        "body": "A 512-wide residual MLP, retrained after each round, with the deployed checkpoint selected by balanced rollout success across the three spans at 2,175,000 steps."
+      },
+      "notes": "Pre-empt the reaction: 36.5% sounds modest until you say that each bridge is up to 25 sequential placements in a continuous action space, and any one of them can produce a mechanism. Say that in the same breath as the number."
+    },
+    {
+      "id": "S13",
+      "use": "codesign",
+      "name": "Design together, turn by turn",
+      "minutes": 2,
+      "tags": [
+        "teaming",
+        "results"
+      ],
+      "props": {
+        "eyebrow": "Assisting through co-design",
+        "headline": "Design together, turn by turn.",
+        "body": "The trained policy returns to the Bridge Designer behind an AI Assist toggle. Every successful human placement triggers candidate continuations drawn from independent noise samples, shown as ghost bars. The designer accepts, ignores, or keeps drawing."
+      },
+      "notes": "The climax of the talk — this is the loop closing. Walk one episode: human move, AI suggestion, human move. Be first to say we have NOT yet evaluated how designers experience the suggestions; that is stated as a limitation in the paper and someone will ask."
+    },
+    {
+      "id": "S14",
+      "use": "generalization",
+      "name": "What happens at spans it was never taught?",
+      "minutes": 1.5,
+      "props": {
+        "eyebrow": "Ablation",
+        "headline": "What happens at spans it was never taught?",
+        "body": "200 episodes per span from 7 m to 13 m at 0.25 m spacing. The policy generalizes across most of the range, with interpolation troughs near 9.0 m and 11.25 m, and extrapolation falling away past 12.5 m."
+      },
+      "notes": "Give the numbers: 9.0% at the 9 m trough, 6.0% at 11.25 m, 4.0% by 12.75 m. Honest reporting of where it breaks earns more credibility here than the headline number does."
+    },
+    {
+      "id": "S15",
+      "use": "discussion",
+      "name": "A studio could grow its own model",
+      "minutes": 1.5,
+      "props": {
+        "eyebrow": "Discussion",
+        "headline": "A studio could grow its own model.",
+        "body": "The framework treats AI as an iterative collaborator rather than a one-shot generator, and it runs on small, designer-verified data — 323 seed episodes and 344 corrections. That lowers the barrier enough that an individual office could train a model reflecting its own design culture."
+      },
+      "notes": "This is the slide that makes the work matter to practitioners in the room. Then the limits: 2D pin-jointed, one load case, three spans, and no user study of the assistive mode."
+    },
+    {
+      "id": "S16",
+      "use": "conclusion",
+      "name": "From teaching to teaming, in one environment",
+      "minutes": 0.5,
+      "props": {
+        "eyebrow": "Conclusion",
+        "headline": "From teaching to teaming, in one environment.",
+        "body": "Demonstration, curation, human-gated correction, and assistive deployment, linked in a single browser-based structural design environment.",
+        "tagline": "github.com/LupoSun/GooGym2D"
+      },
+      "notes": "Land it and stop talking. Leave the repo URL on screen through Q&A."
+    }
+  ],
+  "theme": "acadia",
+  "targetMinutes": 15,
+  "venue": "ACADIA 2026",
+  "note": "Follows the paper: Introduction -> Related Work -> Methodology -> Case Study (4.1-4.5) -> Discussion -> Conclusion. Systems/HCI paper: many contributors, three spans, browser infrastructure, and the loop closing back into assistive co-design.",
+  "chrome": {
+    "logos": [
+      {
+        "text": "ACADIA 2026"
+      },
+      {
+        "text": "UC Berkeley"
+      }
+    ],
+    "topRight": "Flexible Structures Lab · Spatial Systems Lab",
+    "left": "From teaching to teaming",
+    "right": "{slide} / {total}"
+  },
+  "typography": {
+    "scale": 1.25,
+    "family": "dmsans"
+  }
+}

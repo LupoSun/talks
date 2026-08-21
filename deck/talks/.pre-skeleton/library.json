@@ -1,0 +1,612 @@
+{
+  "version": 1,
+  "nextId": 42,
+  "slides": [
+    {
+      "id": "S01",
+      "name": "From teaching to teaming",
+      "use": "title",
+      "minutes": 0.5,
+      "tags": [
+        "intro"
+      ],
+      "props": {
+        "venue": "ACADIA 2026",
+        "venueLong": "Association for Computer Aided Design in Architecture",
+        "paperTitle": "From teaching to teaming",
+        "tagline": "A human-AI co-design environment for architectural and structural design"
+      },
+      "notes": "15 min + Q&A. Architecture and computational design audience — lead with the interaction and the loop, not with flow matching. Keep the math to one slide."
+    },
+    {
+      "id": "S02",
+      "name": "Design weighs what cannot be fully written down",
+      "use": "problem",
+      "minutes": 1.5,
+      "tags": [
+        "intro",
+        "motivation"
+      ],
+      "props": {
+        "eyebrow": "The problem",
+        "headline": "Design weighs what cannot be fully written down.",
+        "body": "Architectural design balances quantitative metrics against qualitative judgments that resist encoding as explicit rules. Existing generative tools ask designers to formalize those judgments up front."
+      },
+      "notes": "Same slide as the IASS deck, reframed: there the framing is engineering intuition, here it is qualitative judgment in architectural design. Do not say 'tacit knowledge' more than once."
+    },
+    {
+      "id": "S03",
+      "name": "Can the AI learn from practice and come back…",
+      "use": "question",
+      "minutes": 1.0,
+      "tags": [],
+      "props": {
+        "eyebrow": "The question",
+        "headline": "Can the AI learn from practice and come back as a collaborator?",
+        "body": "Not a one-shot generator queried at the end, but a partner that learns from how designers actually work and returns to the same shared environment they work in."
+      },
+      "notes": "This is the paper's research question verbatim. Put it on screen and read it. Everything after is the answer."
+    },
+    {
+      "id": "S04",
+      "name": "One loop, three moves",
+      "use": "framework",
+      "minutes": 2.0,
+      "tags": [
+        "method",
+        "overview"
+      ],
+      "props": {
+        "eyebrow": "Framework",
+        "headline": "One loop, three moves.",
+        "body": "Designers teach a policy through demonstrations. They correct it where it fails. The improved policy returns to the same browser environment as a design partner. The loop runs continuously."
+      },
+      "notes": "Figure 1 from the paper. This is the spine of the talk — every later slide is one move in this loop. Point at where you are on this diagram when you get to each case-study section."
+    },
+    {
+      "id": "S05",
+      "name": "Mixed-initiative, applied to structure",
+      "use": "relatedwork",
+      "minutes": 1.0,
+      "tags": [],
+      "props": {
+        "eyebrow": "Related work",
+        "headline": "Mixed-initiative, applied to structure.",
+        "body": "Co-creative systems establish two principles we build on: the AI contributes to a shared artifact, and the designer retains legible control. Prior architectural work covers prompting, performance feedback, and physical task sharing."
+      },
+      "notes": "Compress hard. Horvitz for mixed-initiative; Rezwana & Maher for COFI; Mitterberger for physical co-creation. One sentence each, then move."
+    },
+    {
+      "id": "S06",
+      "name": "A truss bridge across a variable span",
+      "use": "environment",
+      "minutes": 1.5,
+      "tags": [
+        "method"
+      ],
+      "props": {
+        "eyebrow": "The task",
+        "headline": "A truss bridge across a variable span.",
+        "body": "The policy places one bar at a time from an existing anchor: four continuous numbers for anchor, heading and length. Terminal finite element analysis decides whether the structure stands."
+      },
+      "notes": "Lighter than the IASS version of this slide — this room does not need the MDP formalism. If a structures person asks, the failure taxonomy is connectivity, mechanism, yield, buckling."
+    },
+    {
+      "id": "S07",
+      "name": "Several reasonable next moves, kept open",
+      "use": "flowmatching",
+      "minutes": 1.0,
+      "tags": [],
+      "props": {
+        "eyebrow": "The policy",
+        "headline": "Several reasonable next moves, kept open.",
+        "body": "Flow matching learns a distribution over plausible design actions rather than a single averaged answer, so the same partial design can yield different valid continuations on different queries."
+      },
+      "notes": "One slide only. The multimodality intuition matters here; the loss function does not. If pressed, point them at the IASS paper."
+    },
+    {
+      "id": "S08",
+      "name": "Three interfaces, one browser tab",
+      "use": "webinfra",
+      "minutes": 1.5,
+      "tags": [],
+      "props": {
+        "eyebrow": "Infrastructure",
+        "headline": "Three interfaces, one browser tab.",
+        "body": "A single FastAPI process serves the Bridge Designer for demonstration and assisted design, the Gallery for replay and curation, and the Inspector for reviewing rollouts and taking over."
+      },
+      "notes": "ACADIA-only slide — the deployment story is a genuine contribution for this venue. Fifty students on their own laptops, no install, instructor machine stores the data."
+    },
+    {
+      "id": "S09",
+      "name": "Fifty designers, one browser tab",
+      "use": "collection",
+      "minutes": 2.0,
+      "tags": [
+        "method",
+        "data"
+      ],
+      "props": {
+        "eyebrow": "Teaching through demonstration",
+        "headline": "Fifty designers, one browser tab.",
+        "body": "Contributors connected from their own laptops and built bridges across three spans. Combined with a prior curated set, the supervised seed reaches 323 episodes covering the structural idioms you would expect — and several you would not.",
+        "statsLabel": "Supervised episodes",
+        "statsTotal": 323,
+        "statsBreakdown": [
+          {
+            "num": 99,
+            "cap": "8 m"
+          },
+          {
+            "num": 123,
+            "cap": "10 m"
+          },
+          {
+            "num": 101,
+            "cap": "12 m"
+          }
+        ],
+        "widthFilter": null
+      },
+      "notes": "Same slide as the IASS deck, opposite framing: there it is one expert and one span as a controlled condition, here it is many contributors across three spans as a deployment result. The 10 m column is 23 browser episodes plus the 100 prior curated ones.",
+      "beats": [
+        "gui",
+        "build",
+        "stats"
+      ],
+      "beatDuration": 1.4
+    },
+    {
+      "id": "S10",
+      "name": "A dataset is also a design decision",
+      "use": "curation",
+      "minutes": 1.0,
+      "tags": [
+        "method",
+        "data"
+      ],
+      "props": {
+        "eyebrow": "Curation",
+        "headline": "A dataset is also a design decision.",
+        "body": "The Gallery replays successful submissions so a designer can decide which enter training. The model learns from work someone was willing to stand behind."
+      },
+      "notes": "Short beat. The point is that curation is an authored act, not preprocessing."
+    },
+    {
+      "id": "S11",
+      "name": "Replay the rollout, fix what failed",
+      "use": "correction",
+      "minutes": 1.5,
+      "tags": [
+        "method",
+        "learning"
+      ],
+      "props": {
+        "eyebrow": "Correcting through intervention",
+        "headline": "Replay the rollout, fix what failed.",
+        "body": "Four correction rounds through the Inspector: 344 episodes and 3,203 steps, stratified across spans as 109 at 8 m, 50 at 10 m and 185 at 12 m. The composition of each round records where the policy was actually struggling."
+      },
+      "notes": "Note the 12 m skew — 185 of 344 corrections. That asymmetry is diagnostic, not an accident: the longest span was hardest. IASS ran six rounds on one span; here it is four rounds across three."
+    },
+    {
+      "id": "S12",
+      "name": "36.5% width-balanced success",
+      "use": "training",
+      "minutes": 1.0,
+      "tags": [
+        "method",
+        "learning"
+      ],
+      "props": {
+        "eyebrow": "Training",
+        "headline": "36.5% width-balanced success.",
+        "body": "A 512-wide residual MLP, retrained after each round, with the deployed checkpoint selected by balanced rollout success across the three spans at 2,175,000 steps."
+      },
+      "notes": "Pre-empt the reaction: 36.5% sounds modest until you say that each bridge is up to 25 sequential placements in a continuous action space, and any one of them can produce a mechanism. Say that in the same breath as the number."
+    },
+    {
+      "id": "S13",
+      "name": "Design together, turn by turn",
+      "use": "codesign",
+      "minutes": 2.0,
+      "tags": [
+        "teaming",
+        "results"
+      ],
+      "props": {
+        "eyebrow": "Assisting through co-design",
+        "headline": "Design together, turn by turn.",
+        "body": "The trained policy returns to the Bridge Designer behind an AI Assist toggle. Every successful human placement triggers candidate continuations drawn from independent noise samples, shown as ghost bars. The designer accepts, ignores, or keeps drawing."
+      },
+      "notes": "The climax of the talk — this is the loop closing. Walk one episode: human move, AI suggestion, human move. Be first to say we have NOT yet evaluated how designers experience the suggestions; that is stated as a limitation in the paper and someone will ask."
+    },
+    {
+      "id": "S14",
+      "name": "What happens at spans it was never taught?",
+      "use": "generalization",
+      "minutes": 1.5,
+      "tags": [],
+      "props": {
+        "eyebrow": "Ablation",
+        "headline": "What happens at spans it was never taught?",
+        "body": "200 episodes per span from 7 m to 13 m at 0.25 m spacing. The policy generalizes across most of the range, with interpolation troughs near 9.0 m and 11.25 m, and extrapolation falling away past 12.5 m."
+      },
+      "notes": "Give the numbers: 9.0% at the 9 m trough, 6.0% at 11.25 m, 4.0% by 12.75 m. Honest reporting of where it breaks earns more credibility here than the headline number does."
+    },
+    {
+      "id": "S15",
+      "name": "A studio could grow its own model",
+      "use": "discussion",
+      "minutes": 1.5,
+      "tags": [],
+      "props": {
+        "eyebrow": "Discussion",
+        "headline": "A studio could grow its own model.",
+        "body": "The framework treats AI as an iterative collaborator rather than a one-shot generator, and it runs on small, designer-verified data — 323 seed episodes and 344 corrections. That lowers the barrier enough that an individual office could train a model reflecting its own design culture."
+      },
+      "notes": "This is the slide that makes the work matter to practitioners in the room. Then the limits: 2D pin-jointed, one load case, three spans, and no user study of the assistive mode."
+    },
+    {
+      "id": "S16",
+      "name": "From teaching to teaming, in one environment",
+      "use": "conclusion",
+      "minutes": 0.5,
+      "tags": [],
+      "props": {
+        "eyebrow": "Conclusion",
+        "headline": "From teaching to teaming, in one environment.",
+        "body": "Demonstration, curation, human-gated correction, and assistive deployment, linked in a single browser-based structural design environment.",
+        "tagline": "github.com/LupoSun/GooGym2D"
+      },
+      "notes": "Land it and stop talking. Leave the repo URL on screen through Q&A."
+    },
+    {
+      "id": "S17",
+      "name": "Capturing structural intuition",
+      "use": "title",
+      "minutes": 0.5,
+      "tags": [
+        "intro"
+      ],
+      "props": {
+        "venue": "IASS-IWSS 2026",
+        "venueLong": "Annual Symposium of the IASS — R-Evolution of Shapes",
+        "location": "Turin, Italy",
+        "date": "September 14–18, 2026",
+        "paperTitle": "Capturing structural intuition",
+        "tagline": "Human-gated imitation learning for structural design with flow matching"
+      },
+      "notes": "15 min + 5 Q&A. This room is structural engineers — lead with load paths and judgment, not with machine learning."
+    },
+    {
+      "id": "S18",
+      "name": "Structural design runs on expertise",
+      "use": "problem",
+      "minutes": 1.5,
+      "tags": [
+        "intro",
+        "motivation"
+      ],
+      "props": {
+        "eyebrow": "The problem",
+        "headline": "Structural design runs on expertise.",
+        "body": "Engineers draw on intuition about load paths, familiarity with structural motifs, and tacit knowledge of how forces move. Much of it is never written down."
+      },
+      "notes": "Open with a judgment call an engineer makes without calculating. Ask the room to recall making one this week — it lands better than a definition of tacit knowledge."
+    },
+    {
+      "id": "S19",
+      "name": "Optimization needs the space defined first",
+      "use": "gap",
+      "minutes": 1.5,
+      "tags": [],
+      "props": {
+        "eyebrow": "Where computation stops",
+        "headline": "Optimization needs the space defined first.",
+        "body": "Optimization and form-finding refine solutions inside a parameterization someone already chose. Reinforcement learning removes that constraint but demands a handcrafted reward — and structural judgment is exactly what resists being written as a reward."
+      },
+      "notes": "Name the RL precedents (Ororbia & Warn; Hong; Mirra) so the room knows we have read them. The point is not that RL fails, it is that the reward is the bottleneck."
+    },
+    {
+      "id": "S20",
+      "name": "Learn from demonstrations, not rulesets",
+      "use": "approach",
+      "minutes": 1.0,
+      "tags": [],
+      "props": {
+        "eyebrow": "The proposal",
+        "headline": "Learn from demonstrations, not rulesets.",
+        "body": "Imitation learning takes examples instead of an objective function. Three contributions: GooGym2D, an open-source sequential truss environment with FEA validation; a flow-based imitation pipeline with human-gated DAgger correction; and an empirical study of both."
+      },
+      "notes": "State the three contributions plainly — reviewers of this paper responded to the environment as much as to the method."
+    },
+    {
+      "id": "S21",
+      "name": "Truss design as graph construction",
+      "use": "environment",
+      "minutes": 2.0,
+      "tags": [
+        "method"
+      ],
+      "props": {
+        "eyebrow": "Environment",
+        "headline": "Truss design as graph construction.",
+        "body": "From an empty gap, each step places one bar. A terminal finite element analysis checks connectivity, mechanisms, yielding and buckling, and assigns the episode one outcome."
+      },
+      "notes": "Show the failure taxonomy explicitly — this audience will want to know a mechanism is distinguished from a yield failure. E = 210 GPa, Fy = 355 MPa, A = 1.8e-3 m^2, 5 kN/m."
+    },
+    {
+      "id": "S22",
+      "name": "Anchor, heading, length",
+      "use": "action",
+      "minutes": 1.5,
+      "tags": [],
+      "props": {
+        "eyebrow": "Action",
+        "headline": "Anchor, heading, length.",
+        "body": "Each action is four continuous numbers: an anchor near an existing node, a direction, and a length. Hindsight nodal adjustment preserves the geometry the designer intended. The policy emits chunks of consecutive actions, not one bar at a time."
+      },
+      "notes": "Action chunking is the part engineers grasp fastest — it is short-term design intent, not one reflex per bar."
+    },
+    {
+      "id": "S23",
+      "name": "There is never one right answer",
+      "use": "multimodality",
+      "minutes": 1.0,
+      "tags": [],
+      "props": {
+        "eyebrow": "Why not regression",
+        "headline": "There is never one right answer.",
+        "body": "Given the same partial truss, several next moves are all defensible. A policy trained to regress the mean collapses them into one averaged compromise that is often not a valid structure at all."
+      },
+      "notes": "This is the conceptual crux of the paper. Do not rush it. The averaged-bar illustration is worth ten seconds of silence."
+    },
+    {
+      "id": "S24",
+      "name": "Flow matching turns noise into actions",
+      "use": "flowmatching",
+      "minutes": 1.5,
+      "tags": [],
+      "props": {
+        "eyebrow": "Method",
+        "headline": "Flow matching turns noise into actions.",
+        "body": "The model learns a vector field transporting noise toward the demonstration distribution. Each query starts from a different random draw, so the same partial state yields different plausible continuations."
+      },
+      "notes": "Keep the math to the conditional flow-matching loss and the Euler integration at inference. If asked about diffusion policy, cite Chi et al. and note flow matching is fewer integration steps."
+    },
+    {
+      "id": "S25",
+      "name": "One engineer, one hundred bridges",
+      "use": "collection",
+      "minutes": 1.5,
+      "tags": [
+        "method",
+        "data"
+      ],
+      "props": {
+        "eyebrow": "Demonstrations",
+        "headline": "One engineer, one hundred bridges.",
+        "body": "A single author with architectural and structural design experience curated 100 demonstrations at a fixed 10 m span, grouped by bar count so the dataset spans shallow and deep solutions alike.",
+        "statsLabel": "Curated demonstrations",
+        "statsTotal": 100,
+        "statsBreakdown": [
+          {
+            "num": 20,
+            "cap": "11 bars"
+          },
+          {
+            "num": 20,
+            "cap": "13 bars"
+          },
+          {
+            "num": 20,
+            "cap": "15 bars"
+          },
+          {
+            "num": 20,
+            "cap": "17 bars"
+          },
+          {
+            "num": 20,
+            "cap": "19 bars"
+          }
+        ],
+        "widthFilter": 10.0
+      },
+      "notes": "IASS framing: deliberately ONE expert and ONE span. That is the controlled condition — we are asking whether intuition transfers at all, not whether it scales across contributors. The ACADIA paper is the scaled version; mention it only if asked.",
+      "beats": [
+        "gui",
+        "build",
+        "mosaic",
+        "stats"
+      ],
+      "beatDuration": 1.0
+    },
+    {
+      "id": "S26",
+      "name": "The human chooses which failures are worth fi…",
+      "use": "correction",
+      "minutes": 2.0,
+      "tags": [
+        "method",
+        "learning"
+      ],
+      "props": {
+        "eyebrow": "Correction",
+        "headline": "The human chooses which failures are worth fixing.",
+        "body": "After each round the policy is rolled out and the trajectories reviewed. The designer finds the last good state, takes over from there, and that correction becomes training data aimed at the model's blind spot."
+      },
+      "notes": "The distinction from standard DAgger is the whole contribution of this section: DAgger queries the expert at every visited state; we gate on the human's judgment of which failures matter. Cite Ross et al. and HG-DAgger (Kelly et al.)."
+    },
+    {
+      "id": "S27",
+      "name": "14% to 44% over six rounds",
+      "use": "results",
+      "minutes": 2.0,
+      "tags": [
+        "results"
+      ],
+      "props": {
+        "eyebrow": "Results",
+        "headline": "14% to 44% over six rounds.",
+        "body": "Before correction, the policy trained on 100 demonstrations succeeds 14% of the time. Round 1 alone more than doubles that. By Round 6 the policy reaches 44%, with disconnected episodes falling from 82% to 40% and invalid actions per episode from 7.4 to 3.9."
+      },
+      "notes": "Be honest about Round 6: it is the largest round (150 episodes) and does NOT beat Round 5 on success rate. The secondary metrics still improve. Say this before someone finds it in the table."
+    },
+    {
+      "id": "S28",
+      "name": "Bottom chords, diagonals, deeper supports",
+      "use": "formation",
+      "minutes": 1.5,
+      "tags": [],
+      "props": {
+        "eyebrow": "What it learned",
+        "headline": "Bottom chords, diagonals, deeper supports.",
+        "body": "Successful designs reproduce patterns consistent with basic truss principles: chords spanning the gap, diagonals transferring shear, and multiple members gathering at the support regions."
+      },
+      "notes": "This is the payoff slide for this audience — the policy was never told any of these principles. Let them read the geometry themselves before you narrate it."
+    },
+    {
+      "id": "S29",
+      "name": "Intuition transfers — within limits",
+      "use": "conclusion",
+      "minutes": 1.0,
+      "tags": [],
+      "props": {
+        "eyebrow": "Conclusion",
+        "headline": "Intuition transfers — within limits.",
+        "body": "A flow-based policy trained on 100 demonstrations and six rounds of human-gated correction generates structurally plausible, diverse designs. The environment is 2D, pin-jointed, single load case, single span. GooGym2D is open source.",
+        "tagline": "github.com/LupoSun/GooGym2D"
+      },
+      "notes": "Close on the limitations honestly, then the repo link. Likely questions: 3D? other typologies? how many demonstrations are actually needed? The last one is genuinely open — say so."
+    },
+    {
+      "id": "S30",
+      "name": "Hero",
+      "use": "hero",
+      "minutes": 1.0,
+      "tags": [
+        "intro"
+      ],
+      "props": {},
+      "notes": ""
+    },
+    {
+      "id": "S31",
+      "name": "The problem",
+      "use": "problem",
+      "minutes": 1.5,
+      "tags": [
+        "intro",
+        "motivation"
+      ],
+      "props": {},
+      "notes": ""
+    },
+    {
+      "id": "S32",
+      "name": "Environment",
+      "use": "environment",
+      "minutes": 2.5,
+      "tags": [
+        "method"
+      ],
+      "props": {},
+      "notes": ""
+    },
+    {
+      "id": "S33",
+      "name": "Framework",
+      "use": "framework",
+      "minutes": 2.0,
+      "tags": [
+        "method",
+        "overview"
+      ],
+      "props": {},
+      "notes": ""
+    },
+    {
+      "id": "S34",
+      "name": "Demonstration",
+      "use": "collection",
+      "minutes": 2.5,
+      "tags": [
+        "method",
+        "data"
+      ],
+      "props": {},
+      "notes": ""
+    },
+    {
+      "id": "S35",
+      "name": "Curation",
+      "use": "curation",
+      "minutes": 2.0,
+      "tags": [
+        "method",
+        "data"
+      ],
+      "props": {},
+      "notes": ""
+    },
+    {
+      "id": "S36",
+      "name": "Training",
+      "use": "training",
+      "minutes": 2.0,
+      "tags": [
+        "method",
+        "learning"
+      ],
+      "props": {},
+      "notes": ""
+    },
+    {
+      "id": "S37",
+      "name": "Correction",
+      "use": "correction",
+      "minutes": 2.5,
+      "tags": [
+        "method",
+        "learning"
+      ],
+      "props": {},
+      "notes": ""
+    },
+    {
+      "id": "S38",
+      "name": "Co-design",
+      "use": "codesign",
+      "minutes": 2.5,
+      "tags": [
+        "teaming",
+        "results"
+      ],
+      "props": {},
+      "notes": ""
+    },
+    {
+      "id": "S39",
+      "name": "Results",
+      "use": "results",
+      "minutes": 2.5,
+      "tags": [
+        "results"
+      ],
+      "props": {},
+      "notes": ""
+    },
+    {
+      "id": "S40",
+      "name": "Papers & code",
+      "use": "project",
+      "minutes": 1.0,
+      "tags": [
+        "closing"
+      ],
+      "props": {},
+      "notes": ""
+    }
+  ]
+}

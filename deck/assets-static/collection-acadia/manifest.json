@@ -1,0 +1,11 @@
+{
+  "shell": "shell.png",
+  "shellAspect": 1.333333,
+  "area": {
+    "x": 0.33125,
+    "y": 0.124167,
+    "w": 0.55,
+    "h": 0.733333
+  },
+  "source": "ACADIA2026 Writing/output/web_player_ui.png"
+}

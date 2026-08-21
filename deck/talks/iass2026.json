@@ -1,0 +1,302 @@
+{
+  "id": "iass2026",
+  "title": "Capturing Structural Intuition — IASS 2026",
+  "slides": [
+    {
+      "id": "S17",
+      "use": "title",
+      "name": "Title",
+      "minutes": 0.5,
+      "tags": [
+        "intro"
+      ],
+      "props": {
+        "venue": "IASS-IWSS 2026",
+        "paperTitle": "Capturing structural intuition",
+        "subtitle": "Human-gated imitation learning for structural design with flow matching",
+        "authors": [
+          {
+            "name": "Tao Sun",
+            "marks": [
+              1
+            ]
+          },
+          {
+            "name": "Shaoyi Wang",
+            "marks": [
+              1
+            ]
+          },
+          {
+            "name": "Simon Schleicher",
+            "marks": [
+              1
+            ]
+          },
+          {
+            "name": "Ramon E. Weber",
+            "marks": [
+              1
+            ]
+          }
+        ],
+        "affiliations": [
+          "College of Environmental Design, Department of Architecture, UC Berkeley"
+        ],
+        "venueLong": "Annual Symposium of the IASS — R-Evolution of Shapes",
+        "location": "Turin, Italy",
+        "date": "September 14–18, 2026",
+        "links": [
+          {
+            "label": "Code",
+            "value": "github.com/LupoSun/GooGym2D"
+          }
+        ],
+        "wash": "hero",
+        "align": "left",
+        "field": true,
+        "invert": true,
+        "invertStyle": "sweep",
+        "invertHues": [
+          "#32b4dc",
+          "#4dabf7",
+          "#845ef7",
+          "#0ca678"
+        ],
+        "invertParticles": "palette",
+        "invertDepth": 0.5
+      },
+      "notes": "- Good afternoon. Tao Sun, UC Berkeley — with Shaoyi Wang, Simon Schleicher and Ramon Weber.\n- State the question, not the method.\n- Promise the shape of the talk: environment, method, six rounds of results.\n- No presses on this slide.\n\n⚠ This room is structural engineers. Lead with load paths and judgment — \"flow matching\" can wait until slide 6.\n\nSay it as:\nGood afternoon. I'm Tao Sun from UC Berkeley, and this is joint work with Shaoyi Wang, Simon Schleicher and Ramon Weber. The question behind this paper is whether a machine can pick up structural design intuition from examples rather than from rules — not by optimising a reward that we wrote down, but by watching how an engineer builds. I'll show you the environment, the method, and what six rounds of human correction did to it.",
+      "chrome": "top"
+    },
+    {
+      "id": "S18",
+      "use": "problem",
+      "name": "The problem",
+      "minutes": 1.5,
+      "tags": [
+        "intro",
+        "motivation"
+      ],
+      "props": {
+        "eyebrow": "The problem",
+        "headline": "Structural design runs on expertise.",
+        "lede": "- Intuition about load paths, structural motifs, how forces move are often **unspoken** or **rarely written down**\n- Optimisation and form-finding refine inside a **predefined** parameterisation \n- Reinforcement learning lifts that constraint, but demands a **handcrafted reward**\n- Structural judgment is exactly what resists being written as explicit rules"
+      },
+      "notes": "- Open on the judgment, not on a definition: you look at a scheme and know it is wrong before you calculate.\n- Optimisation and form-finding are mature — but someone chooses the parameterisation first.\n- RL lifts that, and asks for a hand-crafted reward instead.\n- The turn: structural judgment is exactly what resists being written as either one.\n- So: learn it from demonstrations. That sentence is the bridge into the whole talk.\n\n⚠ Do not define \"tacit knowledge\". Give the room a judgment call they made this week — it lands better.\n\n⚠ Behind? Fold bullets 2 and 3 into one sentence and drop the example.\n\nSay it as:\nEngineers make judgments long before they calculate. You look at a scheme and you know the load path is wrong, without running a single number. That judgment comes from intuition about how forces move and from familiarity with structural motifs, and most of it is never written down anywhere. But our computational tools need it written down. Optimisation and form-finding are mature, and they refine solutions beautifully — inside a parameterisation that someone already chose. Reinforcement learning lifts that constraint, but it asks you to hand-craft a reward function. And structural judgment is precisely the part that resists being expressed as either. So we take the other route: rather than describing the judgment, we learn it from examples of it."
+    },
+    {
+      "id": "S54",
+      "use": "frameworkiass",
+      "name": "Framework (IASS)",
+      "minutes": 1.5,
+      "tags": [
+        "method",
+        "overview"
+      ],
+      "props": {
+        "eyebrow": "Framework",
+        "headline": "One loop, from demonstration to correction.",
+        "stagesFoot": "Six rounds, in the upcoming case study."
+      },
+      "notes": "- 5 presses on this slide — one per stage after the first.\n- On arrival: 1 Demonstrations — a designer builds in the browser; the good ones are kept.\n- ▸ 2 Train policy — a flow-matching policy learns from those demonstrations.\n- ▸ 3 Rollout & evaluate — the policy builds alone; FEA judges every attempt.\n- ▸ 4 Review & correction — replay a failure, take over at the last good state.\n- ▸ 5 Dataset aggregation — corrections join the demos as the next training mix.\n- ▸ 6 The ring closes — and it runs six times.\n\n⚠ Let each card land before you name the next. The ring draws itself between them; that motion is the argument.\n\n⚠ This slide is the map. Say so — every slide after it is one of these five boxes in detail.\n\nSay it as:\nThis is the whole method on one slide. A designer builds bridges in a browser, and the ones worth keeping become our golden demonstrations. A flow-matching policy trains on them. That trained policy then builds on its own, and a finite element analysis judges every attempt it makes. Where it fails, a designer replays the episode, finds the last state that still stood, and takes over from there. Those corrections join the golden demonstrations as the next round's training mix — and the loop runs again. In this paper it runs six times. Keep this picture; everything from here is one of these five stages up close."
+    },
+    {
+      "id": "S21",
+      "use": "environment",
+      "name": "Environment",
+      "minutes": 1.5,
+      "tags": [
+        "method"
+      ],
+      "props": {
+        "eyebrow": "Environment",
+        "headline": "Truss design as graph construction.",
+        "body": "- **GooGym2D** — an open-source 2D truss environment on the Gymnasium API\n- Each step places one bar from an existing node: *anchor, heading, length*\n- Hindsight nodal adjustment preserves the geometry the designer intended\n- Terminal FEA checks connectivity, mechanisms, yielding and buckling",
+        "bodyColumns": 2
+      },
+      "notes": "- No presses; the bar placement animates on arrival.\n- Say \"Markov decision process over graph construction\" once, then drop the jargon.\n- The action is the four numbers in the pill: anchor node, heading, length.\n- Hindsight nodal adjustment — point at it, one sentence, move on.\n- Terminal FEA returns one of five outcomes. That is the only signal the method ever gets.\n\n⚠ Do not read the observation vector aloud. It is on the slide for the people who want it.\n\n⚠ Parameters if asked: E = 210 GPa; Fy = 355 MPa (S355); A = 1.8e-3 m²; I = 1.18e-6 m⁴ for Euler buckling; 5 kN/m line load (1 dead + 4 live).\n\nSay it as:\nWe formalise truss design as graph construction. GooGym2D is an open-source two-dimensional truss environment built on the Gymnasium API. You start with an empty gap, and each step adds one bar from a node that already exists — four continuous numbers: which node to anchor to, a heading, and a length. Because a designer's hand is never exact, hindsight nodal adjustment snaps a new endpoint onto a nearby node where that was clearly the intent, so what we record is the geometry the designer meant rather than the geometry they happened to click. And when the episode ends we run a finite element analysis, which returns exactly one outcome: the structure stands, or it is disconnected, a mechanism, yielding, or buckling."
+    },
+    {
+      "id": "S25",
+      "use": "collection",
+      "name": "Demonstrations",
+      "minutes": 1.5,
+      "tags": [
+        "method",
+        "data"
+      ],
+      "props": {
+        "eyebrow": "Demonstrations",
+        "headline": "One engineer, one hundred bridges.",
+        "body": "- **100 demonstrations** from a single author, at a fixed **10 m** span\n- Grouped by bar count: 11, 13, 15, 17, 19\n",
+        "statsLabel": "Curated demonstrations",
+        "statsTotal": 100,
+        "statsBreakdown": [
+          {
+            "num": 20,
+            "cap": "11 bars"
+          },
+          {
+            "num": 20,
+            "cap": "13 bars"
+          },
+          {
+            "num": 20,
+            "cap": "15 bars"
+          },
+          {
+            "num": 20,
+            "cap": "17 bars"
+          },
+          {
+            "num": 20,
+            "cap": "19 bars"
+          }
+        ],
+        "widthFilter": 10
+      },
+      "notes": "- 3 presses.\n- On arrival: the collection interface — the same tool, run locally.\n- ▸ One bridge going up, decision by decision.\n- ▸ The hundred, as a mosaic.\n- ▸ The breakdown: 20 each at 11, 13, 15, 17 and 19 bars.\n- Land this: we record the sequence of decisions, not the finished geometry.\n\n⚠ The narrow supervision — one expert, one 10 m span — is the controlled condition, not an oversight. Say it that way.\n\n⚠ Asked about many contributors or many spans? That is the ACADIA paper. One sentence, do not detour.\n\nSay it as:\nThe supervision here is deliberately narrow. A single author, with both architectural and structural design experience, curated one hundred demonstrations at a fixed ten-metre span. They are grouped by bar count — twenty each at eleven, thirteen, fifteen, seventeen and nineteen bars — so the set covers shallow and deep solutions rather than one house style. And what we record is not the finished truss; it is the ordered sequence of decisions that produced it. That is the controlled condition for the question we are actually asking, which is whether design intuition transfers at all."
+    },
+    {
+      "id": "S56",
+      "use": "training",
+      "name": "Training",
+      "minutes": 2,
+      "tags": [
+        "method",
+        "learning"
+      ],
+      "props": {
+        "eyebrow": "Method",
+        "headline": "Flow matching turns noise into actions.",
+        "body": "- There is not only one design solution.\n- Flow matching learns a vector field carrying **noise** to **data**\n- A regression to the mean averages valid solutions into one that often **invalid**\n- Each query predicts a **chunk** of consecutive bars",
+        "body2": "",
+        "body3": "",
+        "capNoise": "noise",
+        "capField": "vector field",
+        "capChunks": "action chunks"
+      },
+      "notes": "- 2 presses.\n- On arrival: noise — where every prediction starts.\n- ▸ The vector field — the learned transport from noise to demonstrations.\n- ▸ Action chunks — three bars land one at a time, about 2.4 s. Let it play; that order is the point.\n- Lead with the multimodality argument. The equations are evidence, not the argument.\n- Bottom strip: path, target field, objective. Point at them, do not derive them.\n\n⚠ Pause after \"there is not only one solution\". That sentence is what the rest of the paper rests on.\n\n⚠ If pressed on the maths: the conditional flow-matching loss is the equation on the right; cite Chi et al. for diffusion policy.\n\n⚠ Behind? Skip the equations entirely and keep the mean-collapse argument. It survives without them.\n\nSay it as:\nThis is the conceptual core of the paper. Given the same partial truss, there is never only one defensible next move — a good engineer might run a diagonal here or a chord there, and both are right. That matters enormously for how you train. If you fit a policy by ordinary regression, it learns the average of the demonstrations, and the average of several valid structures is very often not a structure at all. So instead of predicting one action, we learn a distribution over actions. Flow matching does that by learning a vector field that transports pure noise onto the demonstration distribution: draw a random sample, follow the field, and you arrive at a plausible action. Because we model the whole distribution, the multimodality in the demonstrations survives training instead of being averaged away. The second ingredient is action chunking. Each query predicts a short chunk of consecutive bars rather than a single member, so the policy commits to a span of design intent — the way a designer thinks two or three moves ahead — instead of reacting one bar at a time."
+    },
+    {
+      "id": "S55",
+      "use": "rolloutiass",
+      "name": "Rollout & Evaluate (IASS)",
+      "minutes": 1.25,
+      "tags": [
+        "method",
+        "evaluation"
+      ],
+      "props": {
+        "eyebrow": "Rollout & Evaluate",
+        "headline": "Let the policy build, then judge every attempt.",
+        "body": "- The policy assembles a bridge **on its own**\n- A terminal **FEA** decides whether it stands\n- The **failed attempts** are what the designer takes for inspection",
+        "body2": "",
+        "legFell": "invalid",
+        "legStood": "vallid",
+        "legPicked": "invalid but salvageable"
+      },
+      "notes": "- 1 press.\n- On arrival: the grid — 70 rollouts from the study, unsorted, the way a batch actually comes out.\n- ▸ The pan travels; the ringed tiles lift as it passes.\n- Say what the colours mean before the pan starts, or it reads as decoration.\n- Mostly pink. Do not soften it — that is the setup for the next slide.\n- The ringed ones are failures the designer judged worth fixing. Not all of them.\n\n⚠ Real rollouts, pooled across all seven rounds — not illustrations. Worth saying out loud.\n\n⚠ Plant the word \"gate\" here. The next slide pays it off.\n\nSay it as:\nNow the policy builds unaided — no demonstrations, no prompting, just the trained policy placing bar after bar until it stops. Every finished attempt goes to a terminal finite element analysis, which decides one thing: does it stand? Look at the field as it goes past. Most of it is pink, and early in the study almost all of it was. That is the honest picture of a policy trained on a hundred demonstrations. The attempts ringed here are the failures a designer picked up and carried into the inspector — and notice that it is not every failure. Deciding which ones are worth the effort is the human gate, and that is what the next slide is about."
+    },
+    {
+      "id": "S26",
+      "use": "correctioniass",
+      "name": "Correction (IASS)",
+      "minutes": 2,
+      "tags": [
+        "method",
+        "learning"
+      ],
+      "props": {
+        "eyebrow": "Correction",
+        "headline": "The human chooses which failures are worth fixing.",
+        "body": "- The policy acts first; the designer intervenes **only where it matters**\n- The inspector replays a failure; the designer takes over at the **last good state**\n- That correction becomes training data aimed at the policy's **blind spot**",
+        "body2": "",
+        "legPrefix": "Correct prefix",
+        "legError": "Policy error",
+        "legFix": "Human correction",
+        "datasetTitle": "Correction dataset",
+        "datasetFoot": "six correction rounds · 10 m span · retraining"
+      },
+      "notes": "- 3 presses.\n- On arrival: replay — the failed episode plays back.\n- ▸ Failure — blue is the correct prefix, grey is where it went wrong.\n- ▸ Correction — orange is what the human added from the last good state.\n- ▸ Dataset — six rounds; rows are rounds, colour is the bar budget, 11 to 19.\n- Draw the contrast with standard DAgger explicitly. That contrast is the contribution.\n- Empty slots are budgets a round never produced — say it before someone asks.\n\n⚠ One beat per idea. Do not run ahead of the animation.\n\n⚠ Likely question: how do you choose which failures to correct? Answer honestly — it is the designer's judgment, and that is the method, not a gap in it.\n\nSay it as:\nHere is what a correction actually is. The inspector replays a failed rollout step by step. In blue is the prefix the policy got right — and it usually gets a good deal right. In grey is the move where it went wrong. The designer scrubs back to the last state that still stood, takes over, and finishes the bridge by hand; the orange members are what the human added. That episode — correct prefix, human completion — becomes training data. Now, standard DAgger asks the expert to label every state the policy visits, which is expensive and mostly spent on states that were perfectly fine. We invert it. The policy acts first, and the designer intervenes only where it matters, choosing which failures are worth fixing at all. That is what we mean by human-gated. And because those corrections are collected on states the policy actually reached, they land on its real blind spots rather than on hypothetical ones. On the right is the whole correction dataset: each row is a round, the colour is the bar budget from eleven to nineteen, and an empty slot is simply a budget that round never produced."
+    },
+    {
+      "id": "S27",
+      "use": "resultsiass",
+      "name": "Results — Figure 4",
+      "minutes": 2.25,
+      "tags": [
+        "results"
+      ],
+      "props": {
+        "eyebrow": "Results · Training",
+        "headline": "14% to 44% over six rounds.",
+        "body": "- **14%** before any correction, trained on 100 demonstrations\n- One round of human-gated correction **more than doubles** it\n- **44%** by round five\n- Disconnected episodes 82% to 40%; invalid actions per episode 7.4 to 3.9",
+        "readoutCaption": "best checkpoint",
+        "axisCaption": "checkpoint step →",
+        "bodyColumns": 2
+      },
+      "notes": "- 6 presses — each adds one round's curve.\n- On arrival: Pre-DAgger — 14%, trained on the 100 demonstrations alone.\n- ▸ Round 1 — 34%. More than double, from one round.\n- ▸ ▸ ▸ ▸ Rounds 2 to 5 — 36, 39, 40, 44%.\n- ▸ Round 6 — the largest correction round, and it does not beat Round 5 on success rate.\n- Say Round 6 plainly. Do not bury it or round it away.\n- Secondary metrics still improve: disconnected 82% → 40%, invalid actions 7.4 → 3.9.\n- The claim is about where corrections land, not how many there are.\n\n⚠ Single 10 m span throughout. Other spans are the ACADIA study.\n\n⚠ Behind? Press through to Round 5, give the two end numbers, skip the per-round walk.\n\nSay it as:\nThis is the checkpoint sweep for every round. Before any correction, trained on the hundred curated demonstrations alone, the policy succeeds fourteen per cent of the time. One round of human-gated correction takes that to thirty-four — more than double, from a single round of a designer fixing what he judged worth fixing. Then thirty-six, thirty-nine, forty, and forty-four per cent by Round 5. Round 6 is the largest correction round we collected, and it does not beat Round 5 on success rate. I would rather say that plainly than round it away: more corrections did not automatically mean a better policy. The secondary metrics do keep improving through it — disconnected episodes fall from eighty-two per cent to forty, and invalid actions per episode from seven point four to three point nine — so the policy is still learning to build coherent structures. But the claim of this paper is not that more data helps. It is that a modest amount of data, aimed by a human at where the policy actually fails, is what moves the number.",
+      "footnote": "Figure 4 · success-rate checkpoint sweeps, 100 evaluation episodes per checkpoint, 10 m span"
+    },
+    {
+      "id": "S61",
+      "use": "resultsiass2",
+      "name": "Outcomes (IASS)",
+      "minutes": 1.5,
+      "tags": [
+        "results"
+      ],
+      "props": {
+        "eyebrow": "Results · Outcomes",
+        "headline": "What the percentages are made of.",
+        "body": "- Ten rollouts per round, from that round's best checkpoint\n- **Pink** fell, **green** stood\n- The green end of the bar **grows**",
+        "failLabel": "invalid",
+        "okLabel": "valid",
+        "footnote": "ten sampled rollouts per round · 10 m span"
+      },
+      "notes": "- No presses — the six rounds build themselves on arrival, then the rows swell. Roughly ten seconds; talk over it, do not wait.\n- Same numbers as the previous slide, told as outcomes rather than curves.\n- Each row: ten sampled rollouts from that round's best checkpoint.\n- Pink fell, green stood — these are the real drawings, not a schematic.\n- Land on the shape: one in ten becomes four in ten.\n\n⚠ This slide exists because a percentage is abstract and a row of ten bridges is not. Let it do that work.\n\n⚠ Behind? This is the one to compress: one sentence on the green growing, then go to the close.\n\nSay it as:\nThose are the same numbers, but I want to show you what they are made of. Each row is one round, and each tile is a real rollout sampled from that round's best checkpoint — ten of them. Pink is a bridge that fell; green is one that stood. These are the drawings themselves, not a schematic. Watch the green end of each row grow as the rounds go down: roughly one in ten before any correction, four in ten by the end. That is what fourteen to forty-four per cent looks like laid out as structures instead of as a curve."
+    },
+    {
+      "id": "S58",
+      "use": "project",
+      "name": "Papers & code",
+      "minutes": 0.5,
+      "tags": [
+        "closing"
+      ],
+      "props": {
+        "eyebrow": "Code & Papers",
+        "headline": "Thank you. Let's keep in touch!",
+        "lede": " "
+      },
+      "notes": "- The screen is only the papers and the code — the conclusion is spoken. Deliver it deliberately.\n- Three moves: what the method does, what it cannot do, where the code is.\n- Name the limits yourself, before anyone asks: 2D, pin-jointed, one load case, one expert, one span.\n- Then thank the room and stop. Do not trail off into future work.\n\n⚠ Likely questions: 3D? other typologies? how many demonstrations are actually needed? The last one is genuinely open — say so rather than guessing a number.\n\n⚠ If a question needs the framework diagram, it is nine slides back — know the number before you go looking.\n\nSay it as:\nTo close. A flow-based policy trained on a hundred curated demonstrations, and then refined through six rounds of human-gated correction, produces structurally plausible and genuinely varied designs — and it gets there by having a designer aim the corrections, not by collecting more data. The limits are real and I want to name them myself: this is two-dimensional, pin-jointed, a single load case, one expert and one span. GooGym2D, the environment, is open source, and both papers and the code are linked here. Thank you — I am happy to take questions."
+    }
+  ],
+  "theme": "iass",
+  "venue": "IASS-IWSS 2026, Turin",
+  "targetMinutes": 15,
+  "note": "Rebuilt on the Tsinghua template: eleven slides, built skeletons only. Method paper — one expert, one span, six correction rounds.",
+  "typography": {
+    "scale": 1.25,
+    "family": "cmu"
+  },
+  "chrome": {
+    "logos": [
+      {
+        "src": "assets-static/logos/iass26_logo.png",
+        "alt": "IASS-IWSS 2026 Torino"
+      },
+      {
+        "src": "assets-static/logos/berkeley_logo.png",
+        "alt": "UC Berkeley",
+        "height": 26,
+        "offsetY": 2.5
+      }
+    ],
+    "left": "Capturing structural intuition",
+    "right": "{slide} / {total}",
+    "logoHeight": 40
+  }
+}

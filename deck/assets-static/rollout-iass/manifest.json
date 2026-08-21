@@ -1,0 +1,372 @@
+{
+  "rows": 3,
+  "seed": 11,
+  "gui": "inspector.png",
+  "grid": [
+    {
+      "file": "../outcomes-iass/cells/r4_c07.png",
+      "success": false,
+      "round": "Round 4"
+    },
+    {
+      "file": "../outcomes-iass/cells/r4_c02.png",
+      "success": true,
+      "round": "Round 4"
+    },
+    {
+      "file": "../outcomes-iass/cells/r5_c06.png",
+      "success": false,
+      "round": "Round 5"
+    },
+    {
+      "file": "../outcomes-iass/cells/r2_c07.png",
+      "success": false,
+      "round": "Round 2"
+    },
+    {
+      "file": "../outcomes-iass/cells/r4_c06.png",
+      "success": false,
+      "round": "Round 4"
+    },
+    {
+      "file": "../outcomes-iass/cells/r6_c04.png",
+      "success": false,
+      "round": "Round 6"
+    },
+    {
+      "file": "../outcomes-iass/cells/r1_c07.png",
+      "success": false,
+      "round": "Round 1"
+    },
+    {
+      "file": "../outcomes-iass/cells/r6_c08.png",
+      "success": false,
+      "round": "Round 6"
+    },
+    {
+      "file": "../outcomes-iass/cells/r4_c03.png",
+      "success": false,
+      "round": "Round 4"
+    },
+    {
+      "file": "../outcomes-iass/cells/r2_c01.png",
+      "success": true,
+      "round": "Round 2"
+    },
+    {
+      "file": "../outcomes-iass/cells/r4_c08.png",
+      "success": false,
+      "round": "Round 4"
+    },
+    {
+      "file": "../outcomes-iass/cells/r2_c02.png",
+      "success": false,
+      "round": "Round 2"
+    },
+    {
+      "file": "../outcomes-iass/cells/r3_c07.png",
+      "success": false,
+      "round": "Round 3"
+    },
+    {
+      "file": "../outcomes-iass/cells/r3_c05.png",
+      "success": false,
+      "round": "Round 3"
+    },
+    {
+      "file": "../outcomes-iass/cells/r5_c04.png",
+      "success": false,
+      "round": "Round 5"
+    },
+    {
+      "file": "../outcomes-iass/cells/r3_c02.png",
+      "success": true,
+      "round": "Round 3"
+    },
+    {
+      "file": "../outcomes-iass/cells/r6_c06.png",
+      "success": false,
+      "round": "Round 6"
+    },
+    {
+      "file": "../outcomes-iass/cells/r1_c03.png",
+      "success": false,
+      "round": "Round 1"
+    },
+    {
+      "file": "../outcomes-iass/cells/r0_c08.png",
+      "success": false,
+      "round": "Pre-DAgger"
+    },
+    {
+      "file": "../outcomes-iass/cells/r3_c00.png",
+      "success": true,
+      "round": "Round 3"
+    },
+    {
+      "file": "../outcomes-iass/cells/r3_c06.png",
+      "success": false,
+      "round": "Round 3"
+    },
+    {
+      "file": "../outcomes-iass/cells/r6_c03.png",
+      "success": true,
+      "round": "Round 6"
+    },
+    {
+      "file": "../outcomes-iass/cells/r5_c03.png",
+      "success": true,
+      "round": "Round 5"
+    },
+    {
+      "file": "../outcomes-iass/cells/r5_c05.png",
+      "success": false,
+      "round": "Round 5"
+    },
+    {
+      "file": "../outcomes-iass/cells/r3_c01.png",
+      "success": true,
+      "round": "Round 3"
+    },
+    {
+      "file": "../outcomes-iass/cells/r0_c07.png",
+      "success": false,
+      "round": "Pre-DAgger"
+    },
+    {
+      "file": "../outcomes-iass/cells/r1_c06.png",
+      "success": false,
+      "round": "Round 1"
+    },
+    {
+      "file": "../outcomes-iass/cells/r5_c08.png",
+      "success": false,
+      "round": "Round 5"
+    },
+    {
+      "file": "../outcomes-iass/cells/r2_c06.png",
+      "success": false,
+      "round": "Round 2"
+    },
+    {
+      "file": "../outcomes-iass/cells/r1_c08.png",
+      "success": false,
+      "round": "Round 1"
+    },
+    {
+      "file": "../outcomes-iass/cells/r1_c04.png",
+      "success": false,
+      "round": "Round 1"
+    },
+    {
+      "file": "../outcomes-iass/cells/r2_c00.png",
+      "success": true,
+      "round": "Round 2"
+    },
+    {
+      "file": "../outcomes-iass/cells/r2_c09.png",
+      "success": false,
+      "round": "Round 2"
+    },
+    {
+      "file": "../outcomes-iass/cells/r0_c01.png",
+      "success": false,
+      "round": "Pre-DAgger"
+    },
+    {
+      "file": "../outcomes-iass/cells/r1_c05.png",
+      "success": false,
+      "round": "Round 1"
+    },
+    {
+      "file": "../outcomes-iass/cells/r1_c02.png",
+      "success": false,
+      "round": "Round 1"
+    },
+    {
+      "file": "../outcomes-iass/cells/r4_c09.png",
+      "success": false,
+      "round": "Round 4"
+    },
+    {
+      "file": "../outcomes-iass/cells/r0_c03.png",
+      "success": false,
+      "round": "Pre-DAgger"
+    },
+    {
+      "file": "../outcomes-iass/cells/r0_c04.png",
+      "success": false,
+      "round": "Pre-DAgger"
+    },
+    {
+      "file": "../outcomes-iass/cells/r3_c03.png",
+      "success": false,
+      "round": "Round 3"
+    },
+    {
+      "file": "../outcomes-iass/cells/r0_c00.png",
+      "success": true,
+      "round": "Pre-DAgger"
+    },
+    {
+      "file": "../outcomes-iass/cells/r5_c02.png",
+      "success": true,
+      "round": "Round 5"
+    },
+    {
+      "file": "../outcomes-iass/cells/r1_c00.png",
+      "success": true,
+      "round": "Round 1"
+    },
+    {
+      "file": "../outcomes-iass/cells/r4_c05.png",
+      "success": false,
+      "round": "Round 4"
+    },
+    {
+      "file": "../outcomes-iass/cells/r6_c01.png",
+      "success": true,
+      "round": "Round 6"
+    },
+    {
+      "file": "../outcomes-iass/cells/r4_c01.png",
+      "success": true,
+      "round": "Round 4"
+    },
+    {
+      "file": "../outcomes-iass/cells/r6_c07.png",
+      "success": false,
+      "round": "Round 6"
+    },
+    {
+      "file": "../outcomes-iass/cells/r2_c05.png",
+      "success": false,
+      "round": "Round 2"
+    },
+    {
+      "file": "../outcomes-iass/cells/r3_c08.png",
+      "success": false,
+      "round": "Round 3"
+    },
+    {
+      "file": "../outcomes-iass/cells/r0_c02.png",
+      "success": false,
+      "round": "Pre-DAgger"
+    },
+    {
+      "file": "../outcomes-iass/cells/r6_c02.png",
+      "success": true,
+      "round": "Round 6"
+    },
+    {
+      "file": "../outcomes-iass/cells/r4_c04.png",
+      "success": false,
+      "round": "Round 4"
+    },
+    {
+      "file": "../outcomes-iass/cells/r5_c01.png",
+      "success": true,
+      "round": "Round 5"
+    },
+    {
+      "file": "../outcomes-iass/cells/r3_c04.png",
+      "success": false,
+      "round": "Round 3"
+    },
+    {
+      "file": "../outcomes-iass/cells/r0_c05.png",
+      "success": false,
+      "round": "Pre-DAgger"
+    },
+    {
+      "file": "../outcomes-iass/cells/r0_c09.png",
+      "success": false,
+      "round": "Pre-DAgger"
+    },
+    {
+      "file": "../outcomes-iass/cells/r1_c09.png",
+      "success": false,
+      "round": "Round 1"
+    },
+    {
+      "file": "../outcomes-iass/cells/r2_c08.png",
+      "success": false,
+      "round": "Round 2"
+    },
+    {
+      "file": "../outcomes-iass/cells/r0_c06.png",
+      "success": false,
+      "round": "Pre-DAgger"
+    },
+    {
+      "file": "../outcomes-iass/cells/r1_c01.png",
+      "success": true,
+      "round": "Round 1"
+    },
+    {
+      "file": "../outcomes-iass/cells/r5_c00.png",
+      "success": true,
+      "round": "Round 5"
+    },
+    {
+      "file": "../outcomes-iass/cells/r3_c09.png",
+      "success": false,
+      "round": "Round 3"
+    },
+    {
+      "file": "../outcomes-iass/cells/r4_c00.png",
+      "success": true,
+      "round": "Round 4"
+    },
+    {
+      "file": "../outcomes-iass/cells/r6_c00.png",
+      "success": true,
+      "round": "Round 6"
+    },
+    {
+      "file": "../outcomes-iass/cells/r2_c03.png",
+      "success": false,
+      "round": "Round 2"
+    },
+    {
+      "file": "../outcomes-iass/cells/r2_c04.png",
+      "success": false,
+      "round": "Round 2"
+    },
+    {
+      "file": "../outcomes-iass/cells/r6_c05.png",
+      "success": false,
+      "round": "Round 6"
+    },
+    {
+      "file": "../outcomes-iass/cells/r6_c09.png",
+      "success": false,
+      "round": "Round 6"
+    },
+    {
+      "file": "../outcomes-iass/cells/r5_c09.png",
+      "success": false,
+      "round": "Round 5"
+    },
+    {
+      "file": "../outcomes-iass/cells/r5_c07.png",
+      "success": false,
+      "round": "Round 5"
+    }
+  ],
+  "lifted": [
+    0,
+    5,
+    10,
+    14,
+    23,
+    28,
+    33,
+    37,
+    47,
+    53,
+    57,
+    65
+  ],
+  "source": "assets-static/outcomes-iass (cells sliced from the paper's Figure 5)"
+}
